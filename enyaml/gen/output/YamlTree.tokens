@@ -1,0 +1,10 @@
+SINGLE_QUOTE=6
+DOUBLE_QUOTE=5
+UnicodeEscape=12
+NULL=9
+QUOTED_STRING=4
+FALSE=8
+QuotedString=10
+TRUE=7
+HexDigit=13
+EscapeSequence=11

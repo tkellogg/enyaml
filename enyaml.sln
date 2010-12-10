@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "enyaml", "enyaml\enyaml.csproj", "{14E789F4-2C02-4EEA-88EA-79A434CEBD0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "enyaml.tests", "enyaml.tests\enyaml.tests.csproj", "{C2B83712-3801-4DE3-9E0A-902E158DD5BA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14E789F4-2C02-4EEA-88EA-79A434CEBD0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14E789F4-2C02-4EEA-88EA-79A434CEBD0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14E789F4-2C02-4EEA-88EA-79A434CEBD0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14E789F4-2C02-4EEA-88EA-79A434CEBD0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2B83712-3801-4DE3-9E0A-902E158DD5BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B83712-3801-4DE3-9E0A-902E158DD5BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B83712-3801-4DE3-9E0A-902E158DD5BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B83712-3801-4DE3-9E0A-902E158DD5BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
