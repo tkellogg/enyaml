@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YamlTests.cs" />
+    <Compile Include="ScalarValueTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\enyaml\enyaml.csproj">

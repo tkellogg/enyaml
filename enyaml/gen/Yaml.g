@@ -6,17 +6,26 @@ options {
 }
 
 tokens {
-	QUOTED_STRING;
+	QUOTED_STRING; UNQUOTED_STRING;
 	DOUBLE_QUOTE; SINGLE_QUOTE; TRUE; FALSE; NULL;
 }
 
 @namespace { enyaml.parser }
 
-quoted_string	: QuotedString
-	-> ^(QUOTED_STRING QuotedString);
+string_expr	
+	: QuotedString -> ^(QUOTED_STRING QuotedString) 
+	| UnQuotedString -> ^(UNQUOTED_STRING UnQuotedString);
 
-QuotedString	
-	: '"' (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' ) )* '"'
+QuotedString
+	: '"' (EscapeSequence | UnQuotedStringChars)* '"'
+	;
+	
+UnQuotedString
+	: UnQuotedStringChars*
+	;
+	
+fragment UnQuotedStringChars
+	: ~('\u0000'..'\u001f' | '\\' | '\"' ) 
 	;
 	
 fragment EscapeSequence

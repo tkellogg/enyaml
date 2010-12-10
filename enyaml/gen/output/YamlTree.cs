@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g 2010-12-09 19:35:49
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g 2010-12-09 20:28:28
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -28,28 +28,34 @@ public partial class YamlTree : TreeParser
 		"<DOWN>", 
 		"<UP>", 
 		"QUOTED_STRING", 
+		"UNQUOTED_STRING", 
 		"DOUBLE_QUOTE", 
 		"SINGLE_QUOTE", 
 		"TRUE", 
 		"FALSE", 
 		"NULL", 
 		"QuotedString", 
+		"UnQuotedString", 
 		"EscapeSequence", 
+		"UnQuotedStringChars", 
 		"UnicodeEscape", 
 		"HexDigit"
     };
 
-    public const int SINGLE_QUOTE = 6;
-    public const int DOUBLE_QUOTE = 5;
-    public const int UnicodeEscape = 12;
-    public const int NULL = 9;
+    public const int SINGLE_QUOTE = 7;
+    public const int DOUBLE_QUOTE = 6;
+    public const int UnicodeEscape = 15;
+    public const int NULL = 10;
     public const int QUOTED_STRING = 4;
-    public const int FALSE = 8;
-    public const int QuotedString = 10;
+    public const int UnQuotedString = 12;
+    public const int UnQuotedStringChars = 14;
+    public const int UNQUOTED_STRING = 5;
+    public const int FALSE = 9;
+    public const int QuotedString = 11;
     public const int EOF = -1;
-    public const int TRUE = 7;
-    public const int HexDigit = 13;
-    public const int EscapeSequence = 11;
+    public const int TRUE = 8;
+    public const int HexDigit = 16;
+    public const int EscapeSequence = 13;
 
     // delegates
     // delegators
@@ -135,28 +141,65 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "string_expr"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:41:1: string_expr returns [string result] : ^( QUOTED_STRING QuotedString ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:41:1: string_expr returns [string result] : ( ^( QUOTED_STRING QuotedString ) | ^( UNQUOTED_STRING UnQuotedString ) );
     public string string_expr() // throws RecognitionException [1]
     {   
         string result = default(string);
 
         CommonTree QuotedString1 = null;
+        CommonTree UnQuotedString2 = null;
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:42:2: ( ^( QUOTED_STRING QuotedString ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:42:4: ^( QUOTED_STRING QuotedString )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:42:2: ( ^( QUOTED_STRING QuotedString ) | ^( UNQUOTED_STRING UnQuotedString ) )
+            int alt1 = 2;
+            int LA1_0 = input.LA(1);
+
+            if ( (LA1_0 == QUOTED_STRING) )
             {
-            	Match(input,QUOTED_STRING,FOLLOW_QUOTED_STRING_in_string_expr82); 
+                alt1 = 1;
+            }
+            else if ( (LA1_0 == UNQUOTED_STRING) )
+            {
+                alt1 = 2;
+            }
+            else 
+            {
+                NoViableAltException nvae_d1s0 =
+                    new NoViableAltException("", 1, 0, input);
 
-            	Match(input, Token.DOWN, null); 
-            	QuotedString1=(CommonTree)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr84); 
+                throw nvae_d1s0;
+            }
+            switch (alt1) 
+            {
+                case 1 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:42:4: ^( QUOTED_STRING QuotedString )
+                    {
+                    	Match(input,QUOTED_STRING,FOLLOW_QUOTED_STRING_in_string_expr82); 
 
-            	Match(input, Token.UP, null); 
-            	 result =  ExtractString(QuotedString1); 
+                    	Match(input, Token.DOWN, null); 
+                    	QuotedString1=(CommonTree)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr84); 
+
+                    	Match(input, Token.UP, null); 
+                    	 result =  ExtractString(QuotedString1); 
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:44:4: ^( UNQUOTED_STRING UnQuotedString )
+                    {
+                    	Match(input,UNQUOTED_STRING,FOLLOW_UNQUOTED_STRING_in_string_expr95); 
+
+                    	Match(input, Token.DOWN, null); 
+                    	UnQuotedString2=(CommonTree)Match(input,UnQuotedString,FOLLOW_UnQuotedString_in_string_expr97); 
+
+                    	Match(input, Token.UP, null); 
+                    	 result =  ExtractString(UnQuotedString2); 
+
+                    }
+                    break;
 
             }
-
         }
         catch (RecognitionException re) 
     	{
@@ -182,6 +225,8 @@ public partial class YamlTree : TreeParser
     public static readonly BitSet FOLLOW_string_expr_in_value62 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_QUOTED_STRING_in_string_expr82 = new BitSet(new ulong[]{0x0000000000000004UL});
     public static readonly BitSet FOLLOW_QuotedString_in_string_expr84 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_UNQUOTED_STRING_in_string_expr95 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_UnQuotedString_in_string_expr97 = new BitSet(new ulong[]{0x0000000000000008UL});
 
 }
 }

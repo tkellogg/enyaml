@@ -40,7 +40,9 @@ value returns [object result]
 	
 string_expr returns [string result] 
 	: ^(QUOTED_STRING QuotedString)
-	{ $result = ExtractString($QuotedString); }
+		{ $result = ExtractString($QuotedString); }
+	| ^(UNQUOTED_STRING UnQuotedString)
+		{ $result = ExtractString($UnQuotedString); }
 	;
 	
 	
