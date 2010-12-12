@@ -41,24 +41,51 @@ namespace enyaml.tests
             Assert.AreEqual("line\\ 1", result);
         }
         [Test]
+        [Ignore("Focusing on implementing JSON first, then we'll come back to the rest of YAML")]
         public void ParseUnQuotedString()
         {
             var result = Yaml.Parse("line 1");
             Assert.AreEqual("line 1", result);
         }
         [Test]
-        [Ignore]
         public void ParseInt()
         {
             var result = Yaml.Parse("42");
             Assert.AreEqual(42, result);
+            Assert.AreEqual(typeof(int), result.GetType());
         }
         [Test]
-        [Ignore]
+        public void ParseNegativeInt()
+        {
+            var result = Yaml.Parse("-42");
+            Assert.AreEqual(-42, result);
+            Assert.AreEqual(typeof(int), result.GetType());
+        }
+        [Test]
+        public void ParseZero()
+        {
+            var result = Yaml.Parse("0");
+            Assert.AreEqual(0, result);
+            Assert.AreEqual(typeof(int), result.GetType());
+        }
+        [Test]
         public void ParseDouble()
         {
             var result = Yaml.Parse("3.1415");
             Assert.AreEqual(3.1415, result);
+        }
+        [Test]
+        public void ParseNegativeDouble()
+        {
+            var result = Yaml.Parse("-3.1415");
+            Assert.AreEqual(-3.1415, result);
+        }
+        [Test]
+        public void ParseZeroFloat()
+        {
+            var result = Yaml.Parse("0.0");
+            Assert.AreEqual(0.0, result);
+            Assert.AreEqual(typeof(double), result.GetType());
         }
     }
 }

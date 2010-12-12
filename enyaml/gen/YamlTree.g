@@ -35,14 +35,26 @@ using System.Text.RegularExpressions;
 }
 
 value returns [object result]
-	: s=string_expr { $result = s; }
+	: i=integer { $result = i; }
+	| f=float_expr { $result = f; }
+	| s=string_expr { $result = s; }
+	;
+	
+integer returns [int result]
+	: ^(INTEGER Integer)
+		{ $result = int.Parse($Integer.Text); }
+	;
+	
+float_expr returns [double result]
+	: ^(FLOAT Float)
+		{ $result = double.Parse($Float.Text); }
 	;
 	
 string_expr returns [string result] 
 	: ^(QUOTED_STRING QuotedString)
 		{ $result = ExtractString($QuotedString); }
-	| ^(UNQUOTED_STRING UnQuotedString)
-		{ $result = ExtractString($UnQuotedString); }
+//	| ^(UNQUOTED_STRING UnQuotedString)
+//		{ $result = ExtractString($UnQuotedString); }
 	;
 	
 	

@@ -17,7 +17,7 @@ namespace enyaml
             var lexer = new YamlLexer(new ANTLRStringStream(content));
             var tokens = new CommonTokenStream(lexer);
             var parser = new YamlParser(tokens);
-            var stream = new CommonTreeNodeStream(parser.string_expr().Tree);
+            var stream = new CommonTreeNodeStream(parser.value().Tree);
             stream.TokenStream = tokens;
             var tree = new YamlTree(stream);
             return tree.value();
