@@ -81,7 +81,31 @@ namespace enyaml.tests
             Assert.AreEqual(-3.1415, result);
         }
         [Test]
-        public void ParseZeroFloat()
+        public void ParseNegativeExponent()
+        {
+            var result = Yaml.Parse("-3.1415E12");
+            Assert.AreEqual(-3.1415e12, result);
+        }
+        [Test]
+        public void ParseExponent()
+        {
+            var result = Yaml.Parse("3.1415e12");
+            Assert.AreEqual(3.1415e12, result);
+        }
+        [Test]
+        public void ParseBigExponent()
+        {
+            var result = Yaml.Parse("3.1415e+12");
+            Assert.AreEqual(3.1415e12, result);
+        }
+        [Test]
+        public void ParseSmallExponent()
+        {
+            var result = Yaml.Parse("3.1415e-12");
+            Assert.AreEqual(3.1415e-12, result);
+        }
+        [Test]
+        public void ParseZeroDouble()
         {
             var result = Yaml.Parse("0.0");
             Assert.AreEqual(0.0, result);

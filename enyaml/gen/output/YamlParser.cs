@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2010-12-12 16:15:21
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2010-12-12 17:59:30
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -39,6 +39,7 @@ public partial class YamlParser : Parser
 		"DecDigit", 
 		"HexDigit", 
 		"Float", 
+		"Exponent", 
 		"QuotedString", 
 		"UnQuotedStringChars", 
 		"EscapeSequence", 
@@ -48,20 +49,21 @@ public partial class YamlParser : Parser
     public const int INTEGER = 6;
     public const int DOUBLE_QUOTE = 8;
     public const int NULL = 12;
+    public const int Exponent = 17;
     public const int FLOAT = 7;
     public const int EOF = -1;
-    public const int QuotedString = 17;
+    public const int QuotedString = 18;
     public const int TRUE = 10;
     public const int HexDigit = 15;
     public const int DecDigit = 14;
     public const int Float = 16;
     public const int SINGLE_QUOTE = 9;
-    public const int UnicodeEscape = 20;
+    public const int UnicodeEscape = 21;
     public const int QUOTED_STRING = 4;
-    public const int UnQuotedStringChars = 18;
+    public const int UnQuotedStringChars = 19;
     public const int UNQUOTED_STRING = 5;
     public const int FALSE = 11;
-    public const int EscapeSequence = 19;
+    public const int EscapeSequence = 20;
     public const int Integer = 13;
 
     // delegates
@@ -392,7 +394,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "string_expr"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:37:1: string_expr : QuotedString -> ^( QUOTED_STRING QuotedString ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:1: string_expr : QuotedString -> ^( QUOTED_STRING QuotedString ) ;
     public YamlParser.string_expr_return string_expr() // throws RecognitionException [1]
     {   
         YamlParser.string_expr_return retval = new YamlParser.string_expr_return();
@@ -407,10 +409,10 @@ public partial class YamlParser : Parser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:2: ( QuotedString -> ^( QUOTED_STRING QuotedString ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:4: QuotedString
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:2: ( QuotedString -> ^( QUOTED_STRING QuotedString ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:4: QuotedString
             {
-            	QuotedString6=(IToken)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr179);  
+            	QuotedString6=(IToken)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr214);  
             	stream_QuotedString.Add(QuotedString6);
 
 
@@ -426,9 +428,9 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 38:17: -> ^( QUOTED_STRING QuotedString )
+            	// 42:17: -> ^( QUOTED_STRING QuotedString )
             	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:20: ^( QUOTED_STRING QuotedString )
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:20: ^( QUOTED_STRING QuotedString )
             	    {
             	    object root_1 = (object)adaptor.GetNilNode();
             	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(QUOTED_STRING, "QUOTED_STRING"), root_1);
@@ -477,7 +479,7 @@ public partial class YamlParser : Parser
     public static readonly BitSet FOLLOW_string_expr_in_value81 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_Integer_in_integer90 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_Float_in_float_expr138 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_QuotedString_in_string_expr179 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_QuotedString_in_string_expr214 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

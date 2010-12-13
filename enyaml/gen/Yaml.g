@@ -31,7 +31,11 @@ float_expr
 	;
 	
 Float
-	: '-'? DecDigit+ '.' DecDigit*
+	: '-'? DecDigit+ '.' DecDigit* Exponent?
+	;
+	
+fragment Exponent
+	: ('e' | 'E') ('-' | '+')? DecDigit+
 	;
 
 string_expr	
