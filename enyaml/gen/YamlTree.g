@@ -35,9 +35,15 @@ using System.Text.RegularExpressions;
 }
 
 value returns [object result]
-	: i=integer { $result = i; }
+	: b=boolean { $result = b; }
+	| i=integer { $result = i; }
 	| f=float_expr { $result = f; }
 	| s=string_expr { $result = s; }
+	;
+	
+boolean returns [bool result]
+	: ^(BOOL Bool)
+		{ $result = bool.Parse($Bool.Text); }
 	;
 	
 integer returns [int result]

@@ -111,5 +111,23 @@ namespace enyaml.tests
             Assert.AreEqual(0.0, result);
             Assert.AreEqual(typeof(double), result.GetType());
         }
+        [Test]
+        public void ParseTrue()
+        {
+            var result = Yaml.Parse("true");
+            Assert.AreEqual(true, result);
+        }
+        [Test]
+        public void ParseFalse()
+        {
+            var result = Yaml.Parse("false");
+            Assert.AreEqual(false, result);
+        }
+        [Test]
+        public void ParseNull()
+        {
+            var result = Yaml.Parse("null");
+            Assert.AreEqual(null, result);
+        }
     }
 }

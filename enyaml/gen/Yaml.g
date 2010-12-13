@@ -6,14 +6,15 @@ options {
 }
 
 tokens {
-	QUOTED_STRING; UNQUOTED_STRING; INTEGER; FLOAT;
-	DOUBLE_QUOTE; SINGLE_QUOTE; TRUE; FALSE; NULL;
+	QUOTED_STRING; UNQUOTED_STRING; INTEGER; FLOAT; BOOL;
+	DOUBLE_QUOTE; SINGLE_QUOTE;
 }
 
 @namespace { enyaml.parser }
 
 value
-	: integer 
+	: boolean
+	| integer 
 	| float_expr
 	| string_expr;
 
@@ -50,6 +51,14 @@ QuotedString
 //UnQuotedString
 //	: UnQuotedStringChars*
 //	;
+
+boolean 
+	: Bool -> ^(BOOL Bool)
+	;
+
+Bool
+	: 'true' | 'false'
+	;
 	
 fragment UnQuotedStringChars
 	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' ) )
