@@ -7,6 +7,7 @@ options {
 }
 
 @header {
+using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 }
@@ -32,13 +33,16 @@ using System.Text.RegularExpressions;
                 }
             });
 	}
+	
 }
 
 value returns [object result]
-	: b=boolean { $result = b; }
-	| i=integer { $result = i; }
-	| f=float_expr { $result = f; }
-	| s=string_expr { $result = s; }
+	: b=boolean { $result = $b.result; }
+	| i=integer { $result = $i.result; }
+	| f=float_expr { $result = $f.result; }
+	| s=string_expr { $result = $s.result; }
+	| m=map { $result = $m.result; }
+	| l=list { $result = $l.result; }
 	;
 	
 boolean returns [bool result]
@@ -61,6 +65,31 @@ string_expr returns [string result]
 		{ $result = ExtractString($QuotedString); }
 //	| ^(UNQUOTED_STRING UnQuotedString)
 //		{ $result = ExtractString($UnQuotedString); }
+	;
+	
+map returns [SortedDictionary<string, object> result]
+	scope {
+		SortedDictionary<string, object> dict;
+	}
+	@init {
+		$map::dict = new SortedDictionary<string, object>();
+	}
+	@after {
+		result = $map::dict;
+	}
+	: '{' map_pair+ '}'
+	;
+	
+map_pair 
+	: ^(':' key=string_expr val=value)
+		{ $map::dict.Add($key.result, $val.result); }
+	;
+	
+list returns [List<object> result]
+	@init {
+		$result = new List<object>();
+	}
+	: '[' (value { $result.Add($value.result); })+ ']'
 	;
 	
 	

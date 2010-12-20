@@ -7,7 +7,7 @@ options {
 
 tokens {
 	QUOTED_STRING; UNQUOTED_STRING; INTEGER; FLOAT; BOOL;
-	DOUBLE_QUOTE; SINGLE_QUOTE;
+	DOUBLE_QUOTE; SINGLE_QUOTE; MAP;
 }
 
 @namespace { enyaml.parser }
@@ -16,7 +16,10 @@ value
 	: boolean
 	| integer 
 	| float_expr
-	| string_expr;
+	| string_expr
+	| map
+	| list
+	;
 
 integer
 	: Integer -> ^(INTEGER Integer)
@@ -58,6 +61,21 @@ boolean
 
 Bool
 	: 'true' | 'false'
+	;
+				
+map
+	: '{' map_pair (',' map_pair)* '}'
+		-> '{' map_pair+ '}'
+	;
+	
+map_pair
+	: string_expr ':' value
+		-> ^(':' string_expr value)
+	;
+	
+list 
+	: '[' value (',' value)* ']'
+		-> '[' value+ ']'
 	;
 	
 fragment UnQuotedStringChars
