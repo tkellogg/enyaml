@@ -41,13 +41,6 @@ namespace enyaml.tests
             Assert.AreEqual("line\\ 1", result);
         }
         [Test]
-        [Ignore("Focusing on implementing JSON first, then we'll come back to the rest of YAML")]
-        public void ParseUnQuotedString()
-        {
-            var result = Yaml.Parse("line 1");
-            Assert.AreEqual("line 1", result);
-        }
-        [Test]
         public void ParseInt()
         {
             var result = Yaml.Parse("42");

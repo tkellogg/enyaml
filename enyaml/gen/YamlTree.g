@@ -77,7 +77,7 @@ map returns [SortedDictionary<string, object> result]
 	@after {
 		result = $map::dict;
 	}
-	: '{' map_pair+ '}'
+	: ^(MAP map_pair+ )
 	;
 	
 map_pair 
@@ -89,7 +89,7 @@ list returns [List<object> result]
 	@init {
 		$result = new List<object>();
 	}
-	: '[' (value { $result.Add($value.result); })+ ']'
+	: ^(LIST (value { $result.Add($value.result); })+ )
 	;
 	
 	

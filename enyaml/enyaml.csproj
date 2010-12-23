@@ -45,10 +45,7 @@
     <Compile Include="gen\output\YamlLexer.cs" />
     <Compile Include="gen\output\YamlParser.cs" />
     <Compile Include="gen\output\YamlTree.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="Node.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sequence.cs" />
     <Compile Include="Yaml.cs" />
   </ItemGroup>
   <ItemGroup>

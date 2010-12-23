@@ -23,13 +23,5 @@ namespace enyaml
             return tree.value();
         }
 
-        public static Node Parse(StreamReader stream)
-        {
-            StringBuilder token = new StringBuilder();
-            while (!stream.EndOfStream)
-            {
-            }
-            return null;
-        }
     }
 }
