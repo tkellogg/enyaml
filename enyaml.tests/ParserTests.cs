@@ -39,7 +39,7 @@ namespace enyaml.tests
         {
             string content = "- 1\n- 2\n- 3";
             var p = GetParser(content);
-            Assert.AreEqual(YamlParser.MAP, p.Type);
+            Assert.AreEqual(YamlParser.LIST, p.Type);
             Assert.AreEqual(3, p.ChildCount);
             Assert.AreEqual(YamlParser.INTEGER, ((CommonTree)p.Children[1]).Type);
             Assert.AreEqual("2", (((CommonTree)p.Children[1]).Children[0]).ToString());

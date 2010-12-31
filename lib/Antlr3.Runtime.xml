@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>/home/verequus/Arbeit/ANTLR/code/antlr/main/runtime/CSharp/Sources/Antlr3.Runtime/bin/Debug/net-2.0/Antlr3.Runtime</name>
+        <name>/home/verequus/Arbeit/ANTLR/code/antlr/main/runtime/CSharp/Sources/Antlr3.Runtime/bin/Release/net-2.0/Antlr3.Runtime</name>
     </assembly>
     <members>
         <member name="T:Antlr.Runtime.ANTLRFileStream">
@@ -124,11 +124,6 @@
             <summary>
             Current character position on the current line stream
             (i.e. columnn position)
-            </summary>
-        </member>
-        <member name="P:Antlr.Runtime.ANTLRStringStream.Count">
-            <summary>
-            Returns the size of the stream
             </summary>
         </member>
         <member name="M:Antlr.Runtime.ANTLRStringStream.Reset">
@@ -360,14 +355,6 @@
             A simple stream of integers. This is useful when all we care about is the char
             or token type sequence (such as for interpretation).
             </summary>
-        </member>
-        <member name="P:Antlr.Runtime.IIntStream.Count">
-            <summary>Returns the size of the entire stream.</summary>
-            <remarks>
-            Only makes sense for streams that buffer everything up probably,
-            but might be useful to display the entire stream or for testing.
-            This value includes a single EOF.
-            </remarks>
         </member>
         <member name="P:Antlr.Runtime.IIntStream.SourceName">
             <summary>
@@ -847,22 +834,6 @@
         <member name="M:Antlr.Runtime.Tree.BaseTree.FreshenParentAndChildIndexes">
             <summary>Set the parent and child index values for all child of t</summary>
         </member>
-        <member name="M:Antlr.Runtime.Tree.BaseTree.HasAncestor(System.Int32)">
-            <summary>
-            Walk upwards looking for ancestor with this token type.
-            </summary>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.BaseTree.GetAncestor(System.Int32)">
-            <summary>
-            Walk upwards and get first ancestor with this token type.
-            </summary>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.BaseTree.GetAncestors">
-            <summary>
-            Return a list of all ancestors of this node.  The first node of
-            list is the root and the last is the parent of this node.
-            </summary>
-        </member>
         <member name="M:Antlr.Runtime.Tree.BaseTree.ToStringTree">
             <summary>
             Print out a whole tree not just a node
@@ -1043,7 +1014,6 @@
         <member name="F:Antlr.Runtime.Tree.CommonTree.childIndex">
             <summary>What index is this node in the child list? Range: 0..n-1</summary>
         </member>
-        <!--FIXME: Invalid documentation markup was found for member M:Antlr.Runtime.Tree.CommonTree.SetUnknownTokenBoundaries-->
         <member name="T:Antlr.Runtime.Tree.CommonTreeAdaptor">
             <summary>
             A TreeAdaptor that works with any Tree implementation.  It provides
@@ -1052,8 +1022,7 @@
             objects, you need to override this and then set the parser tree adaptor to
             use your subclass.
             To get your parser to build nodes of a different type, override
-            Create(Token), ErrorNode(), and to be safe, YourTreeClass.DupNode().
-            DupNode() is called to duplicate nodes during rewrite operations.
+            Create(Token).
             </summary>
         </member>
         <member name="M:Antlr.Runtime.Tree.CommonTreeAdaptor.DupNode(System.Object)">
@@ -1170,13 +1139,6 @@
             the object that provides node objects.
             </summary>
         </member>
-        <member name="P:Antlr.Runtime.Tree.CommonTreeNodeStream.Count">
-            <summary>
-            Expensive to compute so I won't bother doing the right thing.
-            This method only returns how much input has been seen so far.  So
-            after parsing it returns true size.
-            </summary>
-        </member>
         <member name="M:Antlr.Runtime.Tree.CommonTreeNodeStream.FillBuffer">
             <summary>
             Walk tree with depth-first-search and fill nodes buffer.
@@ -1285,28 +1247,6 @@
             What is the largest token index (indexing from 0) for this node
             and its children?
             </summary>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.ITree.HasAncestor(System.Int32)">
-            <summary>
-            Is there is a node above with token type ttype?
-            </summary>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.ITree.GetAncestor(System.Int32)">
-            <summary>
-            Walk upwards and get first ancestor with this token type.
-            </summary>
-            <param name="ttype">
-            A <see cref="T:System.Int32" /></param>
-            <returns>
-            A <see cref="T:Antlr.Runtime.Tree.ITree" /></returns>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.ITree.GetAncestors">
-            <summary>
-            Return a list of all ancestors of this node.  The first node of
-            list is the root and the last is the parent of this node.
-            </summary>
-            <returns>
-            A <see cref="T:System.Collections.IList" /></returns>
         </member>
         <member name="M:Antlr.Runtime.Tree.ITree.FreshenParentAndChildIndexes">
             <summary>Set (or reset) the parent and child index values for all children</summary>
@@ -1685,7 +1625,7 @@
             corresponding UP node.
             </remarks>
         </member>
-        <member name="M:Antlr.Runtime.Tree.TreeParser.RecoverFromMismatchedToken(Antlr.Runtime.IIntStream,System.Int32,Antlr.Runtime.BitSet)">
+        <member name="M:Antlr.Runtime.Tree.TreeParser.Mismatch(Antlr.Runtime.IIntStream,System.Int32,Antlr.Runtime.BitSet)">
             <summary>We have DOWN/UP nodes in the stream that have no line info; override.
             plus we want to alter the exception type. Don't try to recover
             from tree parser errors inline...
@@ -2649,10 +2589,10 @@
             Return the next element in the stream.
             </summary>
             <remarks>
-            If out of elements, throw an exception unless Count==1.
-            If Count is 1, then return elements[0].
+            If out of elements, throw an exception unless Size()==1.
+            If Size() is 1, then return elements[0].
             Return a duplicate node/subtree if stream is out of
-            elements and Count==1.
+            elements and Size()==1.
             If we've already used the element, dup (dirty bit set).
             </remarks>
         </member>
@@ -2806,14 +2746,6 @@
             <summary>
             Where is this stream pulling nodes from?  This is not the name, but
             the object that provides node objects.
-            </summary>
-        </member>
-        <member name="P:Antlr.Runtime.Tree.UnBufferedTreeNodeStream.Count">
-            <summary>
-            Expensive to compute; recursively walk tree to find size;
-            include navigation nodes and EOF.  Reuse functionality
-            in CommonTreeNodeStream as we only really use this
-            for testing.
             </summary>
         </member>
         <member name="M:Antlr.Runtime.Tree.UnBufferedTreeNodeStream.MoveNext">
@@ -3050,8 +2982,6 @@
             that overrides this to point to their string[] tokenNames.
             </summary>
         </member>
-        <member name="M:Antlr.Runtime.BaseRecognizer.Failed">
-             Return whether or not a backtracking attempt failed.</member>
         <member name="M:Antlr.Runtime.BaseRecognizer.Reset">
             <summary>Reset the parser's state. Subclasses must rewind the input stream.</summary>
         </member>
@@ -3063,11 +2993,11 @@
             </summary>
             <remarks>
             To turn off single token insertion or deletion error
-            recovery, override RecoverFromMismatchedToken() and have it call
-            pthrow an exception. See TreeParser.RecoverFromMismatchedToken().
-            This way any error in a rule will cause an exception and
-            immediate exit from rule.  Rule would recover by resynchronizing
-            to the set of symbols that can follow rule ref.
+            recovery, override mismatchRecover() and have it call
+            plain mismatch(), which does not recover. Then any error
+            in a rule will cause an exception and immediate exit from
+            rule. Rule would recover by resynchronizing to the set of
+            symbols that can follow rule ref.
             </remarks>
         </member>
         <member name="M:Antlr.Runtime.BaseRecognizer.MatchAny(Antlr.Runtime.IIntStream)">
@@ -3239,14 +3169,13 @@
             <returns>
             </returns>
         </member>
-        <member name="M:Antlr.Runtime.BaseRecognizer.ComputeErrorRecoverySet">
+        <member name="M:Antlr.Runtime.BaseRecognizer.Mismatch(Antlr.Runtime.IIntStream,System.Int32,Antlr.Runtime.BitSet)">
             <summary>
             Factor out what to do upon token mismatch so tree parsers can behave
-            differently.  Override and call RecoverFromMismatchedToken()
+            differently.  Override and call MismatchRecover(input, ttype, follow)
             to get single token insertion and deletion. Use this to turn off
             single token insertion and deletion. Override mismatchRecover
             to call this instead.
-            TODO: fix this comment, mismatchRecover doesn't exist, for example
             </summary>
         </member>
         <member name="M:Antlr.Runtime.BaseRecognizer.ComputeContextSensitiveRuleFOLLOW">
@@ -3799,43 +3728,6 @@
         <member name="M:Antlr.Runtime.TokenRewriteStream.GetKindOfOps(System.Collections.IList,System.Type,System.Int32)">
             <summary>
             Get all operations before an index of a particular kind
-            </summary>
-        </member>
-        <member name="T:Antlr.Runtime.Tree.ITreeVisitorAction">
-            <summary>
-            How to execute code for node t when a visitor visits node t.  Execute
-            Pre() before visiting children and execute Post() after visiting children.
-            </summary>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.ITreeVisitorAction.Pre(System.Object)">
-            <summary>
-            Execute an action before visiting children of t.  Return t or
-            a rewritten t.  Children of returned value will be visited.
-            </summary>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.ITreeVisitorAction.Post(System.Object)">
-            <summary>
-            Execute an action after visiting children of t. Return t or
-            a rewritten t. It is up to the visitor to decide what to do
-            with the return value.
-            </summary>
-        </member>
-        <member name="T:Antlr.Runtime.Tree.TreeVisitor">
-            <summary>
-            Do a depth first walk of a tree, applying pre() and post() actions
-            as we discover and finish nodes.
-            </summary>
-        </member>
-        <member name="M:Antlr.Runtime.Tree.TreeVisitor.Visit(System.Object,Antlr.Runtime.Tree.ITreeVisitorAction)">
-            <summary>
-            Visit every node in tree t and trigger an action for each node
-            before/after having visited all of its children.
-            Execute both actions even if t has no children.
-            If a child visit yields a new child, it can update its
-            parent's child list or just return the new child.  The
-            child update code works even if the child visit alters its parent
-            and returns the new tree.
-            Return result of applying post action to this node.
             </summary>
         </member>
     </members>

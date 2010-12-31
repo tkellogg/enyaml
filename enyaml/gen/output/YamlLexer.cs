@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2010-12-23 15:36:29
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2010-12-31 15:44:02
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -17,19 +17,19 @@ namespace  enyaml.parser
 {
 public partial class YamlLexer : Lexer {
     public const int INTEGER = 6;
-    public const int Bool = 24;
+    public const int Bool = 25;
     public const int DOUBLE_QUOTE = 9;
     public const int BOOL = 8;
-    public const int Exponent = 21;
+    public const int Exponent = 22;
     public const int DEDENT = 14;
     public const int FLOAT = 7;
     public const int EOF = -1;
-    public const int QuotedString = 22;
+    public const int QuotedString = 23;
     public const int LIST = 12;
-    public const int HexDigit = 18;
-    public const int DecDigit = 17;
+    public const int HexDigit = 19;
+    public const int DecDigit = 18;
     public const int INDENT = 13;
-    public const int Float = 20;
+    public const int Float = 21;
     public const int T__30 = 30;
     public const int T__31 = 31;
     public const int SINGLE_QUOTE = 10;
@@ -38,40 +38,17 @@ public partial class YamlLexer : Lexer {
     public const int T__33 = 33;
     public const int T__34 = 34;
     public const int T__35 = 35;
-    public const int NEWLINE = 25;
+    public const int NEWLINE = 26;
     public const int DENT = 15;
     public const int UnicodeEscape = 29;
     public const int MAP = 11;
     public const int QUOTED_STRING = 4;
-    public const int UnQuotedStringChars = 23;
+    public const int UnQuotedStringChars = 24;
     public const int UNQUOTED_STRING = 5;
-    public const int LI = 19;
+    public const int LI = 20;
     public const int EscapeSequence = 27;
-    public const int Integer = 16;
-    public const int INDENTATION = 26;
-
-    	
-    	///<summary>Tracks the current indentation level<summary>
-    	protected int Indentation { get; set; }
-
-    	/// <summary>Tracks how many spaces an indent is</summary>
-    	internal int indentSize = 0;
-    	
-    	///<summary>Gets the indentation level represented by spaces</summary>
-    	internal int GetIndentationSize(string spaces) {
-    		int ret = 0;
-    		if (indentSize == 0 && spaces.Length > 0) {
-    			// This is the first time we're looking for indents
-    			indentSize = spaces.Length;
-    			ret = 1;
-    		} else if (indentSize > 0) {
-    			if (spaces.Length % indentSize != 0)
-    				throw new Exception("Bad indentation");
-    			ret = spaces.Length / indentSize;
-    		}
-    		return ret;
-    	}
-
+    public const int Integer = 17;
+    public const int INDENTATION = 16;
 
     // delegates
     // delegators
@@ -101,8 +78,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = T__30;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:7: ( '{' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:9: '{'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:15:7: ( '{' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:15:9: '{'
             {
             	Match('{'); 
 
@@ -124,8 +101,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = T__31;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:39:7: ( ',' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:39:9: ','
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:16:7: ( ',' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:16:9: ','
             {
             	Match(','); 
 
@@ -147,8 +124,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = T__32;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:40:7: ( '}' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:40:9: '}'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:17:7: ( '}' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:17:9: '}'
             {
             	Match('}'); 
 
@@ -170,8 +147,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = T__33;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:7: ( ':' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:9: ':'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:18:7: ( ':' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:18:9: ':'
             {
             	Match(':'); 
 
@@ -193,8 +170,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = T__34;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:7: ( '[' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:9: '['
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:19:7: ( '[' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:19:9: '['
             {
             	Match('['); 
 
@@ -216,8 +193,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = T__35;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:7: ( ']' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:9: ']'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:20:7: ( ']' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:20:9: ']'
             {
             	Match(']'); 
 
@@ -232,6 +209,68 @@ public partial class YamlLexer : Lexer {
     }
     // $ANTLR end "T__35"
 
+    // $ANTLR start "INDENTATION"
+    public void mINDENTATION() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = INDENTATION;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:31:2: ({...}? => ( ' ' )+ )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:31:4: {...}? => ( ' ' )+
+            {
+            	if ( !((CharPositionInLine == 0)) ) 
+            	{
+            	    throw new FailedPredicateException(input, "INDENTATION", "CharPositionInLine == 0");
+            	}
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:32:3: ( ' ' )+
+            	int cnt1 = 0;
+            	do 
+            	{
+            	    int alt1 = 2;
+            	    int LA1_0 = input.LA(1);
+
+            	    if ( (LA1_0 == ' ') )
+            	    {
+            	        alt1 = 1;
+            	    }
+
+
+            	    switch (alt1) 
+            		{
+            			case 1 :
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:32:3: ' '
+            			    {
+            			    	Match(' '); 
+
+            			    }
+            			    break;
+
+            			default:
+            			    if ( cnt1 >= 1 ) goto loop1;
+            		            EarlyExitException eee1 =
+            		                new EarlyExitException(1, input);
+            		            throw eee1;
+            	    }
+            	    cnt1++;
+            	} while (true);
+
+            	loop1:
+            		;	// Stops C# compiler whining that label 'loop1' has no statements
+
+            	 EmitIndentationTokens(Text); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "INDENTATION"
+
     // $ANTLR start "Integer"
     public void mInteger() // throws RecognitionException [2]
     {
@@ -239,50 +278,50 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = Integer;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:71:2: ( ( '-' )? ( DecDigit )+ | ( '0' 'x' ( HexDigit )+ ) )
-            int alt4 = 2;
-            int LA4_0 = input.LA(1);
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:2: ( ( '-' )? ( DecDigit )+ | ( '0' 'x' ( HexDigit )+ ) )
+            int alt5 = 2;
+            int LA5_0 = input.LA(1);
 
-            if ( (LA4_0 == '-' || (LA4_0 >= '1' && LA4_0 <= '9')) )
+            if ( (LA5_0 == '-' || (LA5_0 >= '1' && LA5_0 <= '9')) )
             {
-                alt4 = 1;
+                alt5 = 1;
             }
-            else if ( (LA4_0 == '0') )
+            else if ( (LA5_0 == '0') )
             {
-                int LA4_2 = input.LA(2);
+                int LA5_2 = input.LA(2);
 
-                if ( (LA4_2 == 'x') )
+                if ( (LA5_2 == 'x') )
                 {
-                    alt4 = 2;
+                    alt5 = 2;
                 }
                 else 
                 {
-                    alt4 = 1;}
+                    alt5 = 1;}
             }
             else 
             {
-                NoViableAltException nvae_d4s0 =
-                    new NoViableAltException("", 4, 0, input);
+                NoViableAltException nvae_d5s0 =
+                    new NoViableAltException("", 5, 0, input);
 
-                throw nvae_d4s0;
+                throw nvae_d5s0;
             }
-            switch (alt4) 
+            switch (alt5) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:71:4: ( '-' )? ( DecDigit )+
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:4: ( '-' )? ( DecDigit )+
                     {
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:71:4: ( '-' )?
-                    	int alt1 = 2;
-                    	int LA1_0 = input.LA(1);
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:4: ( '-' )?
+                    	int alt2 = 2;
+                    	int LA2_0 = input.LA(1);
 
-                    	if ( (LA1_0 == '-') )
+                    	if ( (LA2_0 == '-') )
                     	{
-                    	    alt1 = 1;
+                    	    alt2 = 1;
                     	}
-                    	switch (alt1) 
+                    	switch (alt2) 
                     	{
                     	    case 1 :
-                    	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:71:4: '-'
+                    	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:4: '-'
                     	        {
                     	        	Match('-'); 
 
@@ -291,23 +330,23 @@ public partial class YamlLexer : Lexer {
 
                     	}
 
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:71:9: ( DecDigit )+
-                    	int cnt2 = 0;
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:9: ( DecDigit )+
+                    	int cnt3 = 0;
                     	do 
                     	{
-                    	    int alt2 = 2;
-                    	    int LA2_0 = input.LA(1);
+                    	    int alt3 = 2;
+                    	    int LA3_0 = input.LA(1);
 
-                    	    if ( ((LA2_0 >= '0' && LA2_0 <= '9')) )
+                    	    if ( ((LA3_0 >= '0' && LA3_0 <= '9')) )
                     	    {
-                    	        alt2 = 1;
+                    	        alt3 = 1;
                     	    }
 
 
-                    	    switch (alt2) 
+                    	    switch (alt3) 
                     		{
                     			case 1 :
-                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:71:9: DecDigit
+                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:9: DecDigit
                     			    {
                     			    	mDecDigit(); 
 
@@ -315,45 +354,45 @@ public partial class YamlLexer : Lexer {
                     			    break;
 
                     			default:
-                    			    if ( cnt2 >= 1 ) goto loop2;
-                    		            EarlyExitException eee2 =
-                    		                new EarlyExitException(2, input);
-                    		            throw eee2;
+                    			    if ( cnt3 >= 1 ) goto loop3;
+                    		            EarlyExitException eee3 =
+                    		                new EarlyExitException(3, input);
+                    		            throw eee3;
                     	    }
-                    	    cnt2++;
+                    	    cnt3++;
                     	} while (true);
 
-                    	loop2:
-                    		;	// Stops C# compiler whining that label 'loop2' has no statements
+                    	loop3:
+                    		;	// Stops C# compiler whining that label 'loop3' has no statements
 
 
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:4: ( '0' 'x' ( HexDigit )+ )
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:52:4: ( '0' 'x' ( HexDigit )+ )
                     {
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:4: ( '0' 'x' ( HexDigit )+ )
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:5: '0' 'x' ( HexDigit )+
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:52:4: ( '0' 'x' ( HexDigit )+ )
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:52:5: '0' 'x' ( HexDigit )+
                     	{
                     		Match('0'); 
                     		Match('x'); 
-                    		// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:13: ( HexDigit )+
-                    		int cnt3 = 0;
+                    		// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:52:13: ( HexDigit )+
+                    		int cnt4 = 0;
                     		do 
                     		{
-                    		    int alt3 = 2;
-                    		    int LA3_0 = input.LA(1);
+                    		    int alt4 = 2;
+                    		    int LA4_0 = input.LA(1);
 
-                    		    if ( ((LA3_0 >= '0' && LA3_0 <= '9') || (LA3_0 >= 'A' && LA3_0 <= 'F') || (LA3_0 >= 'a' && LA3_0 <= 'f')) )
+                    		    if ( ((LA4_0 >= '0' && LA4_0 <= '9') || (LA4_0 >= 'A' && LA4_0 <= 'F') || (LA4_0 >= 'a' && LA4_0 <= 'f')) )
                     		    {
-                    		        alt3 = 1;
+                    		        alt4 = 1;
                     		    }
 
 
-                    		    switch (alt3) 
+                    		    switch (alt4) 
                     			{
                     				case 1 :
-                    				    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:13: HexDigit
+                    				    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:52:13: HexDigit
                     				    {
                     				    	mHexDigit(); 
 
@@ -361,16 +400,16 @@ public partial class YamlLexer : Lexer {
                     				    break;
 
                     				default:
-                    				    if ( cnt3 >= 1 ) goto loop3;
-                    			            EarlyExitException eee3 =
-                    			                new EarlyExitException(3, input);
-                    			            throw eee3;
+                    				    if ( cnt4 >= 1 ) goto loop4;
+                    			            EarlyExitException eee4 =
+                    			                new EarlyExitException(4, input);
+                    			            throw eee4;
                     		    }
-                    		    cnt3++;
+                    		    cnt4++;
                     		} while (true);
 
-                    		loop3:
-                    			;	// Stops C# compiler whining that label 'loop3' has no statements
+                    		loop4:
+                    			;	// Stops C# compiler whining that label 'loop4' has no statements
 
 
                     	}
@@ -396,8 +435,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = LI;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:76:2: ( '-' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:76:4: '-'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:56:2: ( '-' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:56:4: '-'
             {
             	Match('-'); 
 
@@ -419,21 +458,21 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = Float;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:2: ( ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )? )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:4: ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )?
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:2: ( ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )? )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:4: ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )?
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:4: ( '-' )?
-            	int alt5 = 2;
-            	int LA5_0 = input.LA(1);
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:4: ( '-' )?
+            	int alt6 = 2;
+            	int LA6_0 = input.LA(1);
 
-            	if ( (LA5_0 == '-') )
+            	if ( (LA6_0 == '-') )
             	{
-            	    alt5 = 1;
+            	    alt6 = 1;
             	}
-            	switch (alt5) 
+            	switch (alt6) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:4: '-'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:4: '-'
             	        {
             	        	Match('-'); 
 
@@ -442,43 +481,8 @@ public partial class YamlLexer : Lexer {
 
             	}
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:9: ( DecDigit )+
-            	int cnt6 = 0;
-            	do 
-            	{
-            	    int alt6 = 2;
-            	    int LA6_0 = input.LA(1);
-
-            	    if ( ((LA6_0 >= '0' && LA6_0 <= '9')) )
-            	    {
-            	        alt6 = 1;
-            	    }
-
-
-            	    switch (alt6) 
-            		{
-            			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:9: DecDigit
-            			    {
-            			    	mDecDigit(); 
-
-            			    }
-            			    break;
-
-            			default:
-            			    if ( cnt6 >= 1 ) goto loop6;
-            		            EarlyExitException eee6 =
-            		                new EarlyExitException(6, input);
-            		            throw eee6;
-            	    }
-            	    cnt6++;
-            	} while (true);
-
-            	loop6:
-            		;	// Stops C# compiler whining that label 'loop6' has no statements
-
-            	Match('.'); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:23: ( DecDigit )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:9: ( DecDigit )+
+            	int cnt7 = 0;
             	do 
             	{
             	    int alt7 = 2;
@@ -493,7 +497,7 @@ public partial class YamlLexer : Lexer {
             	    switch (alt7) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:23: DecDigit
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:9: DecDigit
             			    {
             			    	mDecDigit(); 
 
@@ -501,25 +505,60 @@ public partial class YamlLexer : Lexer {
             			    break;
 
             			default:
-            			    goto loop7;
+            			    if ( cnt7 >= 1 ) goto loop7;
+            		            EarlyExitException eee7 =
+            		                new EarlyExitException(7, input);
+            		            throw eee7;
             	    }
+            	    cnt7++;
             	} while (true);
 
             	loop7:
             		;	// Stops C# compiler whining that label 'loop7' has no statements
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:33: ( Exponent )?
-            	int alt8 = 2;
-            	int LA8_0 = input.LA(1);
-
-            	if ( (LA8_0 == 'E' || LA8_0 == 'e') )
+            	Match('.'); 
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:23: ( DecDigit )*
+            	do 
             	{
-            	    alt8 = 1;
+            	    int alt8 = 2;
+            	    int LA8_0 = input.LA(1);
+
+            	    if ( ((LA8_0 >= '0' && LA8_0 <= '9')) )
+            	    {
+            	        alt8 = 1;
+            	    }
+
+
+            	    switch (alt8) 
+            		{
+            			case 1 :
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:23: DecDigit
+            			    {
+            			    	mDecDigit(); 
+
+            			    }
+            			    break;
+
+            			default:
+            			    goto loop8;
+            	    }
+            	} while (true);
+
+            	loop8:
+            		;	// Stops C# compiler whining that label 'loop8' has no statements
+
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:33: ( Exponent )?
+            	int alt9 = 2;
+            	int LA9_0 = input.LA(1);
+
+            	if ( (LA9_0 == 'E' || LA9_0 == 'e') )
+            	{
+            	    alt9 = 1;
             	}
-            	switch (alt8) 
+            	switch (alt9) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:33: Exponent
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:33: Exponent
             	        {
             	        	mExponent(); 
 
@@ -545,8 +584,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:88:2: ( ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+ )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:88:4: ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:2: ( ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+ )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:4: ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+
             {
             	if ( input.LA(1) == 'E' || input.LA(1) == 'e' ) 
             	{
@@ -559,15 +598,15 @@ public partial class YamlLexer : Lexer {
             	    Recover(mse);
             	    throw mse;}
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:88:16: ( '-' | '+' )?
-            	int alt9 = 2;
-            	int LA9_0 = input.LA(1);
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:16: ( '-' | '+' )?
+            	int alt10 = 2;
+            	int LA10_0 = input.LA(1);
 
-            	if ( (LA9_0 == '+' || LA9_0 == '-') )
+            	if ( (LA10_0 == '+' || LA10_0 == '-') )
             	{
-            	    alt9 = 1;
+            	    alt10 = 1;
             	}
-            	switch (alt9) 
+            	switch (alt10) 
             	{
             	    case 1 :
             	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:
@@ -589,23 +628,23 @@ public partial class YamlLexer : Lexer {
 
             	}
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:88:29: ( DecDigit )+
-            	int cnt10 = 0;
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:29: ( DecDigit )+
+            	int cnt11 = 0;
             	do 
             	{
-            	    int alt10 = 2;
-            	    int LA10_0 = input.LA(1);
+            	    int alt11 = 2;
+            	    int LA11_0 = input.LA(1);
 
-            	    if ( ((LA10_0 >= '0' && LA10_0 <= '9')) )
+            	    if ( ((LA11_0 >= '0' && LA11_0 <= '9')) )
             	    {
-            	        alt10 = 1;
+            	        alt11 = 1;
             	    }
 
 
-            	    switch (alt10) 
+            	    switch (alt11) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:88:29: DecDigit
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:29: DecDigit
             			    {
             			    	mDecDigit(); 
 
@@ -613,16 +652,16 @@ public partial class YamlLexer : Lexer {
             			    break;
 
             			default:
-            			    if ( cnt10 >= 1 ) goto loop10;
-            		            EarlyExitException eee10 =
-            		                new EarlyExitException(10, input);
-            		            throw eee10;
+            			    if ( cnt11 >= 1 ) goto loop11;
+            		            EarlyExitException eee11 =
+            		                new EarlyExitException(11, input);
+            		            throw eee11;
             	    }
-            	    cnt10++;
+            	    cnt11++;
             	} while (true);
 
-            	loop10:
-            		;	// Stops C# compiler whining that label 'loop10' has no statements
+            	loop11:
+            		;	// Stops C# compiler whining that label 'loop11' has no statements
 
 
             }
@@ -641,26 +680,26 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = QuotedString;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:2: ( '\"' ( UnQuotedStringChars )* '\"' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:4: '\"' ( UnQuotedStringChars )* '\"'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:77:2: ( '\"' ( UnQuotedStringChars )* '\"' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:77:4: '\"' ( UnQuotedStringChars )* '\"'
             {
             	Match('\"'); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:8: ( UnQuotedStringChars )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:77:8: ( UnQuotedStringChars )*
             	do 
             	{
-            	    int alt11 = 2;
-            	    int LA11_0 = input.LA(1);
+            	    int alt12 = 2;
+            	    int LA12_0 = input.LA(1);
 
-            	    if ( ((LA11_0 >= ' ' && LA11_0 <= '!') || (LA11_0 >= '#' && LA11_0 <= '\uFFFF')) )
+            	    if ( ((LA12_0 >= ' ' && LA12_0 <= '!') || (LA12_0 >= '#' && LA12_0 <= '\uFFFF')) )
             	    {
-            	        alt11 = 1;
+            	        alt12 = 1;
             	    }
 
 
-            	    switch (alt11) 
+            	    switch (alt12) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:8: UnQuotedStringChars
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:77:8: UnQuotedStringChars
             			    {
             			    	mUnQuotedStringChars(); 
 
@@ -668,12 +707,12 @@ public partial class YamlLexer : Lexer {
             			    break;
 
             			default:
-            			    goto loop11;
+            			    goto loop12;
             	    }
             	} while (true);
 
-            	loop11:
-            		;	// Stops C# compiler whining that label 'loop11' has no statements
+            	loop12:
+            		;	// Stops C# compiler whining that label 'loop12' has no statements
 
             	Match('\"'); 
 
@@ -695,29 +734,29 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = Bool;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:109:2: ( 'true' | 'false' )
-            int alt12 = 2;
-            int LA12_0 = input.LA(1);
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:89:2: ( 'true' | 'false' )
+            int alt13 = 2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA12_0 == 't') )
+            if ( (LA13_0 == 't') )
             {
-                alt12 = 1;
+                alt13 = 1;
             }
-            else if ( (LA12_0 == 'f') )
+            else if ( (LA13_0 == 'f') )
             {
-                alt12 = 2;
+                alt13 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d12s0 =
-                    new NoViableAltException("", 12, 0, input);
+                NoViableAltException nvae_d13s0 =
+                    new NoViableAltException("", 13, 0, input);
 
-                throw nvae_d12s0;
+                throw nvae_d13s0;
             }
-            switch (alt12) 
+            switch (alt13) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:109:4: 'true'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:89:4: 'true'
                     {
                     	Match("true"); 
 
@@ -725,7 +764,7 @@ public partial class YamlLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:109:13: 'false'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:89:13: 'false'
                     {
                     	Match("false"); 
 
@@ -743,80 +782,6 @@ public partial class YamlLexer : Lexer {
     }
     // $ANTLR end "Bool"
 
-    // $ANTLR start "INDENTATION"
-    public void mINDENTATION() // throws RecognitionException [2]
-    {
-    		try
-    		{
-            int _type = INDENTATION;
-    	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:167:2: ({...}? => ( ' ' )+ )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:167:4: {...}? => ( ' ' )+
-            {
-            	if ( !((CharPositionInLine == 0)) ) 
-            	{
-            	    throw new FailedPredicateException(input, "INDENTATION", "CharPositionInLine == 0");
-            	}
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:168:3: ( ' ' )+
-            	int cnt13 = 0;
-            	do 
-            	{
-            	    int alt13 = 2;
-            	    int LA13_0 = input.LA(1);
-
-            	    if ( (LA13_0 == ' ') )
-            	    {
-            	        alt13 = 1;
-            	    }
-
-
-            	    switch (alt13) 
-            		{
-            			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:168:3: ' '
-            			    {
-            			    	Match(' '); 
-
-            			    }
-            			    break;
-
-            			default:
-            			    if ( cnt13 >= 1 ) goto loop13;
-            		            EarlyExitException eee13 =
-            		                new EarlyExitException(13, input);
-            		            throw eee13;
-            	    }
-            	    cnt13++;
-            	} while (true);
-
-            	loop13:
-            		;	// Stops C# compiler whining that label 'loop13' has no statements
-
-            	 
-            				int size = GetIndentationSize(Text);
-            				if (size == Indentation + 1) {
-            					Emit(new CommonToken(INDENT));
-            					Emit(new CommonToken(DENT));
-            				}
-            	//			else if (size == Indentation)
-            	//				Emit (new CommonToken(DENT));
-            				else if (size < Indentation)
-            					Emit (new CommonToken(DEDENT));
-            	//			else
-            	//				throw new Exception("Too much indentation");
-            			
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally 
-    	{
-        }
-    }
-    // $ANTLR end "INDENTATION"
-
     // $ANTLR start "NEWLINE"
     public void mNEWLINE() // throws RecognitionException [2]
     {
@@ -824,7 +789,7 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = NEWLINE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:185:2: ( '\\r\\n' | '\\n' | '\\r' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:174:2: ( '\\r\\n' | '\\n' | '\\r' )
             int alt14 = 3;
             int LA14_0 = input.LA(1);
 
@@ -854,7 +819,7 @@ public partial class YamlLexer : Lexer {
             switch (alt14) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:185:4: '\\r\\n'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:174:4: '\\r\\n'
                     {
                     	Match("\r\n"); 
 
@@ -862,14 +827,14 @@ public partial class YamlLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:185:13: '\\n'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:174:13: '\\n'
                     {
                     	Match('\n'); 
 
                     }
                     break;
                 case 3 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:185:20: '\\r'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:174:20: '\\r'
                     {
                     	Match('\r'); 
 
@@ -891,10 +856,10 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:189:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:189:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:178:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:178:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:189:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:178:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
             	int alt15 = 2;
             	int LA15_0 = input.LA(1);
 
@@ -916,14 +881,14 @@ public partial class YamlLexer : Lexer {
             	switch (alt15) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:189:5: EscapeSequence
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:178:5: EscapeSequence
             	        {
             	        	mEscapeSequence(); 
 
             	        }
             	        break;
             	    case 2 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:189:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' )
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:178:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' )
             	        {
             	        	if ( (input.LA(1) >= ' ' && input.LA(1) <= '!') || (input.LA(1) >= '#' && input.LA(1) <= '[') || (input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) 
             	        	{
@@ -957,10 +922,10 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:2: ( ( EscapeSequence | ~ ( ':' ) )* )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:4: ( EscapeSequence | ~ ( ':' ) )*
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:2: ( ( EscapeSequence | ~ ( ':' ) )* )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:4: ( EscapeSequence | ~ ( ':' ) )*
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:4: ( EscapeSequence | ~ ( ':' ) )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:4: ( EscapeSequence | ~ ( ':' ) )*
             	do 
             	{
             	    int alt16 = 3;
@@ -968,14 +933,14 @@ public partial class YamlLexer : Lexer {
             	    switch (alt16) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:5: EscapeSequence
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:5: EscapeSequence
             			    {
             			    	mEscapeSequence(); 
 
             			    }
             			    break;
             			case 2 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:22: ~ ( ':' )
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:22: ~ ( ':' )
             			    {
             			    	if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '9') || (input.LA(1) >= ';' && input.LA(1) <= '\uFFFF') ) 
             			    	{
@@ -1015,11 +980,11 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:2: ( '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:4: '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:2: ( '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:4: '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             {
             	Match('\\'); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:9: ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:9: ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             	int alt17 = 9;
             	switch ( input.LA(1) ) 
             	{
@@ -1078,63 +1043,63 @@ public partial class YamlLexer : Lexer {
             	switch (alt17) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:10: UnicodeEscape
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:10: UnicodeEscape
             	        {
             	        	mUnicodeEscape(); 
 
             	        }
             	        break;
             	    case 2 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:26: 'b'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:26: 'b'
             	        {
             	        	Match('b'); 
 
             	        }
             	        break;
             	    case 3 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:30: 't'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:30: 't'
             	        {
             	        	Match('t'); 
 
             	        }
             	        break;
             	    case 4 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:34: 'n'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:34: 'n'
             	        {
             	        	Match('n'); 
 
             	        }
             	        break;
             	    case 5 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:38: 'f'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:38: 'f'
             	        {
             	        	Match('f'); 
 
             	        }
             	        break;
             	    case 6 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:42: 'r'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:42: 'r'
             	        {
             	        	Match('r'); 
 
             	        }
             	        break;
             	    case 7 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:46: '\\\"'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:46: '\\\"'
             	        {
             	        	Match('\"'); 
 
             	        }
             	        break;
             	    case 8 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:51: '\\''
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:51: '\\''
             	        {
             	        	Match('\''); 
 
             	        }
             	        break;
             	    case 9 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:56: '\\\\'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:56: '\\\\'
             	        {
             	        	Match('\\'); 
 
@@ -1158,8 +1123,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:201:2: ( 'u' HexDigit HexDigit HexDigit HexDigit )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:201:4: 'u' HexDigit HexDigit HexDigit HexDigit
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:190:2: ( 'u' HexDigit HexDigit HexDigit HexDigit )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:190:4: 'u' HexDigit HexDigit HexDigit HexDigit
             {
             	Match('u'); 
             	mHexDigit(); 
@@ -1181,8 +1146,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:2: ( '0' .. '9' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:4: '0' .. '9'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:2: ( '0' .. '9' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:4: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -1200,7 +1165,7 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:209:2: ( DecDigit | 'A' .. 'F' | 'a' .. 'f' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:198:2: ( DecDigit | 'A' .. 'F' | 'a' .. 'f' )
             // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:
             {
             	if ( (input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'F') || (input.LA(1) >= 'a' && input.LA(1) <= 'f') ) 
@@ -1226,7 +1191,7 @@ public partial class YamlLexer : Lexer {
 
     override public void mTokens() // throws RecognitionException 
     {
-        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:8: ( T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | Integer | LI | Float | QuotedString | Bool | INDENTATION | NEWLINE )
+        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:8: ( T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | INDENTATION | Integer | LI | Float | QuotedString | Bool | NEWLINE )
         int alt18 = 13;
         alt18 = dfa18.Predict(input);
         switch (alt18) 
@@ -1274,44 +1239,44 @@ public partial class YamlLexer : Lexer {
                 }
                 break;
             case 7 :
-                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:46: Integer
+                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:46: INDENTATION
+                {
+                	mINDENTATION(); 
+
+                }
+                break;
+            case 8 :
+                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:58: Integer
                 {
                 	mInteger(); 
 
                 }
                 break;
-            case 8 :
-                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:54: LI
+            case 9 :
+                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:66: LI
                 {
                 	mLI(); 
 
                 }
                 break;
-            case 9 :
-                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:57: Float
+            case 10 :
+                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:69: Float
                 {
                 	mFloat(); 
 
                 }
                 break;
-            case 10 :
-                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:63: QuotedString
+            case 11 :
+                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:75: QuotedString
                 {
                 	mQuotedString(); 
 
                 }
                 break;
-            case 11 :
-                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:76: Bool
+            case 12 :
+                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:88: Bool
                 {
                 	mBool(); 
-
-                }
-                break;
-            case 12 :
-                // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:81: INDENTATION
-                {
-                	mINDENTATION(); 
 
                 }
                 break;
@@ -1402,7 +1367,7 @@ public partial class YamlLexer : Lexer {
 
         override public string Description
         {
-            get { return "()* loopback of 193:4: ( EscapeSequence | ~ ( ':' ) )*"; }
+            get { return "()* loopback of 182:4: ( EscapeSequence | ~ ( ':' ) )*"; }
         }
 
     }
@@ -1433,33 +1398,33 @@ public partial class YamlLexer : Lexer {
         throw nvae16;
     }
     const string DFA18_eotS =
-        "\x07\uffff\x01\x0e\x02\x0f\x07\uffff";
+        "\x08\uffff\x01\x0e\x02\x0f\x06\uffff";
     const string DFA18_eofS =
         "\x11\uffff";
     const string DFA18_minS =
-        "\x01\x0a\x06\uffff\x01\x30\x02\x2e\x07\uffff";
+        "\x01\x0a\x07\uffff\x01\x30\x02\x2e\x06\uffff";
     const string DFA18_maxS =
-        "\x01\x7d\x06\uffff\x03\x39\x07\uffff";
+        "\x01\x7d\x07\uffff\x03\x39\x06\uffff";
     const string DFA18_acceptS =
-        "\x01\uffff\x01\x01\x01\x02\x01\x03\x01\x04\x01\x05\x01\x06\x03"+
-        "\uffff\x01\x0a\x01\x0b\x01\x0c\x01\x0d\x01\x08\x01\x07\x01\x09";
+        "\x01\uffff\x01\x01\x01\x02\x01\x03\x01\x04\x01\x05\x01\x06\x01"+
+        "\x07\x03\uffff\x01\x0b\x01\x0c\x01\x0d\x01\x09\x01\x08\x01\x0a";
     const string DFA18_specialS =
         "\x01\x00\x10\uffff}>";
     static readonly string[] DFA18_transitionS = {
-            "\x01\x0d\x02\uffff\x01\x0d\x12\uffff\x01\x0c\x01\uffff\x01"+
-            "\x0a\x09\uffff\x01\x02\x01\x07\x02\uffff\x01\x08\x09\x09\x01"+
-            "\x04\x20\uffff\x01\x05\x01\uffff\x01\x06\x08\uffff\x01\x0b\x0d"+
-            "\uffff\x01\x0b\x06\uffff\x01\x01\x01\uffff\x01\x03",
+            "\x01\x0d\x02\uffff\x01\x0d\x12\uffff\x01\x07\x01\uffff\x01"+
+            "\x0b\x09\uffff\x01\x02\x01\x08\x02\uffff\x01\x09\x09\x0a\x01"+
+            "\x04\x20\uffff\x01\x05\x01\uffff\x01\x06\x08\uffff\x01\x0c\x0d"+
+            "\uffff\x01\x0c\x06\uffff\x01\x01\x01\uffff\x01\x03",
             "",
             "",
             "",
             "",
             "",
             "",
-            "\x0a\x09",
-            "\x01\x10\x01\uffff\x0a\x09",
-            "\x01\x10\x01\uffff\x0a\x09",
             "",
+            "\x0a\x0a",
+            "\x01\x10\x01\uffff\x0a\x0a",
+            "\x01\x10\x01\uffff\x0a\x0a",
             "",
             "",
             "",
@@ -1494,7 +1459,7 @@ public partial class YamlLexer : Lexer {
 
         override public string Description
         {
-            get { return "1:1: Tokens : ( T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | Integer | LI | Float | QuotedString | Bool | INDENTATION | NEWLINE );"; }
+            get { return "1:1: Tokens : ( T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | INDENTATION | Integer | LI | Float | QuotedString | Bool | NEWLINE );"; }
         }
 
     }
@@ -1525,17 +1490,17 @@ public partial class YamlLexer : Lexer {
 
                    	else if ( (LA18_0 == ']') ) { s = 6; }
 
-                   	else if ( (LA18_0 == '-') ) { s = 7; }
+                   	else if ( (LA18_0 == ' ') && ((CharPositionInLine == 0)) ) { s = 7; }
 
-                   	else if ( (LA18_0 == '0') ) { s = 8; }
+                   	else if ( (LA18_0 == '-') ) { s = 8; }
 
-                   	else if ( ((LA18_0 >= '1' && LA18_0 <= '9')) ) { s = 9; }
+                   	else if ( (LA18_0 == '0') ) { s = 9; }
 
-                   	else if ( (LA18_0 == '\"') ) { s = 10; }
+                   	else if ( ((LA18_0 >= '1' && LA18_0 <= '9')) ) { s = 10; }
 
-                   	else if ( (LA18_0 == 'f' || LA18_0 == 't') ) { s = 11; }
+                   	else if ( (LA18_0 == '\"') ) { s = 11; }
 
-                   	else if ( (LA18_0 == ' ') && ((CharPositionInLine == 0)) ) { s = 12; }
+                   	else if ( (LA18_0 == 'f' || LA18_0 == 't') ) { s = 12; }
 
                    	else if ( (LA18_0 == '\n' || LA18_0 == '\r') ) { s = 13; }
 

@@ -12,7 +12,7 @@ namespace enyaml.tests
         [Test]
         public void ListOfQuotedStrings()
         {
-            var txt = "- \"line 1\"\n-\"line 2\"";
+            var txt = "- \"line 1\"\n-\"line 2\"\n";
             var result = Yaml.Parse(txt);
             var list = (List<object>)result;
             Assert.That(list, Is.EquivalentTo(new[] { "line 1", "line 2" }));

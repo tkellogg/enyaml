@@ -13,37 +13,8 @@ tokens {
 	INDENT; DEDENT; DENT;
 }
 
-@namespace { enyaml.parser }
+@parser::namespace { enyaml.parser }
 @lexer::namespace { enyaml.parser }
-
-@lexer::members {
-	
-	///<summary>Tracks the current indentation level<summary>
-	protected int Indentation { get; set; }
-
-	/// <summary>Tracks how many spaces an indent is</summary>
-	internal int indentSize = 0;
-	
-	///<summary>Gets the indentation level represented by spaces</summary>
-	internal int GetIndentationSize(string spaces) {
-		int ret = 0;
-		if (indentSize == 0 && spaces.Length > 0) {
-			// This is the first time we're looking for indents
-			indentSize = spaces.Length;
-			ret = 1;
-		} else if (indentSize > 0) {
-			if (spaces.Length % indentSize != 0)
-				throw new Exception("Bad indentation");
-			ret = spaces.Length / indentSize;
-		}
-		return ret;
-	}
-}
-
-@members {
-	protected int flowLvl = 0;
-	protected bool IsInFlow{ get { return flowLvl > 0; } }
-}
 
 // Top level is considered a block as well, and as such the lexer needs
 // to emit the correct symbols for the parser to recognize it as such.
@@ -53,6 +24,15 @@ tokens {
 @lexer::after {
 	Emit(DEDENT);
 }
+
+// This rule generates INDENT & DEDENT tokens for the parser
+INDENTATION
+		// Only run rule if beginning of line
+	: {CharPositionInLine == 0}?=> 
+		' '+
+		{ EmitIndentationTokens($text); }
+	;
+	
 
 value
 	: boolean
@@ -110,20 +90,28 @@ Bool
 	;
 				
 flow_map
-@before {
+@init {
 	flowLvl++;
+	BlockLevel++;
 }
-@after {
-	flowLvl--;
-}
-	: '{' map_pair (',' map_pair)* '}'
+	: '{' fskip* map_pair fskip* (',' fskip* map_pair fskip* )* '}'
 		-> ^(MAP map_pair+)
 	;
+finally {
+	flowLvl--;
+	BlockLevel--;
+}
 	
 block_map
+@init {
+	BlockLevel++;
+}
 	: INDENT DENT map_pair (NEWLINE DENT map_pair)* DEDENT
 		-> ^(MAP map_pair+)
 	;
+finally {
+	BlockLevel--;
+}
 		
 map
 	: {!IsInFlow}?=> block_map
@@ -131,7 +119,7 @@ map
 	;
 	
 map_pair
-	: string_expr ':' value
+	: string_expr fskip* ':' fskip* value
 		-> ^(':' string_expr value)
 	;
 		
@@ -140,45 +128,46 @@ list
 	| flow_list
 	;
 	
+// tokens to skip while in flow style
+fskip
+	: NEWLINE | INDENTATION | INDENT | DEDENT
+	;
+	
 flow_list 
-@before {
+@init {
 	flowLvl++;
+	BlockLevel++;
 }
-@after {
-	flowLvl--;
-}
-	: '[' value (',' value)* ']'
+	: '[' fskip* value fskip* (',' fskip* value fskip*)* ']'
 		-> ^(LIST value+ )
 	;
+finally {
+	flowLvl--;
+	BlockLevel--;
+}
 	
 block_list
-	: INDENT block_list_item+ DEDENT
+@init {
+	BlockLevel++;
+}
+	: INDENTATION INDENT block_list_item+ INDENTATION DEDENT
+		-> ^(LIST block_list_item+)
+	| {flowLvl == 0}? block_list_item+
 		-> ^(LIST block_list_item+)
 	;
+finally {
+	BlockLevel--;
+}
 	
 block_list_item
-	: LI value NEWLINE
+scope {
+	int lvl;
+}
+@init {
+	$block_list_item::lvl = BlockLevel;
+}
+	: {$block_list_item::lvl == BlockLevel}? LI value NEWLINE
 		-> value
-	;
-	
-// This rule generates INDENT & DEDENT tokens for the parser
-INDENTATION
-		// Only run rule if beginning of line
-	: {CharPositionInLine == 0}?=> 
-		' '+
-		{ 
-			int size = GetIndentationSize($text);
-			if (size == Indentation + 1) {
-				Emit(new CommonToken(INDENT));
-				Emit(new CommonToken(DENT));
-			}
-//			else if (size == Indentation)
-//				Emit (new CommonToken(DENT));
-			else if (size < Indentation)
-				Emit (new CommonToken(DEDENT));
-//			else
-//				throw new Exception("Too much indentation");
-		}
 	;
 	
 NEWLINE

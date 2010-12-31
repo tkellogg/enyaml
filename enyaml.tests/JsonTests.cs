@@ -114,6 +114,7 @@ namespace enyaml.tests
         public void ObjectWithNewlines()
         {
             var result = (SortedDictionary<string, object>)Yaml.Parse("{\r\n  \"key\" \r\n    :\r\n  \"value\"\n ,  \"key2\"\n  :  2  }");
+            Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count);
             Assert.AreEqual("value", result["key"]);
             Assert.AreEqual(2, result["key2"]);
