@@ -47,7 +47,7 @@ value
 boolean 
 	: Bool -> ^(BOOL Bool)
 	;
-	
+
 Bool
 	: 'true' | 'false'
 	;
@@ -94,8 +94,7 @@ QuotedString
 		
 UnQuotedString
 	: ~(DecDigit | ':' | '[' | '{' | '}' | ']' | LI | NEWLINE | ' ' | '\t' | ',') 
-			UnQuotedStringChars* 
-	 { $text != "null" && $text != "false" && $text != "true" }?
+			FreeChars 
 	;
 				
 flow_map
@@ -184,11 +183,11 @@ NEWLINE
 	;
 	
 fragment UnQuotedStringChars 
-	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' | ':' | NEWLINE ) )
+	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' ) )
 	;
 	
-fragment NonColonChars
-	: (EscapeSequence | ~(':'))*
+fragment FreeChars
+	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' | NEWLINE | LI | ':' | ',' | '{' | '[' | ']' | '}'))*
 	;
 	
 fragment EscapeSequence

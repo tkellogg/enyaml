@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2010-12-31 17:26:22
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2011-01-01 11:44:13
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -18,6 +18,7 @@ namespace  enyaml.parser
 public partial class YamlLexer : Lexer {
     public const int INTEGER = 6;
     public const int Bool = 17;
+    public const int FreeChars = 29;
     public const int DOUBLE_QUOTE = 9;
     public const int NULL = 18;
     public const int BOOL = 8;
@@ -34,7 +35,6 @@ public partial class YamlLexer : Lexer {
     public const int Float = 23;
     public const int SINGLE_QUOTE = 10;
     public const int T__32 = 32;
-    public const int NonColonChars = 30;
     public const int T__33 = 33;
     public const int T__34 = 34;
     public const int T__35 = 35;
@@ -48,7 +48,7 @@ public partial class YamlLexer : Lexer {
     public const int UnQuotedStringChars = 27;
     public const int UNQUOTED_STRING = 5;
     public const int LI = 22;
-    public const int EscapeSequence = 29;
+    public const int EscapeSequence = 30;
     public const int Integer = 19;
     public const int INDENTATION = 16;
 
@@ -771,7 +771,7 @@ public partial class YamlLexer : Lexer {
             	    int alt13 = 2;
             	    int LA13_0 = input.LA(1);
 
-            	    if ( ((LA13_0 >= ' ' && LA13_0 <= '!') || (LA13_0 >= '#' && LA13_0 <= '9') || (LA13_0 >= ';' && LA13_0 <= '\uFFFF')) )
+            	    if ( ((LA13_0 >= ' ' && LA13_0 <= '!') || (LA13_0 >= '#' && LA13_0 <= '\uFFFF')) )
             	    {
             	        alt13 = 1;
             	    }
@@ -815,8 +815,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = UnQuotedString;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:96:2: (~ ( DecDigit | ':' | '[' | '{' | '}' | ']' | LI | NEWLINE | ' ' | '\\t' | ',' ) ( UnQuotedStringChars )* {...}?)
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:96:4: ~ ( DecDigit | ':' | '[' | '{' | '}' | ']' | LI | NEWLINE | ' ' | '\\t' | ',' ) ( UnQuotedStringChars )* {...}?
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:96:2: (~ ( DecDigit | ':' | '[' | '{' | '}' | ']' | LI | NEWLINE | ' ' | '\\t' | ',' ) FreeChars )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:96:4: ~ ( DecDigit | ':' | '[' | '{' | '}' | ']' | LI | NEWLINE | ' ' | '\\t' | ',' ) FreeChars
             {
             	if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\b') || (input.LA(1) >= '\u000B' && input.LA(1) <= '\f') || (input.LA(1) >= '\u000E' && input.LA(1) <= '\u001F') || (input.LA(1) >= '!' && input.LA(1) <= '+') || (input.LA(1) >= '.' && input.LA(1) <= '/') || (input.LA(1) >= ';' && input.LA(1) <= 'Z') || input.LA(1) == '\\' || (input.LA(1) >= '^' && input.LA(1) <= 'z') || input.LA(1) == '|' || (input.LA(1) >= '~' && input.LA(1) <= '\uFFFF') ) 
             	{
@@ -829,40 +829,7 @@ public partial class YamlLexer : Lexer {
             	    Recover(mse);
             	    throw mse;}
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:4: ( UnQuotedStringChars )*
-            	do 
-            	{
-            	    int alt14 = 2;
-            	    int LA14_0 = input.LA(1);
-
-            	    if ( ((LA14_0 >= ' ' && LA14_0 <= '!') || (LA14_0 >= '#' && LA14_0 <= '9') || (LA14_0 >= ';' && LA14_0 <= '\uFFFF')) )
-            	    {
-            	        alt14 = 1;
-            	    }
-
-
-            	    switch (alt14) 
-            		{
-            			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:4: UnQuotedStringChars
-            			    {
-            			    	mUnQuotedStringChars(); 
-
-            			    }
-            			    break;
-
-            			default:
-            			    goto loop14;
-            	    }
-            	} while (true);
-
-            	loop14:
-            		;	// Stops C# compiler whining that label 'loop14' has no statements
-
-            	if ( !(( Text != "null" && Text != "false" && Text != "true" )) ) 
-            	{
-            	    throw new FailedPredicateException(input, "UnQuotedString", " $text != \"null\" && $text != \"false\" && $text != \"true\" ");
-            	}
+            	mFreeChars(); 
 
             }
 
@@ -882,37 +849,37 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = NEWLINE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:183:2: ( '\\r\\n' | '\\n' | '\\r' )
-            int alt15 = 3;
-            int LA15_0 = input.LA(1);
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:2: ( '\\r\\n' | '\\n' | '\\r' )
+            int alt14 = 3;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA15_0 == '\r') )
+            if ( (LA14_0 == '\r') )
             {
-                int LA15_1 = input.LA(2);
+                int LA14_1 = input.LA(2);
 
-                if ( (LA15_1 == '\n') )
+                if ( (LA14_1 == '\n') )
                 {
-                    alt15 = 1;
+                    alt14 = 1;
                 }
                 else 
                 {
-                    alt15 = 3;}
+                    alt14 = 3;}
             }
-            else if ( (LA15_0 == '\n') )
+            else if ( (LA14_0 == '\n') )
             {
-                alt15 = 2;
+                alt14 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d15s0 =
-                    new NoViableAltException("", 15, 0, input);
+                NoViableAltException nvae_d14s0 =
+                    new NoViableAltException("", 14, 0, input);
 
-                throw nvae_d15s0;
+                throw nvae_d14s0;
             }
-            switch (alt15) 
+            switch (alt14) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:183:4: '\\r\\n'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:4: '\\r\\n'
                     {
                     	Match("\r\n"); 
 
@@ -920,14 +887,14 @@ public partial class YamlLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:183:13: '\\n'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:13: '\\n'
                     {
                     	Match('\n'); 
 
                     }
                     break;
                 case 3 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:183:20: '\\r'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:182:20: '\\r'
                     {
                     	Match('\r'); 
 
@@ -949,41 +916,41 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:187:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | ':' | NEWLINE ) ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:187:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | ':' | NEWLINE ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:187:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | ':' | NEWLINE ) )
-            	int alt16 = 2;
-            	int LA16_0 = input.LA(1);
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
+            	int alt15 = 2;
+            	int LA15_0 = input.LA(1);
 
-            	if ( (LA16_0 == '\\') )
+            	if ( (LA15_0 == '\\') )
             	{
-            	    alt16 = 1;
+            	    alt15 = 1;
             	}
-            	else if ( ((LA16_0 >= ' ' && LA16_0 <= '!') || (LA16_0 >= '#' && LA16_0 <= '9') || (LA16_0 >= ';' && LA16_0 <= '[') || (LA16_0 >= ']' && LA16_0 <= '\uFFFF')) )
+            	else if ( ((LA15_0 >= ' ' && LA15_0 <= '!') || (LA15_0 >= '#' && LA15_0 <= '[') || (LA15_0 >= ']' && LA15_0 <= '\uFFFF')) )
             	{
-            	    alt16 = 2;
+            	    alt15 = 2;
             	}
             	else 
             	{
-            	    NoViableAltException nvae_d16s0 =
-            	        new NoViableAltException("", 16, 0, input);
+            	    NoViableAltException nvae_d15s0 =
+            	        new NoViableAltException("", 15, 0, input);
 
-            	    throw nvae_d16s0;
+            	    throw nvae_d15s0;
             	}
-            	switch (alt16) 
+            	switch (alt15) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:187:5: EscapeSequence
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:5: EscapeSequence
             	        {
             	        	mEscapeSequence(); 
 
             	        }
             	        break;
             	    case 2 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:187:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | ':' | NEWLINE )
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:186:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' )
             	        {
-            	        	if ( (input.LA(1) >= ' ' && input.LA(1) <= '!') || (input.LA(1) >= '#' && input.LA(1) <= '9') || (input.LA(1) >= ';' && input.LA(1) <= '[') || (input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) 
+            	        	if ( (input.LA(1) >= ' ' && input.LA(1) <= '!') || (input.LA(1) >= '#' && input.LA(1) <= '[') || (input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) 
             	        	{
             	        	    input.Consume();
 
@@ -1010,32 +977,43 @@ public partial class YamlLexer : Lexer {
     }
     // $ANTLR end "UnQuotedStringChars"
 
-    // $ANTLR start "NonColonChars"
-    public void mNonColonChars() // throws RecognitionException [2]
+    // $ANTLR start "FreeChars"
+    public void mFreeChars() // throws RecognitionException [2]
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:191:2: ( ( EscapeSequence | ~ ( ':' ) )* )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:191:4: ( EscapeSequence | ~ ( ':' ) )*
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:190:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | NEWLINE | LI | ':' | ',' | '{' | '[' | ']' | '}' ) )* )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:190:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | NEWLINE | LI | ':' | ',' | '{' | '[' | ']' | '}' ) )*
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:191:4: ( EscapeSequence | ~ ( ':' ) )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:190:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | NEWLINE | LI | ':' | ',' | '{' | '[' | ']' | '}' ) )*
             	do 
             	{
-            	    int alt17 = 3;
-            	    alt17 = dfa17.Predict(input);
-            	    switch (alt17) 
+            	    int alt16 = 3;
+            	    int LA16_0 = input.LA(1);
+
+            	    if ( (LA16_0 == '\\') )
+            	    {
+            	        alt16 = 1;
+            	    }
+            	    else if ( ((LA16_0 >= ' ' && LA16_0 <= '!') || (LA16_0 >= '#' && LA16_0 <= '+') || (LA16_0 >= '.' && LA16_0 <= '9') || (LA16_0 >= ';' && LA16_0 <= 'Z') || (LA16_0 >= '^' && LA16_0 <= 'z') || LA16_0 == '|' || (LA16_0 >= '~' && LA16_0 <= '\uFFFF')) )
+            	    {
+            	        alt16 = 2;
+            	    }
+
+
+            	    switch (alt16) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:191:5: EscapeSequence
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:190:5: EscapeSequence
             			    {
             			    	mEscapeSequence(); 
 
             			    }
             			    break;
             			case 2 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:191:22: ~ ( ':' )
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:190:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' | NEWLINE | LI | ':' | ',' | '{' | '[' | ']' | '}' )
             			    {
-            			    	if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '9') || (input.LA(1) >= ';' && input.LA(1) <= '\uFFFF') ) 
+            			    	if ( (input.LA(1) >= ' ' && input.LA(1) <= '!') || (input.LA(1) >= '#' && input.LA(1) <= '+') || (input.LA(1) >= '.' && input.LA(1) <= '9') || (input.LA(1) >= ';' && input.LA(1) <= 'Z') || (input.LA(1) >= '^' && input.LA(1) <= 'z') || input.LA(1) == '|' || (input.LA(1) >= '~' && input.LA(1) <= '\uFFFF') ) 
             			    	{
             			    	    input.Consume();
 
@@ -1051,12 +1029,12 @@ public partial class YamlLexer : Lexer {
             			    break;
 
             			default:
-            			    goto loop17;
+            			    goto loop16;
             	    }
             	} while (true);
 
-            	loop17:
-            		;	// Stops C# compiler whining that label 'loop17' has no statements
+            	loop16:
+            		;	// Stops C# compiler whining that label 'loop16' has no statements
 
 
             }
@@ -1066,133 +1044,133 @@ public partial class YamlLexer : Lexer {
     	{
         }
     }
-    // $ANTLR end "NonColonChars"
+    // $ANTLR end "FreeChars"
 
     // $ANTLR start "EscapeSequence"
     public void mEscapeSequence() // throws RecognitionException [2]
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:2: ( '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:4: '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:2: ( '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:4: '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             {
             	Match('\\'); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:9: ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
-            	int alt18 = 9;
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:9: ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            	int alt17 = 9;
             	switch ( input.LA(1) ) 
             	{
             	case 'u':
             		{
-            	    alt18 = 1;
+            	    alt17 = 1;
             	    }
             	    break;
             	case 'b':
             		{
-            	    alt18 = 2;
+            	    alt17 = 2;
             	    }
             	    break;
             	case 't':
             		{
-            	    alt18 = 3;
+            	    alt17 = 3;
             	    }
             	    break;
             	case 'n':
             		{
-            	    alt18 = 4;
+            	    alt17 = 4;
             	    }
             	    break;
             	case 'f':
             		{
-            	    alt18 = 5;
+            	    alt17 = 5;
             	    }
             	    break;
             	case 'r':
             		{
-            	    alt18 = 6;
+            	    alt17 = 6;
             	    }
             	    break;
             	case '\"':
             		{
-            	    alt18 = 7;
+            	    alt17 = 7;
             	    }
             	    break;
             	case '\'':
             		{
-            	    alt18 = 8;
+            	    alt17 = 8;
             	    }
             	    break;
             	case '\\':
             		{
-            	    alt18 = 9;
+            	    alt17 = 9;
             	    }
             	    break;
             		default:
-            		    NoViableAltException nvae_d18s0 =
-            		        new NoViableAltException("", 18, 0, input);
+            		    NoViableAltException nvae_d17s0 =
+            		        new NoViableAltException("", 17, 0, input);
 
-            		    throw nvae_d18s0;
+            		    throw nvae_d17s0;
             	}
 
-            	switch (alt18) 
+            	switch (alt17) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:10: UnicodeEscape
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:10: UnicodeEscape
             	        {
             	        	mUnicodeEscape(); 
 
             	        }
             	        break;
             	    case 2 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:26: 'b'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:26: 'b'
             	        {
             	        	Match('b'); 
 
             	        }
             	        break;
             	    case 3 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:30: 't'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:30: 't'
             	        {
             	        	Match('t'); 
 
             	        }
             	        break;
             	    case 4 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:34: 'n'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:34: 'n'
             	        {
             	        	Match('n'); 
 
             	        }
             	        break;
             	    case 5 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:38: 'f'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:38: 'f'
             	        {
             	        	Match('f'); 
 
             	        }
             	        break;
             	    case 6 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:42: 'r'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:42: 'r'
             	        {
             	        	Match('r'); 
 
             	        }
             	        break;
             	    case 7 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:46: '\\\"'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:46: '\\\"'
             	        {
             	        	Match('\"'); 
 
             	        }
             	        break;
             	    case 8 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:51: '\\''
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:51: '\\''
             	        {
             	        	Match('\''); 
 
             	        }
             	        break;
             	    case 9 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:195:56: '\\\\'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:194:56: '\\\\'
             	        {
             	        	Match('\\'); 
 
@@ -1216,8 +1194,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:199:2: ( 'u' HexDigit HexDigit HexDigit HexDigit )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:199:4: 'u' HexDigit HexDigit HexDigit HexDigit
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:198:2: ( 'u' HexDigit HexDigit HexDigit HexDigit )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:198:4: 'u' HexDigit HexDigit HexDigit HexDigit
             {
             	Match('u'); 
             	mHexDigit(); 
@@ -1239,8 +1217,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:203:2: ( '0' .. '9' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:203:4: '0' .. '9'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:202:2: ( '0' .. '9' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:202:4: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -1258,7 +1236,7 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:207:2: ( DecDigit | 'A' .. 'F' | 'a' .. 'f' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:206:2: ( DecDigit | 'A' .. 'F' | 'a' .. 'f' )
             // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:
             {
             	if ( (input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'F') || (input.LA(1) >= 'a' && input.LA(1) <= 'f') ) 
@@ -1285,9 +1263,9 @@ public partial class YamlLexer : Lexer {
     override public void mTokens() // throws RecognitionException 
     {
         // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:8: ( T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | INDENTATION | Bool | NULL | Integer | LI | Float | QuotedString | UnQuotedString | NEWLINE )
-        int alt19 = 15;
-        alt19 = dfa19.Predict(input);
-        switch (alt19) 
+        int alt18 = 15;
+        alt18 = dfa18.Predict(input);
+        switch (alt18) 
         {
             case 1 :
                 // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:1:10: T__32
@@ -1400,133 +1378,36 @@ public partial class YamlLexer : Lexer {
     }
 
 
-    protected DFA17 dfa17;
-    protected DFA19 dfa19;
+    protected DFA18 dfa18;
 	private void InitializeCyclicDFAs()
 	{
-	    this.dfa17 = new DFA17(this);
-	    this.dfa19 = new DFA19(this);
-	    this.dfa17.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA17_SpecialStateTransition);
-	    this.dfa19.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA19_SpecialStateTransition);
+	    this.dfa18 = new DFA18(this);
+	    this.dfa18.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA18_SpecialStateTransition);
 	}
 
-    const string DFA17_eotS =
-        "\x01\x01\x01\uffff\x01\x03\x01\uffff\x01\x03\x08\uffff\x03\x03"+
-        "\x01\uffff";
-    const string DFA17_eofS =
-        "\x11\uffff";
-    const string DFA17_minS =
-        "\x01\x00\x01\uffff\x01\x22\x01\uffff\x01\x30\x08\uffff\x03\x30"+
-        "\x01\uffff";
-    const string DFA17_maxS =
-        "\x01\uffff\x01\uffff\x01\x75\x01\uffff\x01\x66\x08\uffff\x03\x66"+
-        "\x01\uffff";
-    const string DFA17_acceptS =
-        "\x01\uffff\x01\x03\x01\uffff\x01\x02\x01\uffff\x08\x01\x03\uffff"+
-        "\x01\x01";
-    const string DFA17_specialS =
-        "\x01\x00\x10\uffff}>";
-    static readonly string[] DFA17_transitionS = {
-            "\x3a\x03\x01\uffff\x21\x03\x01\x02\uffa3\x03",
-            "",
-            "\x01\x0a\x04\uffff\x01\x0b\x34\uffff\x01\x0c\x05\uffff\x01"+
-            "\x05\x03\uffff\x01\x08\x07\uffff\x01\x07\x03\uffff\x01\x09\x01"+
-            "\uffff\x01\x06\x01\x04",
-            "",
-            "\x0a\x0d\x07\uffff\x06\x0d\x1a\uffff\x06\x0d",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\x0a\x0e\x07\uffff\x06\x0e\x1a\uffff\x06\x0e",
-            "\x0a\x0f\x07\uffff\x06\x0f\x1a\uffff\x06\x0f",
-            "\x0a\x10\x07\uffff\x06\x10\x1a\uffff\x06\x10",
-            ""
-    };
-
-    static readonly short[] DFA17_eot = DFA.UnpackEncodedString(DFA17_eotS);
-    static readonly short[] DFA17_eof = DFA.UnpackEncodedString(DFA17_eofS);
-    static readonly char[] DFA17_min = DFA.UnpackEncodedStringToUnsignedChars(DFA17_minS);
-    static readonly char[] DFA17_max = DFA.UnpackEncodedStringToUnsignedChars(DFA17_maxS);
-    static readonly short[] DFA17_accept = DFA.UnpackEncodedString(DFA17_acceptS);
-    static readonly short[] DFA17_special = DFA.UnpackEncodedString(DFA17_specialS);
-    static readonly short[][] DFA17_transition = DFA.UnpackEncodedStringArray(DFA17_transitionS);
-
-    protected class DFA17 : DFA
-    {
-        public DFA17(BaseRecognizer recognizer)
-        {
-            this.recognizer = recognizer;
-            this.decisionNumber = 17;
-            this.eot = DFA17_eot;
-            this.eof = DFA17_eof;
-            this.min = DFA17_min;
-            this.max = DFA17_max;
-            this.accept = DFA17_accept;
-            this.special = DFA17_special;
-            this.transition = DFA17_transition;
-
-        }
-
-        override public string Description
-        {
-            get { return "()* loopback of 191:4: ( EscapeSequence | ~ ( ':' ) )*"; }
-        }
-
-    }
-
-
-    protected internal int DFA17_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
-    {
-            IIntStream input = _input;
-    	int _s = s;
-        switch ( s )
-        {
-               	case 0 : 
-                   	int LA17_0 = input.LA(1);
-
-                   	s = -1;
-                   	if ( (LA17_0 == '\\') ) { s = 2; }
-
-                   	else if ( ((LA17_0 >= '\u0000' && LA17_0 <= '9') || (LA17_0 >= ';' && LA17_0 <= '[') || (LA17_0 >= ']' && LA17_0 <= '\uFFFF')) ) { s = 3; }
-
-                   	else s = 1;
-
-                   	if ( s >= 0 ) return s;
-                   	break;
-        }
-        NoViableAltException nvae17 =
-            new NoViableAltException(dfa.Description, 17, _s, input);
-        dfa.Error(nvae17);
-        throw nvae17;
-    }
-    const string DFA19_eotS =
+    const string DFA18_eotS =
         "\x08\uffff\x03\x0f\x01\x14\x02\x15\x01\x0f\x02\uffff\x03\x0f\x04"+
         "\uffff\x01\x0f\x01\uffff\x03\x0f\x01\uffff\x08\x0f\x01\x2a\x01\x0f"+
         "\x01\x2c\x02\uffff\x01\x2a\x03\uffff\x01\x0f";
-    const string DFA19_eofS =
+    const string DFA18_eofS =
         "\x30\uffff";
-    const string DFA19_minS =
+    const string DFA18_minS =
         "\x01\x00\x07\uffff\x01\x72\x01\x61\x01\x75\x01\x30\x02\x2e\x01"+
         "\x20\x02\uffff\x01\x75\x02\x6c\x03\uffff\x01\x22\x01\x20\x01\uffff"+
         "\x01\x65\x01\x73\x01\x6c\x01\x30\x09\x20\x01\x65\x01\x20\x01\x30"+
         "\x01\uffff\x01\x20\x01\uffff\x02\x30\x01\x20";
-    const string DFA19_maxS =
+    const string DFA18_maxS =
         "\x01\uffff\x07\uffff\x01\x72\x01\x61\x01\x75\x03\x39\x01\uffff"+
         "\x02\uffff\x01\x75\x02\x6c\x03\uffff\x01\x75\x01\uffff\x01\uffff"+
         "\x01\x65\x01\x73\x01\x6c\x01\x66\x09\uffff\x01\x65\x01\uffff\x01"+
         "\x66\x01\uffff\x01\uffff\x01\uffff\x02\x66\x01\uffff";
-    const string DFA19_acceptS =
+    const string DFA18_acceptS =
         "\x01\uffff\x01\x01\x01\x02\x01\x03\x01\x04\x01\x05\x01\x06\x01"+
         "\x07\x07\uffff\x01\x0e\x01\x0f\x03\uffff\x01\x0b\x01\x0a\x01\x0c"+
         "\x02\uffff\x01\x0d\x10\uffff\x01\x08\x01\uffff\x01\x09\x03\uffff";
-    const string DFA19_specialS =
+    const string DFA18_specialS =
         "\x01\x00\x2f\uffff}>";
-    static readonly string[] DFA19_transitionS = {
+    static readonly string[] DFA18_transitionS = {
             "\x09\x0f\x01\uffff\x01\x10\x02\x0f\x01\x10\x12\x0f\x01\x07"+
             "\x01\x0f\x01\x0e\x09\x0f\x01\x02\x01\x0b\x02\x0f\x01\x0c\x09"+
             "\x0d\x01\x04\x20\x0f\x01\x05\x01\x0f\x01\x06\x08\x0f\x01\x09"+
@@ -1545,7 +1426,8 @@ public partial class YamlLexer : Lexer {
             "\x0a\x0d",
             "\x01\x16\x01\uffff\x0a\x0d",
             "\x01\x16\x01\uffff\x0a\x0d",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
             "",
             "",
             "\x01\x1a",
@@ -1557,53 +1439,69 @@ public partial class YamlLexer : Lexer {
             "\x01\x23\x04\uffff\x01\x24\x34\uffff\x01\x25\x05\uffff\x01"+
             "\x1e\x03\uffff\x01\x21\x07\uffff\x01\x20\x03\uffff\x01\x22\x01"+
             "\uffff\x01\x1f\x01\x1d",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
             "",
             "\x01\x26",
             "\x01\x27",
             "\x01\x28",
             "\x0a\x29\x07\uffff\x06\x29\x1a\uffff\x06\x29",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18",
-            "\x02\x0f\x01\uffff\x17\x0f\x01\uffff\uffc5\x0f",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18",
+            "\x02\x0f\x01\uffff\x09\x0f\x02\uffff\x0c\x0f\x01\uffff\x20"+
+            "\x0f\x01\uffff\x01\x0f\x01\uffff\x1d\x0f\x01\uffff\x01\x0f\x01"+
+            "\uffff\uff82\x0f",
             "\x01\x2b",
-            "\x02\x0f\x01\uffff\x17\x0f\x01\uffff\uffc5\x0f",
+            "\x02\x0f\x01\uffff\x09\x0f\x02\uffff\x0c\x0f\x01\uffff\x20"+
+            "\x0f\x01\uffff\x01\x0f\x01\uffff\x1d\x0f\x01\uffff\x01\x0f\x01"+
+            "\uffff\uff82\x0f",
             "\x0a\x2d\x07\uffff\x06\x2d\x1a\uffff\x06\x2d",
             "",
-            "\x02\x0f\x01\uffff\x17\x0f\x01\uffff\uffc5\x0f",
+            "\x02\x0f\x01\uffff\x09\x0f\x02\uffff\x0c\x0f\x01\uffff\x20"+
+            "\x0f\x01\uffff\x01\x0f\x01\uffff\x1d\x0f\x01\uffff\x01\x0f\x01"+
+            "\uffff\uff82\x0f",
             "",
             "\x0a\x2e\x07\uffff\x06\x2e\x1a\uffff\x06\x2e",
             "\x0a\x2f\x07\uffff\x06\x2f\x1a\uffff\x06\x2f",
-            "\x02\x18\x01\x19\x17\x18\x01\uffff\x21\x18\x01\x17\uffa3\x18"
+            "\x02\x18\x01\x19\x09\x18\x02\x19\x0c\x18\x01\x19\x20\x18\x01"+
+            "\x19\x01\x17\x01\x19\x1d\x18\x01\x19\x01\x18\x01\x19\uff82\x18"
     };
 
-    static readonly short[] DFA19_eot = DFA.UnpackEncodedString(DFA19_eotS);
-    static readonly short[] DFA19_eof = DFA.UnpackEncodedString(DFA19_eofS);
-    static readonly char[] DFA19_min = DFA.UnpackEncodedStringToUnsignedChars(DFA19_minS);
-    static readonly char[] DFA19_max = DFA.UnpackEncodedStringToUnsignedChars(DFA19_maxS);
-    static readonly short[] DFA19_accept = DFA.UnpackEncodedString(DFA19_acceptS);
-    static readonly short[] DFA19_special = DFA.UnpackEncodedString(DFA19_specialS);
-    static readonly short[][] DFA19_transition = DFA.UnpackEncodedStringArray(DFA19_transitionS);
+    static readonly short[] DFA18_eot = DFA.UnpackEncodedString(DFA18_eotS);
+    static readonly short[] DFA18_eof = DFA.UnpackEncodedString(DFA18_eofS);
+    static readonly char[] DFA18_min = DFA.UnpackEncodedStringToUnsignedChars(DFA18_minS);
+    static readonly char[] DFA18_max = DFA.UnpackEncodedStringToUnsignedChars(DFA18_maxS);
+    static readonly short[] DFA18_accept = DFA.UnpackEncodedString(DFA18_acceptS);
+    static readonly short[] DFA18_special = DFA.UnpackEncodedString(DFA18_specialS);
+    static readonly short[][] DFA18_transition = DFA.UnpackEncodedStringArray(DFA18_transitionS);
 
-    protected class DFA19 : DFA
+    protected class DFA18 : DFA
     {
-        public DFA19(BaseRecognizer recognizer)
+        public DFA18(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 19;
-            this.eot = DFA19_eot;
-            this.eof = DFA19_eof;
-            this.min = DFA19_min;
-            this.max = DFA19_max;
-            this.accept = DFA19_accept;
-            this.special = DFA19_special;
-            this.transition = DFA19_transition;
+            this.decisionNumber = 18;
+            this.eot = DFA18_eot;
+            this.eof = DFA18_eof;
+            this.min = DFA18_min;
+            this.max = DFA18_max;
+            this.accept = DFA18_accept;
+            this.special = DFA18_special;
+            this.transition = DFA18_transition;
 
         }
 
@@ -1615,60 +1513,60 @@ public partial class YamlLexer : Lexer {
     }
 
 
-    protected internal int DFA19_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
+    protected internal int DFA18_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
     {
             IIntStream input = _input;
     	int _s = s;
         switch ( s )
         {
                	case 0 : 
-                   	int LA19_0 = input.LA(1);
+                   	int LA18_0 = input.LA(1);
 
                    	 
-                   	int index19_0 = input.Index();
+                   	int index18_0 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (LA19_0 == '{') ) { s = 1; }
+                   	if ( (LA18_0 == '{') ) { s = 1; }
 
-                   	else if ( (LA19_0 == ',') ) { s = 2; }
+                   	else if ( (LA18_0 == ',') ) { s = 2; }
 
-                   	else if ( (LA19_0 == '}') ) { s = 3; }
+                   	else if ( (LA18_0 == '}') ) { s = 3; }
 
-                   	else if ( (LA19_0 == ':') ) { s = 4; }
+                   	else if ( (LA18_0 == ':') ) { s = 4; }
 
-                   	else if ( (LA19_0 == '[') ) { s = 5; }
+                   	else if ( (LA18_0 == '[') ) { s = 5; }
 
-                   	else if ( (LA19_0 == ']') ) { s = 6; }
+                   	else if ( (LA18_0 == ']') ) { s = 6; }
 
-                   	else if ( (LA19_0 == ' ') && ((CharPositionInLine == 0)) ) { s = 7; }
+                   	else if ( (LA18_0 == ' ') && ((CharPositionInLine == 0)) ) { s = 7; }
 
-                   	else if ( (LA19_0 == 't') ) { s = 8; }
+                   	else if ( (LA18_0 == 't') ) { s = 8; }
 
-                   	else if ( (LA19_0 == 'f') ) { s = 9; }
+                   	else if ( (LA18_0 == 'f') ) { s = 9; }
 
-                   	else if ( (LA19_0 == 'n') ) { s = 10; }
+                   	else if ( (LA18_0 == 'n') ) { s = 10; }
 
-                   	else if ( (LA19_0 == '-') ) { s = 11; }
+                   	else if ( (LA18_0 == '-') ) { s = 11; }
 
-                   	else if ( (LA19_0 == '0') ) { s = 12; }
+                   	else if ( (LA18_0 == '0') ) { s = 12; }
 
-                   	else if ( ((LA19_0 >= '1' && LA19_0 <= '9')) ) { s = 13; }
+                   	else if ( ((LA18_0 >= '1' && LA18_0 <= '9')) ) { s = 13; }
 
-                   	else if ( (LA19_0 == '\"') ) { s = 14; }
+                   	else if ( (LA18_0 == '\"') ) { s = 14; }
 
-                   	else if ( ((LA19_0 >= '\u0000' && LA19_0 <= '\b') || (LA19_0 >= '\u000B' && LA19_0 <= '\f') || (LA19_0 >= '\u000E' && LA19_0 <= '\u001F') || LA19_0 == '!' || (LA19_0 >= '#' && LA19_0 <= '+') || (LA19_0 >= '.' && LA19_0 <= '/') || (LA19_0 >= ';' && LA19_0 <= 'Z') || LA19_0 == '\\' || (LA19_0 >= '^' && LA19_0 <= 'e') || (LA19_0 >= 'g' && LA19_0 <= 'm') || (LA19_0 >= 'o' && LA19_0 <= 's') || (LA19_0 >= 'u' && LA19_0 <= 'z') || LA19_0 == '|' || (LA19_0 >= '~' && LA19_0 <= '\uFFFF')) ) { s = 15; }
+                   	else if ( ((LA18_0 >= '\u0000' && LA18_0 <= '\b') || (LA18_0 >= '\u000B' && LA18_0 <= '\f') || (LA18_0 >= '\u000E' && LA18_0 <= '\u001F') || LA18_0 == '!' || (LA18_0 >= '#' && LA18_0 <= '+') || (LA18_0 >= '.' && LA18_0 <= '/') || (LA18_0 >= ';' && LA18_0 <= 'Z') || LA18_0 == '\\' || (LA18_0 >= '^' && LA18_0 <= 'e') || (LA18_0 >= 'g' && LA18_0 <= 'm') || (LA18_0 >= 'o' && LA18_0 <= 's') || (LA18_0 >= 'u' && LA18_0 <= 'z') || LA18_0 == '|' || (LA18_0 >= '~' && LA18_0 <= '\uFFFF')) ) { s = 15; }
 
-                   	else if ( (LA19_0 == '\n' || LA19_0 == '\r') ) { s = 16; }
+                   	else if ( (LA18_0 == '\n' || LA18_0 == '\r') ) { s = 16; }
 
                    	 
-                   	input.Seek(index19_0);
+                   	input.Seek(index18_0);
                    	if ( s >= 0 ) return s;
                    	break;
         }
-        NoViableAltException nvae19 =
-            new NoViableAltException(dfa.Description, 19, _s, input);
-        dfa.Error(nvae19);
-        throw nvae19;
+        NoViableAltException nvae18 =
+            new NoViableAltException(dfa.Description, 18, _s, input);
+        dfa.Error(nvae18);
+        throw nvae18;
     }
  
     
