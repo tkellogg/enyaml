@@ -33,6 +33,43 @@ INDENTATION
 		{ EmitIndentationTokens($text); }
 	;
 	
+// list item	
+LI : '-' ;
+// map item
+MI : ':' ;
+NULL : 'null';
+Bool : 'true' | 'false'	;
+NEWLINE
+	: '\r\n' | '\n' | '\r'
+	;
+WS
+	: ' ' | '\t'
+	;
+COMMA
+	:	',' ;
+QUOT
+	:	'"' ;
+LBRACKET 
+	:	'[' ;
+RBRACKET 
+	:	']' ;
+LBRACE
+	:	'{' ;
+RBRACE
+	:	'}' ;
+Integer
+	: '-'? DecDigit+
+	| ('0' 'x' HexDigit+)
+	;
+		
+Float
+	: '-'? DecDigit+ '.' DecDigit* Exponent?
+	;
+		
+UnQuotedString
+	: ~(DecDigit | MI | LBRACKET | LBRACE | RBRACE | RBRACKET | LI | NEWLINE | WS | COMMA | QUOT) 
+			FreeChars 
+	;
 
 value
 	: null_expr
@@ -47,54 +84,28 @@ value
 boolean 
 	: Bool -> ^(BOOL Bool)
 	;
-
-Bool
-	: 'true' | 'false'
-	;
 	
 null_expr
 	: NULL
 	;
-	
-NULL : 'null';
 
 integer
 	: Integer -> ^(INTEGER Integer)
 	;
 	
-Integer
-	: '-'? DecDigit+
-	| ('0' 'x' HexDigit+)
-	;
-	
-LI
-	: '-'
-	;
 	
 float_expr
 	: Float -> ^(FLOAT Float)
 	;
-	
-Float
-	: '-'? DecDigit+ '.' DecDigit* Exponent?
-	;
-	
-fragment Exponent
-	: ('e' | 'E') ('-' | '+')? DecDigit+
-	;
 
 string_expr	
-	: QuotedString -> ^(QUOTED_STRING QuotedString) 
+	: QUOT QuotedStringChar* QUOT
+		-> ^(QUOTED_STRING QuotedStringChar*) 
+	| QUOT UnQuotedString QUOT
+		-> ^(QUOTED_STRING UnQuotedString) 
+	| QUOT Integer QUOT
+		-> ^(QUOTED_STRING Integer) 
 	| UnQuotedString -> ^(UNQUOTED_STRING UnQuotedString)
-	;
-
-QuotedString
-	: '"' UnQuotedStringChars* '"'
-	;
-		
-UnQuotedString
-	: ~(DecDigit | ':' | '[' | '{' | '}' | ']' | LI | NEWLINE | ' ' | '\t' | ',') 
-			FreeChars 
 	;
 				
 flow_map
@@ -102,7 +113,7 @@ flow_map
 	flowLvl++;
 	BlockLevel++;
 }
-	: '{' fskip* map_pair fskip* (',' fskip* map_pair fskip* )* '}'
+	: LBRACE fskip* map_pair fskip* (COMMA fskip* map_pair fskip* )* RBRACE
 		-> ^(MAP map_pair+)
 	;
 finally {
@@ -127,8 +138,8 @@ map
 	;
 	
 map_pair
-	: string_expr fskip* ':' fskip* value
-		-> ^(':' string_expr value)
+	: string_expr fskip* MI fskip* value
+		-> ^(MI string_expr value)
 	;
 		
 list
@@ -138,7 +149,7 @@ list
 	
 // tokens to skip while in flow style
 fskip
-	: NEWLINE | INDENTATION | INDENT | DEDENT
+	: NEWLINE | INDENTATION | INDENT | DEDENT | WS
 	;
 	
 flow_list 
@@ -146,7 +157,7 @@ flow_list
 	flowLvl++;
 	BlockLevel++;
 }
-	: '[' fskip* value fskip* (',' fskip* value fskip*)* ']'
+	: LBRACKET fskip* value fskip* (COMMA fskip* value fskip*)* RBRACKET
 		-> ^(LIST value+ )
 	;
 finally {
@@ -174,20 +185,20 @@ scope {
 @init {
 	$block_list_item::lvl = BlockLevel;
 }
-	: {$block_list_item::lvl == BlockLevel}? LI value NEWLINE
+	: {$block_list_item::lvl == BlockLevel}? LI WS* value NEWLINE
 		-> value
 	;
-	
-NEWLINE
-	: '\r\n' | '\n' | '\r'
+		
+fragment Exponent
+	: ('e' | 'E') ('-' | '+')? DecDigit+
 	;
 	
-fragment UnQuotedStringChars 
+fragment QuotedStringChar
 	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' ) )
 	;
 	
 fragment FreeChars
-	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' | NEWLINE | LI | ':' | ',' | '{' | '[' | ']' | '}'))*
+	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE))*
 	;
 	
 fragment EscapeSequence

@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g 2010-12-31 16:12:09
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g 2011-01-01 14:29:00
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -39,63 +39,65 @@ public partial class YamlTree : TreeParser
 		"DEDENT", 
 		"DENT", 
 		"INDENTATION", 
-		"Bool", 
+		"LI", 
+		"MI", 
 		"NULL", 
-		"Integer", 
+		"Bool", 
+		"NEWLINE", 
+		"WS", 
+		"COMMA", 
+		"QUOT", 
+		"LBRACKET", 
+		"RBRACKET", 
+		"LBRACE", 
+		"RBRACE", 
 		"DecDigit", 
 		"HexDigit", 
-		"LI", 
-		"Float", 
+		"Integer", 
 		"Exponent", 
-		"QuotedString", 
+		"Float", 
+		"FreeChars", 
 		"UnQuotedString", 
-		"UnQuotedStringChars", 
-		"NEWLINE", 
+		"QuotedStringChar", 
 		"EscapeSequence", 
-		"NonColonChars", 
-		"UnicodeEscape", 
-		"'{'", 
-		"','", 
-		"'}'", 
-		"':'", 
-		"'['", 
-		"']'"
+		"UnicodeEscape"
     };
 
     public const int INTEGER = 6;
-    public const int Bool = 17;
+    public const int Bool = 20;
+    public const int RBRACE = 28;
+    public const int FreeChars = 34;
     public const int DOUBLE_QUOTE = 9;
-    public const int NULL = 18;
+    public const int NULL = 19;
+    public const int LBRACE = 27;
+    public const int QUOT = 24;
     public const int BOOL = 8;
-    public const int Exponent = 24;
-    public const int UnQuotedString = 26;
-    public const int DEDENT = 14;
+    public const int QuotedStringChar = 36;
+    public const int Exponent = 32;
+    public const int UnQuotedString = 35;
     public const int FLOAT = 7;
+    public const int DEDENT = 14;
+    public const int MI = 18;
     public const int EOF = -1;
-    public const int QuotedString = 25;
     public const int LIST = 12;
-    public const int HexDigit = 21;
-    public const int DecDigit = 20;
+    public const int HexDigit = 30;
+    public const int DecDigit = 29;
     public const int INDENT = 13;
-    public const int Float = 23;
+    public const int LBRACKET = 25;
+    public const int Float = 33;
     public const int SINGLE_QUOTE = 10;
-    public const int T__32 = 32;
-    public const int NonColonChars = 30;
-    public const int T__33 = 33;
-    public const int T__34 = 34;
-    public const int T__35 = 35;
-    public const int NEWLINE = 28;
-    public const int T__36 = 36;
-    public const int T__37 = 37;
+    public const int WS = 22;
+    public const int NEWLINE = 21;
     public const int DENT = 15;
-    public const int UnicodeEscape = 31;
+    public const int COMMA = 23;
+    public const int UnicodeEscape = 38;
     public const int MAP = 11;
     public const int QUOTED_STRING = 4;
-    public const int UnQuotedStringChars = 27;
+    public const int RBRACKET = 26;
+    public const int LI = 17;
     public const int UNQUOTED_STRING = 5;
-    public const int LI = 22;
-    public const int EscapeSequence = 29;
-    public const int Integer = 19;
+    public const int EscapeSequence = 37;
+    public const int Integer = 31;
     public const int INDENTATION = 16;
 
     // delegates
@@ -427,60 +429,156 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "string_expr"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:44:1: string_expr returns [string result] : ( ^( QUOTED_STRING QuotedString ) | ^( UNQUOTED_STRING UnQuotedString ) );
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:44:1: string_expr returns [string result] : ( ^( QUOTED_STRING ( QuotedStringChar )* ) | ^( QUOTED_STRING UnQuotedString ) | ^( QUOTED_STRING Integer ) | ^( UNQUOTED_STRING UnQuotedString ) );
     public string string_expr() // throws RecognitionException [1]
     {   
         string result = default(string);
 
-        CommonTree QuotedString4 = null;
+        CommonTree QuotedStringChar4 = null;
         CommonTree UnQuotedString5 = null;
+        CommonTree Integer6 = null;
+        CommonTree UnQuotedString7 = null;
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:2: ( ^( QUOTED_STRING QuotedString ) | ^( UNQUOTED_STRING UnQuotedString ) )
-            int alt2 = 2;
-            int LA2_0 = input.LA(1);
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:2: ( ^( QUOTED_STRING ( QuotedStringChar )* ) | ^( QUOTED_STRING UnQuotedString ) | ^( QUOTED_STRING Integer ) | ^( UNQUOTED_STRING UnQuotedString ) )
+            int alt3 = 4;
+            int LA3_0 = input.LA(1);
 
-            if ( (LA2_0 == QUOTED_STRING) )
+            if ( (LA3_0 == QUOTED_STRING) )
             {
-                alt2 = 1;
+                int LA3_1 = input.LA(2);
+
+                if ( (LA3_1 == DOWN) )
+                {
+                    switch ( input.LA(3) ) 
+                    {
+                    case UnQuotedString:
+                    	{
+                        alt3 = 2;
+                        }
+                        break;
+                    case Integer:
+                    	{
+                        alt3 = 3;
+                        }
+                        break;
+                    case UP:
+                    case QuotedStringChar:
+                    	{
+                        alt3 = 1;
+                        }
+                        break;
+                    	default:
+                    	    NoViableAltException nvae_d3s3 =
+                    	        new NoViableAltException("", 3, 3, input);
+
+                    	    throw nvae_d3s3;
+                    }
+
+                }
+                else 
+                {
+                    NoViableAltException nvae_d3s1 =
+                        new NoViableAltException("", 3, 1, input);
+
+                    throw nvae_d3s1;
+                }
             }
-            else if ( (LA2_0 == UNQUOTED_STRING) )
+            else if ( (LA3_0 == UNQUOTED_STRING) )
             {
-                alt2 = 2;
+                alt3 = 4;
             }
             else 
             {
-                NoViableAltException nvae_d2s0 =
-                    new NoViableAltException("", 2, 0, input);
+                NoViableAltException nvae_d3s0 =
+                    new NoViableAltException("", 3, 0, input);
 
-                throw nvae_d2s0;
+                throw nvae_d3s0;
             }
-            switch (alt2) 
+            switch (alt3) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:4: ^( QUOTED_STRING QuotedString )
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:4: ^( QUOTED_STRING ( QuotedStringChar )* )
                     {
                     	Match(input,QUOTED_STRING,FOLLOW_QUOTED_STRING_in_string_expr215); 
 
-                    	Match(input, Token.DOWN, null); 
-                    	QuotedString4=(CommonTree)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr217); 
+                    	if ( input.LA(1) == Token.DOWN )
+                    	{
+                    	    Match(input, Token.DOWN, null); 
+                    	    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:20: ( QuotedStringChar )*
+                    	    do 
+                    	    {
+                    	        int alt2 = 2;
+                    	        int LA2_0 = input.LA(1);
 
-                    	Match(input, Token.UP, null); 
-                    	 result =  ExtractString(QuotedString4); 
+                    	        if ( (LA2_0 == QuotedStringChar) )
+                    	        {
+                    	            alt2 = 1;
+                    	        }
+
+
+                    	        switch (alt2) 
+                    	    	{
+                    	    		case 1 :
+                    	    		    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:20: QuotedStringChar
+                    	    		    {
+                    	    		    	QuotedStringChar4=(CommonTree)Match(input,QuotedStringChar,FOLLOW_QuotedStringChar_in_string_expr217); 
+
+                    	    		    }
+                    	    		    break;
+
+                    	    		default:
+                    	    		    goto loop2;
+                    	        }
+                    	    } while (true);
+
+                    	    loop2:
+                    	    	;	// Stops C# compiler whining that label 'loop2' has no statements
+
+
+                    	    Match(input, Token.UP, null); 
+                    	}
+                    	 result =  ExtractString(QuotedStringChar4); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:47:4: ^( UNQUOTED_STRING UnQuotedString )
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:47:4: ^( QUOTED_STRING UnQuotedString )
                     {
-                    	Match(input,UNQUOTED_STRING,FOLLOW_UNQUOTED_STRING_in_string_expr228); 
+                    	Match(input,QUOTED_STRING,FOLLOW_QUOTED_STRING_in_string_expr229); 
 
                     	Match(input, Token.DOWN, null); 
-                    	UnQuotedString5=(CommonTree)Match(input,UnQuotedString,FOLLOW_UnQuotedString_in_string_expr230); 
+                    	UnQuotedString5=(CommonTree)Match(input,UnQuotedString,FOLLOW_UnQuotedString_in_string_expr231); 
 
                     	Match(input, Token.UP, null); 
                     	 result =  ExtractString(UnQuotedString5); 
+
+                    }
+                    break;
+                case 3 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:49:4: ^( QUOTED_STRING Integer )
+                    {
+                    	Match(input,QUOTED_STRING,FOLLOW_QUOTED_STRING_in_string_expr242); 
+
+                    	Match(input, Token.DOWN, null); 
+                    	Integer6=(CommonTree)Match(input,Integer,FOLLOW_Integer_in_string_expr244); 
+
+                    	Match(input, Token.UP, null); 
+                    	 result =  ExtractString(Integer6); 
+
+                    }
+                    break;
+                case 4 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:51:4: ^( UNQUOTED_STRING UnQuotedString )
+                    {
+                    	Match(input,UNQUOTED_STRING,FOLLOW_UNQUOTED_STRING_in_string_expr255); 
+
+                    	Match(input, Token.DOWN, null); 
+                    	UnQuotedString7=(CommonTree)Match(input,UnQuotedString,FOLLOW_UnQuotedString_in_string_expr257); 
+
+                    	Match(input, Token.UP, null); 
+                    	 result =  ExtractString(UnQuotedString7); 
 
                     }
                     break;
@@ -507,7 +605,7 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "map"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:51:1: map returns [SortedDictionary<string, object> result] : ^( MAP ( map_pair )+ ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:55:1: map returns [SortedDictionary<string, object> result] : ^( MAP ( map_pair )+ ) ;
     public SortedDictionary<string, object> map() // throws RecognitionException [1]
     {   
         map_stack.Push(new map_scope());
@@ -518,31 +616,31 @@ public partial class YamlTree : TreeParser
         	
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:2: ( ^( MAP ( map_pair )+ ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:4: ^( MAP ( map_pair )+ )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:2: ( ^( MAP ( map_pair )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:4: ^( MAP ( map_pair )+ )
             {
-            	Match(input,MAP,FOLLOW_MAP_in_map269); 
+            	Match(input,MAP,FOLLOW_MAP_in_map296); 
 
             	Match(input, Token.DOWN, null); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:10: ( map_pair )+
-            	int cnt3 = 0;
+            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:10: ( map_pair )+
+            	int cnt4 = 0;
             	do 
             	{
-            	    int alt3 = 2;
-            	    int LA3_0 = input.LA(1);
+            	    int alt4 = 2;
+            	    int LA4_0 = input.LA(1);
 
-            	    if ( (LA3_0 == 35) )
+            	    if ( (LA4_0 == MI) )
             	    {
-            	        alt3 = 1;
+            	        alt4 = 1;
             	    }
 
 
-            	    switch (alt3) 
+            	    switch (alt4) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:10: map_pair
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:10: map_pair
             			    {
-            			    	PushFollow(FOLLOW_map_pair_in_map271);
+            			    	PushFollow(FOLLOW_map_pair_in_map298);
             			    	map_pair();
             			    	state.followingStackPointer--;
 
@@ -551,16 +649,16 @@ public partial class YamlTree : TreeParser
             			    break;
 
             			default:
-            			    if ( cnt3 >= 1 ) goto loop3;
-            		            EarlyExitException eee3 =
-            		                new EarlyExitException(3, input);
-            		            throw eee3;
+            			    if ( cnt4 >= 1 ) goto loop4;
+            		            EarlyExitException eee4 =
+            		                new EarlyExitException(4, input);
+            		            throw eee4;
             	    }
-            	    cnt3++;
+            	    cnt4++;
             	} while (true);
 
-            	loop3:
-            		;	// Stops C# compiler whining that label 'loop3' has no statements
+            	loop4:
+            		;	// Stops C# compiler whining that label 'loop4' has no statements
 
 
             	Match(input, Token.UP, null); 
@@ -586,7 +684,7 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "map_pair"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:64:1: map_pair : ^( ':' key= string_expr val= value ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:68:1: map_pair : ^( MI key= string_expr val= value ) ;
     public void map_pair() // throws RecognitionException [1]
     {   
         string key = default(string);
@@ -596,17 +694,17 @@ public partial class YamlTree : TreeParser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:2: ( ^( ':' key= string_expr val= value ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:4: ^( ':' key= string_expr val= value )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:69:2: ( ^( MI key= string_expr val= value ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:69:4: ^( MI key= string_expr val= value )
             {
-            	Match(input,35,FOLLOW_35_in_map_pair288); 
+            	Match(input,MI,FOLLOW_MI_in_map_pair315); 
 
             	Match(input, Token.DOWN, null); 
-            	PushFollow(FOLLOW_string_expr_in_map_pair292);
+            	PushFollow(FOLLOW_string_expr_in_map_pair319);
             	key = string_expr();
             	state.followingStackPointer--;
 
-            	PushFollow(FOLLOW_value_in_map_pair296);
+            	PushFollow(FOLLOW_value_in_map_pair323);
             	val = value();
             	state.followingStackPointer--;
 
@@ -631,12 +729,12 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "list"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:69:1: list returns [List<object> result] : ^( LIST ( value )+ ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:1: list returns [List<object> result] : ^( LIST ( value )+ ) ;
     public List<object> list() // throws RecognitionException [1]
     {   
         List<object> result = default(List<object>);
 
-        object value6 = default(object);
+        object value8 = default(object);
 
 
 
@@ -644,50 +742,50 @@ public partial class YamlTree : TreeParser
         	
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:2: ( ^( LIST ( value )+ ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:4: ^( LIST ( value )+ )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:77:2: ( ^( LIST ( value )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:77:4: ^( LIST ( value )+ )
             {
-            	Match(input,LIST,FOLLOW_LIST_in_list324); 
+            	Match(input,LIST,FOLLOW_LIST_in_list351); 
 
             	Match(input, Token.DOWN, null); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:11: ( value )+
-            	int cnt4 = 0;
+            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:77:11: ( value )+
+            	int cnt5 = 0;
             	do 
             	{
-            	    int alt4 = 2;
-            	    int LA4_0 = input.LA(1);
+            	    int alt5 = 2;
+            	    int LA5_0 = input.LA(1);
 
-            	    if ( ((LA4_0 >= QUOTED_STRING && LA4_0 <= BOOL) || (LA4_0 >= MAP && LA4_0 <= LIST) || LA4_0 == NULL) )
+            	    if ( ((LA5_0 >= QUOTED_STRING && LA5_0 <= BOOL) || (LA5_0 >= MAP && LA5_0 <= LIST) || LA5_0 == NULL) )
             	    {
-            	        alt4 = 1;
+            	        alt5 = 1;
             	    }
 
 
-            	    switch (alt4) 
+            	    switch (alt5) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:12: value
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:77:12: value
             			    {
-            			    	PushFollow(FOLLOW_value_in_list327);
-            			    	value6 = value();
+            			    	PushFollow(FOLLOW_value_in_list354);
+            			    	value8 = value();
             			    	state.followingStackPointer--;
 
-            			    	 result.Add(value6); 
+            			    	 result.Add(value8); 
 
             			    }
             			    break;
 
             			default:
-            			    if ( cnt4 >= 1 ) goto loop4;
-            		            EarlyExitException eee4 =
-            		                new EarlyExitException(4, input);
-            		            throw eee4;
+            			    if ( cnt5 >= 1 ) goto loop5;
+            		            EarlyExitException eee5 =
+            		                new EarlyExitException(5, input);
+            		            throw eee5;
             	    }
-            	    cnt4++;
+            	    cnt5++;
             	} while (true);
 
-            	loop4:
-            		;	// Stops C# compiler whining that label 'loop4' has no statements
+            	loop5:
+            		;	// Stops C# compiler whining that label 'loop5' has no statements
 
 
             	Match(input, Token.UP, null); 
@@ -731,16 +829,20 @@ public partial class YamlTree : TreeParser
     public static readonly BitSet FOLLOW_FLOAT_in_float_expr190 = new BitSet(new ulong[]{0x0000000000000004UL});
     public static readonly BitSet FOLLOW_Float_in_float_expr192 = new BitSet(new ulong[]{0x0000000000000008UL});
     public static readonly BitSet FOLLOW_QUOTED_STRING_in_string_expr215 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_QuotedString_in_string_expr217 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_UNQUOTED_STRING_in_string_expr228 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_UnQuotedString_in_string_expr230 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MAP_in_map269 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_map_pair_in_map271 = new BitSet(new ulong[]{0x0000000800000008UL});
-    public static readonly BitSet FOLLOW_35_in_map_pair288 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_string_expr_in_map_pair292 = new BitSet(new ulong[]{0x00000000000419F0UL});
-    public static readonly BitSet FOLLOW_value_in_map_pair296 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_LIST_in_list324 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_value_in_list327 = new BitSet(new ulong[]{0x00000000000419F8UL});
+    public static readonly BitSet FOLLOW_QuotedStringChar_in_string_expr217 = new BitSet(new ulong[]{0x0000001000000008UL});
+    public static readonly BitSet FOLLOW_QUOTED_STRING_in_string_expr229 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_UnQuotedString_in_string_expr231 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_QUOTED_STRING_in_string_expr242 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_Integer_in_string_expr244 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_UNQUOTED_STRING_in_string_expr255 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_UnQuotedString_in_string_expr257 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MAP_in_map296 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_map_pair_in_map298 = new BitSet(new ulong[]{0x0000000000040008UL});
+    public static readonly BitSet FOLLOW_MI_in_map_pair315 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_string_expr_in_map_pair319 = new BitSet(new ulong[]{0x00000000000819F0UL});
+    public static readonly BitSet FOLLOW_value_in_map_pair323 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_LIST_in_list351 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_value_in_list354 = new BitSet(new ulong[]{0x00000000000819F8UL});
 
 }
 }

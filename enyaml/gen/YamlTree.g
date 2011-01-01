@@ -42,8 +42,12 @@ float_expr returns [double result]
 	;
 	
 string_expr returns [string result] 
-	: ^(QUOTED_STRING QuotedString)
-		{ $result = ExtractString($QuotedString); }
+	: ^(QUOTED_STRING QuotedStringChar*)
+		{ $result = ExtractString($QuotedStringChar); }
+	| ^(QUOTED_STRING UnQuotedString)
+		{ $result = ExtractString($UnQuotedString); }
+	| ^(QUOTED_STRING Integer)
+		{ $result = ExtractString($Integer); }
 	| ^(UNQUOTED_STRING UnQuotedString)
 		{ $result = ExtractString($UnQuotedString); }
 	;
@@ -62,7 +66,7 @@ map returns [SortedDictionary<string, object> result]
 	;
 	
 map_pair 
-	: ^(':' key=string_expr val=value)
+	: ^(MI key=string_expr val=value)
 		{ $map::dict.Add($key.result, $val.result); }
 	;
 	

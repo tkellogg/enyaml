@@ -49,14 +49,14 @@ namespace enyaml.tests
         [Test]
         public void ObjectWithOneScalar()
         {
-            var result = (SortedDictionary<string, object>)Yaml.Parse("{\"key\":\"value\"}");
+            var result = (IDictionary<string, object>)Yaml.Parse("{\"key\":\"value\"}");
             Assert.AreEqual(1, result.Count);
             Assert.AreEqual("value", result["key"]);
         }
         [Test]
         public void ObjectWithTwoScalars()
         {
-            var result = (SortedDictionary<string, object>)Yaml.Parse("{\"key\":\"value\", \"key2\":2}");
+            var result = (IDictionary<string, object>)Yaml.Parse("{\"key\":\"value\", \"key2\":2}");
             Assert.AreEqual(2, result.Count);
             Assert.AreEqual("value", result["key"]);
             Assert.AreEqual(2, result["key2"]);
@@ -64,12 +64,12 @@ namespace enyaml.tests
         [Test]
         public void ObjectWithObjectListAndScalar()
         {
-            var result = (SortedDictionary<string, object>)Yaml.Parse("{\"key\":\"value\", \"list\":[1,2],\"obj\":{\"key\":3}}");
+            var result = (IDictionary<string, object>)Yaml.Parse("{\"key\":\"value\", \"list\":[1,2],\"obj\":{\"key\":3}}");
             Assert.AreEqual(3, result.Count);
             Assert.AreEqual("value", result["key"]);
             var list = (List<object>)result["list"];
             Assert.That(list, Is.EquivalentTo(new[] { 1, 2 }));
-            var obj = (SortedDictionary<string, object>)result["obj"];
+            var obj = (IDictionary<string, object>)result["obj"];
             Assert.AreEqual(1, obj.Count);
             Assert.AreEqual(3, obj["key"]);
         }
@@ -97,7 +97,7 @@ namespace enyaml.tests
         [Test]
         public void ObjectWithSpaces()
         {
-            var result = (SortedDictionary<string, object>)Yaml.Parse("{  \"key\"  :  \"value\"  ,  \"key2\"  :  2  }");
+            var result = (IDictionary<string, object>)Yaml.Parse("{  \"key\"  :  \"value\"  ,  \"key2\"  :  2  }");
             Assert.AreEqual(2, result.Count);
             Assert.AreEqual("value", result["key"]);
             Assert.AreEqual(2, result["key2"]);
@@ -105,7 +105,7 @@ namespace enyaml.tests
         [Test]
         public void ObjectWithTabs()
         {
-            var result = (SortedDictionary<string, object>)Yaml.Parse("{\t\t\"key\"\t\t:\t\t\"value\"\t\t,\t\t\"key2\"\t\t:\t\t2\t\t}");
+            var result = (IDictionary<string, object>)Yaml.Parse("{\t\t\"key\"\t\t:\t\t\"value\"\t\t,\t\t\"key2\"\t\t:\t\t2\t\t}");
             Assert.AreEqual(2, result.Count);
             Assert.AreEqual("value", result["key"]);
             Assert.AreEqual(2, result["key2"]);
@@ -113,7 +113,7 @@ namespace enyaml.tests
         [Test]
         public void ObjectWithNewlines()
         {
-            var result = (SortedDictionary<string, object>)Yaml.Parse("{\r\n  \"key\" \r\n    :\r\n  \"value\"\n ,  \"key2\"\n  :  2  }");
+            var result = (IDictionary<string, object>)Yaml.Parse("{\r\n  \"key\" \r\n    :\r\n  \"value\"\n ,  \"key2\"\n  :  2  }");
             Assert.IsNotNull(result);
             Assert.AreEqual(2, result.Count);
             Assert.AreEqual("value", result["key"]);
