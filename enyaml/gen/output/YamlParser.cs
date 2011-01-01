@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2010-12-31 15:44:01
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2010-12-31 17:26:21
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -39,6 +39,8 @@ public partial class YamlParser : Parser
 		"DEDENT", 
 		"DENT", 
 		"INDENTATION", 
+		"Bool", 
+		"NULL", 
 		"Integer", 
 		"DecDigit", 
 		"HexDigit", 
@@ -46,8 +48,8 @@ public partial class YamlParser : Parser
 		"Float", 
 		"Exponent", 
 		"QuotedString", 
+		"UnQuotedString", 
 		"UnQuotedStringChars", 
-		"Bool", 
 		"NEWLINE", 
 		"EscapeSequence", 
 		"NonColonChars", 
@@ -61,37 +63,39 @@ public partial class YamlParser : Parser
     };
 
     public const int INTEGER = 6;
-    public const int Bool = 25;
+    public const int Bool = 17;
     public const int DOUBLE_QUOTE = 9;
+    public const int NULL = 18;
     public const int BOOL = 8;
-    public const int Exponent = 22;
+    public const int Exponent = 24;
+    public const int UnQuotedString = 26;
     public const int DEDENT = 14;
     public const int FLOAT = 7;
-    public const int QuotedString = 23;
+    public const int QuotedString = 25;
     public const int EOF = -1;
     public const int LIST = 12;
-    public const int HexDigit = 19;
-    public const int DecDigit = 18;
+    public const int HexDigit = 21;
+    public const int DecDigit = 20;
     public const int INDENT = 13;
-    public const int Float = 21;
-    public const int T__30 = 30;
-    public const int T__31 = 31;
+    public const int Float = 23;
     public const int SINGLE_QUOTE = 10;
-    public const int NonColonChars = 28;
+    public const int NonColonChars = 30;
     public const int T__32 = 32;
     public const int T__33 = 33;
     public const int T__34 = 34;
-    public const int NEWLINE = 26;
+    public const int NEWLINE = 28;
     public const int T__35 = 35;
+    public const int T__36 = 36;
+    public const int T__37 = 37;
     public const int DENT = 15;
-    public const int UnicodeEscape = 29;
+    public const int UnicodeEscape = 31;
     public const int MAP = 11;
     public const int QUOTED_STRING = 4;
-    public const int UnQuotedStringChars = 24;
-    public const int LI = 20;
+    public const int UnQuotedStringChars = 27;
+    public const int LI = 22;
     public const int UNQUOTED_STRING = 5;
-    public const int EscapeSequence = 27;
-    public const int Integer = 17;
+    public const int EscapeSequence = 29;
+    public const int Integer = 19;
     public const int INDENTATION = 16;
 
     // delegates
@@ -140,7 +144,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "value"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:37:1: value : ( boolean | integer | float_expr | string_expr | map | list );
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:37:1: value : ( null_expr | boolean | integer | float_expr | string_expr | map | list );
     public YamlParser.value_return value() // throws RecognitionException [1]
     {   
         YamlParser.value_return retval = new YamlParser.value_return();
@@ -148,142 +152,117 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        YamlParser.boolean_return boolean1 = default(YamlParser.boolean_return);
+        YamlParser.null_expr_return null_expr1 = default(YamlParser.null_expr_return);
 
-        YamlParser.integer_return integer2 = default(YamlParser.integer_return);
+        YamlParser.boolean_return boolean2 = default(YamlParser.boolean_return);
 
-        YamlParser.float_expr_return float_expr3 = default(YamlParser.float_expr_return);
+        YamlParser.integer_return integer3 = default(YamlParser.integer_return);
 
-        YamlParser.string_expr_return string_expr4 = default(YamlParser.string_expr_return);
+        YamlParser.float_expr_return float_expr4 = default(YamlParser.float_expr_return);
 
-        YamlParser.map_return map5 = default(YamlParser.map_return);
+        YamlParser.string_expr_return string_expr5 = default(YamlParser.string_expr_return);
 
-        YamlParser.list_return list6 = default(YamlParser.list_return);
+        YamlParser.map_return map6 = default(YamlParser.map_return);
+
+        YamlParser.list_return list7 = default(YamlParser.list_return);
 
 
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:2: ( boolean | integer | float_expr | string_expr | map | list )
-            int alt1 = 6;
-            int LA1_0 = input.LA(1);
-
-            if ( (LA1_0 == Bool) )
-            {
-                alt1 = 1;
-            }
-            else if ( (LA1_0 == Integer) )
-            {
-                alt1 = 2;
-            }
-            else if ( (LA1_0 == Float) )
-            {
-                alt1 = 3;
-            }
-            else if ( (LA1_0 == QuotedString) )
-            {
-                alt1 = 4;
-            }
-            else if ( (LA1_0 == INDENT) && ((!IsInFlow)) )
-            {
-                alt1 = 5;
-            }
-            else if ( (LA1_0 == 30) )
-            {
-                alt1 = 5;
-            }
-            else if ( (LA1_0 == INDENTATION || LA1_0 == LI) && ((!IsInFlow)) )
-            {
-                alt1 = 6;
-            }
-            else if ( (LA1_0 == 34) )
-            {
-                alt1 = 6;
-            }
-            else 
-            {
-                NoViableAltException nvae_d1s0 =
-                    new NoViableAltException("", 1, 0, input);
-
-                throw nvae_d1s0;
-            }
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:2: ( null_expr | boolean | integer | float_expr | string_expr | map | list )
+            int alt1 = 7;
+            alt1 = dfa1.Predict(input);
             switch (alt1) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:4: boolean
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:38:4: null_expr
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_boolean_in_value142);
-                    	boolean1 = boolean();
+                    	PushFollow(FOLLOW_null_expr_in_value142);
+                    	null_expr1 = null_expr();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, boolean1.Tree);
+                    	adaptor.AddChild(root_0, null_expr1.Tree);
 
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:39:4: integer
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:39:4: boolean
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_integer_in_value147);
-                    	integer2 = integer();
+                    	PushFollow(FOLLOW_boolean_in_value147);
+                    	boolean2 = boolean();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, integer2.Tree);
+                    	adaptor.AddChild(root_0, boolean2.Tree);
 
                     }
                     break;
                 case 3 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:40:4: float_expr
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:40:4: integer
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_float_expr_in_value153);
-                    	float_expr3 = float_expr();
+                    	PushFollow(FOLLOW_integer_in_value152);
+                    	integer3 = integer();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, float_expr3.Tree);
+                    	adaptor.AddChild(root_0, integer3.Tree);
 
                     }
                     break;
                 case 4 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:4: string_expr
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:4: float_expr
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_string_expr_in_value158);
-                    	string_expr4 = string_expr();
+                    	PushFollow(FOLLOW_float_expr_in_value158);
+                    	float_expr4 = float_expr();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, string_expr4.Tree);
+                    	adaptor.AddChild(root_0, float_expr4.Tree);
 
                     }
                     break;
                 case 5 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:4: map
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:4: string_expr
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_map_in_value163);
-                    	map5 = map();
+                    	PushFollow(FOLLOW_string_expr_in_value163);
+                    	string_expr5 = string_expr();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, map5.Tree);
+                    	adaptor.AddChild(root_0, string_expr5.Tree);
 
                     }
                     break;
                 case 6 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:4: list
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:4: map
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_list_in_value168);
-                    	list6 = list();
+                    	PushFollow(FOLLOW_map_in_value168);
+                    	map6 = map();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, list6.Tree);
+                    	adaptor.AddChild(root_0, map6.Tree);
+
+                    }
+                    break;
+                case 7 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:44:4: list
+                    {
+                    	root_0 = (object)adaptor.GetNilNode();
+
+                    	PushFollow(FOLLOW_list_in_value173);
+                    	list7 = list();
+                    	state.followingStackPointer--;
+
+                    	adaptor.AddChild(root_0, list7.Tree);
 
                     }
                     break;
@@ -309,6 +288,145 @@ public partial class YamlParser : Parser
     }
     // $ANTLR end "value"
 
+    public class boolean_return : ParserRuleReturnScope
+    {
+        private object tree;
+        override public object Tree
+        {
+        	get { return tree; }
+        	set { tree = (object) value; }
+        }
+    };
+
+    // $ANTLR start "boolean"
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:47:1: boolean : Bool -> ^( BOOL Bool ) ;
+    public YamlParser.boolean_return boolean() // throws RecognitionException [1]
+    {   
+        YamlParser.boolean_return retval = new YamlParser.boolean_return();
+        retval.Start = input.LT(1);
+
+        object root_0 = null;
+
+        IToken Bool8 = null;
+
+        object Bool8_tree=null;
+        RewriteRuleTokenStream stream_Bool = new RewriteRuleTokenStream(adaptor,"token Bool");
+
+        try 
+    	{
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:48:2: ( Bool -> ^( BOOL Bool ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:48:4: Bool
+            {
+            	Bool8=(IToken)Match(input,Bool,FOLLOW_Bool_in_boolean186);  
+            	stream_Bool.Add(Bool8);
+
+
+
+            	// AST REWRITE
+            	// elements:          Bool
+            	// token labels:      
+            	// rule labels:       retval
+            	// token list labels: 
+            	// rule list labels:  
+            	// wildcard labels: 
+            	retval.Tree = root_0;
+            	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
+
+            	root_0 = (object)adaptor.GetNilNode();
+            	// 48:9: -> ^( BOOL Bool )
+            	{
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:48:12: ^( BOOL Bool )
+            	    {
+            	    object root_1 = (object)adaptor.GetNilNode();
+            	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(BOOL, "BOOL"), root_1);
+
+            	    adaptor.AddChild(root_1, stream_Bool.NextNode());
+
+            	    adaptor.AddChild(root_0, root_1);
+            	    }
+
+            	}
+
+            	retval.Tree = root_0;retval.Tree = root_0;
+            }
+
+            retval.Stop = input.LT(-1);
+
+            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
+        }
+        catch (RecognitionException re) 
+    	{
+            ReportError(re);
+            Recover(input,re);
+    	// Conversion of the second argument necessary, but harmless
+    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+
+        }
+        finally 
+    	{
+        }
+        return retval;
+    }
+    // $ANTLR end "boolean"
+
+    public class null_expr_return : ParserRuleReturnScope
+    {
+        private object tree;
+        override public object Tree
+        {
+        	get { return tree; }
+        	set { tree = (object) value; }
+        }
+    };
+
+    // $ANTLR start "null_expr"
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:55:1: null_expr : NULL ;
+    public YamlParser.null_expr_return null_expr() // throws RecognitionException [1]
+    {   
+        YamlParser.null_expr_return retval = new YamlParser.null_expr_return();
+        retval.Start = input.LT(1);
+
+        object root_0 = null;
+
+        IToken NULL9 = null;
+
+        object NULL9_tree=null;
+
+        try 
+    	{
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:56:2: ( NULL )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:56:4: NULL
+            {
+            	root_0 = (object)adaptor.GetNilNode();
+
+            	NULL9=(IToken)Match(input,NULL,FOLLOW_NULL_in_null_expr222); 
+            		NULL9_tree = (object)adaptor.Create(NULL9);
+            		adaptor.AddChild(root_0, NULL9_tree);
+
+
+            }
+
+            retval.Stop = input.LT(-1);
+
+            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
+        }
+        catch (RecognitionException re) 
+    	{
+            ReportError(re);
+            Recover(input,re);
+    	// Conversion of the second argument necessary, but harmless
+    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+
+        }
+        finally 
+    	{
+        }
+        return retval;
+    }
+    // $ANTLR end "null_expr"
+
     public class integer_return : ParserRuleReturnScope
     {
         private object tree;
@@ -320,7 +438,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "integer"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:46:1: integer : Integer -> ^( INTEGER Integer ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:1: integer : Integer -> ^( INTEGER Integer ) ;
     public YamlParser.integer_return integer() // throws RecognitionException [1]
     {   
         YamlParser.integer_return retval = new YamlParser.integer_return();
@@ -328,18 +446,18 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken Integer7 = null;
+        IToken Integer10 = null;
 
-        object Integer7_tree=null;
+        object Integer10_tree=null;
         RewriteRuleTokenStream stream_Integer = new RewriteRuleTokenStream(adaptor,"token Integer");
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:47:2: ( Integer -> ^( INTEGER Integer ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:47:4: Integer
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:2: ( Integer -> ^( INTEGER Integer ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:4: Integer
             {
-            	Integer7=(IToken)Match(input,Integer,FOLLOW_Integer_in_integer179);  
-            	stream_Integer.Add(Integer7);
+            	Integer10=(IToken)Match(input,Integer,FOLLOW_Integer_in_integer242);  
+            	stream_Integer.Add(Integer10);
 
 
 
@@ -354,9 +472,9 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 47:12: -> ^( INTEGER Integer )
+            	// 62:12: -> ^( INTEGER Integer )
             	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:47:15: ^( INTEGER Integer )
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:15: ^( INTEGER Integer )
             	    {
             	    object root_1 = (object)adaptor.GetNilNode();
             	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(INTEGER, "INTEGER"), root_1);
@@ -402,7 +520,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "float_expr"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:59:1: float_expr : Float -> ^( FLOAT Float ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:74:1: float_expr : Float -> ^( FLOAT Float ) ;
     public YamlParser.float_expr_return float_expr() // throws RecognitionException [1]
     {   
         YamlParser.float_expr_return retval = new YamlParser.float_expr_return();
@@ -410,18 +528,18 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken Float8 = null;
+        IToken Float11 = null;
 
-        object Float8_tree=null;
+        object Float11_tree=null;
         RewriteRuleTokenStream stream_Float = new RewriteRuleTokenStream(adaptor,"token Float");
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:60:2: ( Float -> ^( FLOAT Float ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:60:4: Float
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:75:2: ( Float -> ^( FLOAT Float ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:75:4: Float
             {
-            	Float8=(IToken)Match(input,Float,FOLLOW_Float_in_float_expr239);  
-            	stream_Float.Add(Float8);
+            	Float11=(IToken)Match(input,Float,FOLLOW_Float_in_float_expr302);  
+            	stream_Float.Add(Float11);
 
 
 
@@ -436,9 +554,9 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 60:10: -> ^( FLOAT Float )
+            	// 75:10: -> ^( FLOAT Float )
             	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:60:13: ^( FLOAT Float )
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:75:13: ^( FLOAT Float )
             	    {
             	    object root_1 = (object)adaptor.GetNilNode();
             	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(FLOAT, "FLOAT"), root_1);
@@ -484,7 +602,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "string_expr"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:71:1: string_expr : QuotedString -> ^( QUOTED_STRING QuotedString ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:86:1: string_expr : ( QuotedString -> ^( QUOTED_STRING QuotedString ) | UnQuotedString -> ^( UNQUOTED_STRING UnQuotedString ) );
     public YamlParser.string_expr_return string_expr() // throws RecognitionException [1]
     {   
         YamlParser.string_expr_return retval = new YamlParser.string_expr_return();
@@ -492,49 +610,111 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken QuotedString9 = null;
+        IToken QuotedString12 = null;
+        IToken UnQuotedString13 = null;
 
-        object QuotedString9_tree=null;
+        object QuotedString12_tree=null;
+        object UnQuotedString13_tree=null;
+        RewriteRuleTokenStream stream_UnQuotedString = new RewriteRuleTokenStream(adaptor,"token UnQuotedString");
         RewriteRuleTokenStream stream_QuotedString = new RewriteRuleTokenStream(adaptor,"token QuotedString");
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:2: ( QuotedString -> ^( QUOTED_STRING QuotedString ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:4: QuotedString
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:87:2: ( QuotedString -> ^( QUOTED_STRING QuotedString ) | UnQuotedString -> ^( UNQUOTED_STRING UnQuotedString ) )
+            int alt2 = 2;
+            int LA2_0 = input.LA(1);
+
+            if ( (LA2_0 == QuotedString) )
             {
-            	QuotedString9=(IToken)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr315);  
-            	stream_QuotedString.Add(QuotedString9);
-
-
-
-            	// AST REWRITE
-            	// elements:          QuotedString
-            	// token labels:      
-            	// rule labels:       retval
-            	// token list labels: 
-            	// rule list labels:  
-            	// wildcard labels: 
-            	retval.Tree = root_0;
-            	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
-
-            	root_0 = (object)adaptor.GetNilNode();
-            	// 72:17: -> ^( QUOTED_STRING QuotedString )
-            	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:20: ^( QUOTED_STRING QuotedString )
-            	    {
-            	    object root_1 = (object)adaptor.GetNilNode();
-            	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(QUOTED_STRING, "QUOTED_STRING"), root_1);
-
-            	    adaptor.AddChild(root_1, stream_QuotedString.NextNode());
-
-            	    adaptor.AddChild(root_0, root_1);
-            	    }
-
-            	}
-
-            	retval.Tree = root_0;retval.Tree = root_0;
+                alt2 = 1;
             }
+            else if ( (LA2_0 == UnQuotedString) )
+            {
+                alt2 = 2;
+            }
+            else 
+            {
+                NoViableAltException nvae_d2s0 =
+                    new NoViableAltException("", 2, 0, input);
 
+                throw nvae_d2s0;
+            }
+            switch (alt2) 
+            {
+                case 1 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:87:4: QuotedString
+                    {
+                    	QuotedString12=(IToken)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr378);  
+                    	stream_QuotedString.Add(QuotedString12);
+
+
+
+                    	// AST REWRITE
+                    	// elements:          QuotedString
+                    	// token labels:      
+                    	// rule labels:       retval
+                    	// token list labels: 
+                    	// rule list labels:  
+                    	// wildcard labels: 
+                    	retval.Tree = root_0;
+                    	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
+
+                    	root_0 = (object)adaptor.GetNilNode();
+                    	// 87:17: -> ^( QUOTED_STRING QuotedString )
+                    	{
+                    	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:87:20: ^( QUOTED_STRING QuotedString )
+                    	    {
+                    	    object root_1 = (object)adaptor.GetNilNode();
+                    	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(QUOTED_STRING, "QUOTED_STRING"), root_1);
+
+                    	    adaptor.AddChild(root_1, stream_QuotedString.NextNode());
+
+                    	    adaptor.AddChild(root_0, root_1);
+                    	    }
+
+                    	}
+
+                    	retval.Tree = root_0;retval.Tree = root_0;
+                    }
+                    break;
+                case 2 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:88:4: UnQuotedString
+                    {
+                    	UnQuotedString13=(IToken)Match(input,UnQuotedString,FOLLOW_UnQuotedString_in_string_expr392);  
+                    	stream_UnQuotedString.Add(UnQuotedString13);
+
+
+
+                    	// AST REWRITE
+                    	// elements:          UnQuotedString
+                    	// token labels:      
+                    	// rule labels:       retval
+                    	// token list labels: 
+                    	// rule list labels:  
+                    	// wildcard labels: 
+                    	retval.Tree = root_0;
+                    	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
+
+                    	root_0 = (object)adaptor.GetNilNode();
+                    	// 88:19: -> ^( UNQUOTED_STRING UnQuotedString )
+                    	{
+                    	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:88:22: ^( UNQUOTED_STRING UnQuotedString )
+                    	    {
+                    	    object root_1 = (object)adaptor.GetNilNode();
+                    	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(UNQUOTED_STRING, "UNQUOTED_STRING"), root_1);
+
+                    	    adaptor.AddChild(root_1, stream_UnQuotedString.NextNode());
+
+                    	    adaptor.AddChild(root_0, root_1);
+                    	    }
+
+                    	}
+
+                    	retval.Tree = root_0;retval.Tree = root_0;
+                    }
+                    break;
+
+            }
             retval.Stop = input.LT(-1);
 
             	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
@@ -555,88 +735,6 @@ public partial class YamlParser : Parser
     }
     // $ANTLR end "string_expr"
 
-    public class boolean_return : ParserRuleReturnScope
-    {
-        private object tree;
-        override public object Tree
-        {
-        	get { return tree; }
-        	set { tree = (object) value; }
-        }
-    };
-
-    // $ANTLR start "boolean"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:84:1: boolean : Bool -> ^( BOOL Bool ) ;
-    public YamlParser.boolean_return boolean() // throws RecognitionException [1]
-    {   
-        YamlParser.boolean_return retval = new YamlParser.boolean_return();
-        retval.Start = input.LT(1);
-
-        object root_0 = null;
-
-        IToken Bool10 = null;
-
-        object Bool10_tree=null;
-        RewriteRuleTokenStream stream_Bool = new RewriteRuleTokenStream(adaptor,"token Bool");
-
-        try 
-    	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:85:2: ( Bool -> ^( BOOL Bool ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:85:4: Bool
-            {
-            	Bool10=(IToken)Match(input,Bool,FOLLOW_Bool_in_boolean358);  
-            	stream_Bool.Add(Bool10);
-
-
-
-            	// AST REWRITE
-            	// elements:          Bool
-            	// token labels:      
-            	// rule labels:       retval
-            	// token list labels: 
-            	// rule list labels:  
-            	// wildcard labels: 
-            	retval.Tree = root_0;
-            	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
-
-            	root_0 = (object)adaptor.GetNilNode();
-            	// 85:9: -> ^( BOOL Bool )
-            	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:85:12: ^( BOOL Bool )
-            	    {
-            	    object root_1 = (object)adaptor.GetNilNode();
-            	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(BOOL, "BOOL"), root_1);
-
-            	    adaptor.AddChild(root_1, stream_Bool.NextNode());
-
-            	    adaptor.AddChild(root_0, root_1);
-            	    }
-
-            	}
-
-            	retval.Tree = root_0;retval.Tree = root_0;
-            }
-
-            retval.Stop = input.LT(-1);
-
-            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
-            	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
-        }
-        catch (RecognitionException re) 
-    	{
-            ReportError(re);
-            Recover(input,re);
-    	// Conversion of the second argument necessary, but harmless
-    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
-
-        }
-        finally 
-    	{
-        }
-        return retval;
-    }
-    // $ANTLR end "boolean"
-
     public class flow_map_return : ParserRuleReturnScope
     {
         private object tree;
@@ -648,7 +746,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "flow_map"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:92:1: flow_map : '{' ( fskip )* map_pair ( fskip )* ( ',' ( fskip )* map_pair ( fskip )* )* '}' -> ^( MAP ( map_pair )+ ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:101:1: flow_map : '{' ( fskip )* map_pair ( fskip )* ( ',' ( fskip )* map_pair ( fskip )* )* '}' -> ^( MAP ( map_pair )+ ) ;
     public YamlParser.flow_map_return flow_map() // throws RecognitionException [1]
     {   
         YamlParser.flow_map_return retval = new YamlParser.flow_map_return();
@@ -656,28 +754,28 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken char_literal11 = null;
-        IToken char_literal15 = null;
-        IToken char_literal19 = null;
-        YamlParser.fskip_return fskip12 = default(YamlParser.fskip_return);
+        IToken char_literal14 = null;
+        IToken char_literal18 = null;
+        IToken char_literal22 = null;
+        YamlParser.fskip_return fskip15 = default(YamlParser.fskip_return);
 
-        YamlParser.map_pair_return map_pair13 = default(YamlParser.map_pair_return);
+        YamlParser.map_pair_return map_pair16 = default(YamlParser.map_pair_return);
 
-        YamlParser.fskip_return fskip14 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip17 = default(YamlParser.fskip_return);
 
-        YamlParser.fskip_return fskip16 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip19 = default(YamlParser.fskip_return);
 
-        YamlParser.map_pair_return map_pair17 = default(YamlParser.map_pair_return);
+        YamlParser.map_pair_return map_pair20 = default(YamlParser.map_pair_return);
 
-        YamlParser.fskip_return fskip18 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip21 = default(YamlParser.fskip_return);
 
 
-        object char_literal11_tree=null;
-        object char_literal15_tree=null;
-        object char_literal19_tree=null;
-        RewriteRuleTokenStream stream_30 = new RewriteRuleTokenStream(adaptor,"token 30");
+        object char_literal14_tree=null;
+        object char_literal18_tree=null;
+        object char_literal22_tree=null;
         RewriteRuleTokenStream stream_32 = new RewriteRuleTokenStream(adaptor,"token 32");
-        RewriteRuleTokenStream stream_31 = new RewriteRuleTokenStream(adaptor,"token 31");
+        RewriteRuleTokenStream stream_33 = new RewriteRuleTokenStream(adaptor,"token 33");
+        RewriteRuleTokenStream stream_34 = new RewriteRuleTokenStream(adaptor,"token 34");
         RewriteRuleSubtreeStream stream_map_pair = new RewriteRuleSubtreeStream(adaptor,"rule map_pair");
         RewriteRuleSubtreeStream stream_fskip = new RewriteRuleSubtreeStream(adaptor,"rule fskip");
 
@@ -686,52 +784,13 @@ public partial class YamlParser : Parser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:2: ( '{' ( fskip )* map_pair ( fskip )* ( ',' ( fskip )* map_pair ( fskip )* )* '}' -> ^( MAP ( map_pair )+ ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:4: '{' ( fskip )* map_pair ( fskip )* ( ',' ( fskip )* map_pair ( fskip )* )* '}'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:2: ( '{' ( fskip )* map_pair ( fskip )* ( ',' ( fskip )* map_pair ( fskip )* )* '}' -> ^( MAP ( map_pair )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:4: '{' ( fskip )* map_pair ( fskip )* ( ',' ( fskip )* map_pair ( fskip )* )* '}'
             {
-            	char_literal11=(IToken)Match(input,30,FOLLOW_30_in_flow_map401);  
-            	stream_30.Add(char_literal11);
+            	char_literal14=(IToken)Match(input,32,FOLLOW_32_in_flow_map504);  
+            	stream_32.Add(char_literal14);
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:8: ( fskip )*
-            	do 
-            	{
-            	    int alt2 = 2;
-            	    int LA2_0 = input.LA(1);
-
-            	    if ( ((LA2_0 >= INDENT && LA2_0 <= DEDENT) || LA2_0 == INDENTATION || LA2_0 == NEWLINE) )
-            	    {
-            	        alt2 = 1;
-            	    }
-
-
-            	    switch (alt2) 
-            		{
-            			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:8: fskip
-            			    {
-            			    	PushFollow(FOLLOW_fskip_in_flow_map403);
-            			    	fskip12 = fskip();
-            			    	state.followingStackPointer--;
-
-            			    	stream_fskip.Add(fskip12.Tree);
-
-            			    }
-            			    break;
-
-            			default:
-            			    goto loop2;
-            	    }
-            	} while (true);
-
-            	loop2:
-            		;	// Stops C# compiler whining that label 'loop2' has no statements
-
-            	PushFollow(FOLLOW_map_pair_in_flow_map406);
-            	map_pair13 = map_pair();
-            	state.followingStackPointer--;
-
-            	stream_map_pair.Add(map_pair13.Tree);
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:24: ( fskip )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:8: ( fskip )*
             	do 
             	{
             	    int alt3 = 2;
@@ -746,13 +805,13 @@ public partial class YamlParser : Parser
             	    switch (alt3) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:24: fskip
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:8: fskip
             			    {
-            			    	PushFollow(FOLLOW_fskip_in_flow_map408);
-            			    	fskip14 = fskip();
+            			    	PushFollow(FOLLOW_fskip_in_flow_map506);
+            			    	fskip15 = fskip();
             			    	state.followingStackPointer--;
 
-            			    	stream_fskip.Add(fskip14.Tree);
+            			    	stream_fskip.Add(fskip15.Tree);
 
             			    }
             			    break;
@@ -765,66 +824,66 @@ public partial class YamlParser : Parser
             	loop3:
             		;	// Stops C# compiler whining that label 'loop3' has no statements
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:31: ( ',' ( fskip )* map_pair ( fskip )* )*
+            	PushFollow(FOLLOW_map_pair_in_flow_map509);
+            	map_pair16 = map_pair();
+            	state.followingStackPointer--;
+
+            	stream_map_pair.Add(map_pair16.Tree);
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:24: ( fskip )*
             	do 
             	{
-            	    int alt6 = 2;
-            	    int LA6_0 = input.LA(1);
+            	    int alt4 = 2;
+            	    int LA4_0 = input.LA(1);
 
-            	    if ( (LA6_0 == 31) )
+            	    if ( ((LA4_0 >= INDENT && LA4_0 <= DEDENT) || LA4_0 == INDENTATION || LA4_0 == NEWLINE) )
             	    {
-            	        alt6 = 1;
+            	        alt4 = 1;
             	    }
 
 
-            	    switch (alt6) 
+            	    switch (alt4) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:32: ',' ( fskip )* map_pair ( fskip )*
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:24: fskip
             			    {
-            			    	char_literal15=(IToken)Match(input,31,FOLLOW_31_in_flow_map412);  
-            			    	stream_31.Add(char_literal15);
-
-            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:36: ( fskip )*
-            			    	do 
-            			    	{
-            			    	    int alt4 = 2;
-            			    	    int LA4_0 = input.LA(1);
-
-            			    	    if ( ((LA4_0 >= INDENT && LA4_0 <= DEDENT) || LA4_0 == INDENTATION || LA4_0 == NEWLINE) )
-            			    	    {
-            			    	        alt4 = 1;
-            			    	    }
-
-
-            			    	    switch (alt4) 
-            			    		{
-            			    			case 1 :
-            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:36: fskip
-            			    			    {
-            			    			    	PushFollow(FOLLOW_fskip_in_flow_map414);
-            			    			    	fskip16 = fskip();
-            			    			    	state.followingStackPointer--;
-
-            			    			    	stream_fskip.Add(fskip16.Tree);
-
-            			    			    }
-            			    			    break;
-
-            			    			default:
-            			    			    goto loop4;
-            			    	    }
-            			    	} while (true);
-
-            			    	loop4:
-            			    		;	// Stops C# compiler whining that label 'loop4' has no statements
-
-            			    	PushFollow(FOLLOW_map_pair_in_flow_map417);
-            			    	map_pair17 = map_pair();
+            			    	PushFollow(FOLLOW_fskip_in_flow_map511);
+            			    	fskip17 = fskip();
             			    	state.followingStackPointer--;
 
-            			    	stream_map_pair.Add(map_pair17.Tree);
-            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:52: ( fskip )*
+            			    	stream_fskip.Add(fskip17.Tree);
+
+            			    }
+            			    break;
+
+            			default:
+            			    goto loop4;
+            	    }
+            	} while (true);
+
+            	loop4:
+            		;	// Stops C# compiler whining that label 'loop4' has no statements
+
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:31: ( ',' ( fskip )* map_pair ( fskip )* )*
+            	do 
+            	{
+            	    int alt7 = 2;
+            	    int LA7_0 = input.LA(1);
+
+            	    if ( (LA7_0 == 33) )
+            	    {
+            	        alt7 = 1;
+            	    }
+
+
+            	    switch (alt7) 
+            		{
+            			case 1 :
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:32: ',' ( fskip )* map_pair ( fskip )*
+            			    {
+            			    	char_literal18=(IToken)Match(input,33,FOLLOW_33_in_flow_map515);  
+            			    	stream_33.Add(char_literal18);
+
+            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:36: ( fskip )*
             			    	do 
             			    	{
             			    	    int alt5 = 2;
@@ -839,13 +898,13 @@ public partial class YamlParser : Parser
             			    	    switch (alt5) 
             			    		{
             			    			case 1 :
-            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:97:52: fskip
+            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:36: fskip
             			    			    {
-            			    			    	PushFollow(FOLLOW_fskip_in_flow_map419);
-            			    			    	fskip18 = fskip();
+            			    			    	PushFollow(FOLLOW_fskip_in_flow_map517);
+            			    			    	fskip19 = fskip();
             			    			    	state.followingStackPointer--;
 
-            			    			    	stream_fskip.Add(fskip18.Tree);
+            			    			    	stream_fskip.Add(fskip19.Tree);
 
             			    			    }
             			    			    break;
@@ -858,20 +917,59 @@ public partial class YamlParser : Parser
             			    	loop5:
             			    		;	// Stops C# compiler whining that label 'loop5' has no statements
 
+            			    	PushFollow(FOLLOW_map_pair_in_flow_map520);
+            			    	map_pair20 = map_pair();
+            			    	state.followingStackPointer--;
+
+            			    	stream_map_pair.Add(map_pair20.Tree);
+            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:52: ( fskip )*
+            			    	do 
+            			    	{
+            			    	    int alt6 = 2;
+            			    	    int LA6_0 = input.LA(1);
+
+            			    	    if ( ((LA6_0 >= INDENT && LA6_0 <= DEDENT) || LA6_0 == INDENTATION || LA6_0 == NEWLINE) )
+            			    	    {
+            			    	        alt6 = 1;
+            			    	    }
+
+
+            			    	    switch (alt6) 
+            			    		{
+            			    			case 1 :
+            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:106:52: fskip
+            			    			    {
+            			    			    	PushFollow(FOLLOW_fskip_in_flow_map522);
+            			    			    	fskip21 = fskip();
+            			    			    	state.followingStackPointer--;
+
+            			    			    	stream_fskip.Add(fskip21.Tree);
+
+            			    			    }
+            			    			    break;
+
+            			    			default:
+            			    			    goto loop6;
+            			    	    }
+            			    	} while (true);
+
+            			    	loop6:
+            			    		;	// Stops C# compiler whining that label 'loop6' has no statements
+
 
             			    }
             			    break;
 
             			default:
-            			    goto loop6;
+            			    goto loop7;
             	    }
             	} while (true);
 
-            	loop6:
-            		;	// Stops C# compiler whining that label 'loop6' has no statements
+            	loop7:
+            		;	// Stops C# compiler whining that label 'loop7' has no statements
 
-            	char_literal19=(IToken)Match(input,32,FOLLOW_32_in_flow_map425);  
-            	stream_32.Add(char_literal19);
+            	char_literal22=(IToken)Match(input,34,FOLLOW_34_in_flow_map528);  
+            	stream_34.Add(char_literal22);
 
 
 
@@ -886,9 +984,9 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 98:3: -> ^( MAP ( map_pair )+ )
+            	// 107:3: -> ^( MAP ( map_pair )+ )
             	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:98:6: ^( MAP ( map_pair )+ )
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:107:6: ^( MAP ( map_pair )+ )
             	    {
             	    object root_1 = (object)adaptor.GetNilNode();
             	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(MAP, "MAP"), root_1);
@@ -946,7 +1044,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "block_map"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:105:1: block_map : INDENT DENT map_pair ( NEWLINE DENT map_pair )* DEDENT -> ^( MAP ( map_pair )+ ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:114:1: block_map : INDENT DENT map_pair ( NEWLINE DENT map_pair )* DEDENT -> ^( MAP ( map_pair )+ ) ;
     public YamlParser.block_map_return block_map() // throws RecognitionException [1]
     {   
         YamlParser.block_map_return retval = new YamlParser.block_map_return();
@@ -954,21 +1052,21 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken INDENT20 = null;
-        IToken DENT21 = null;
-        IToken NEWLINE23 = null;
+        IToken INDENT23 = null;
         IToken DENT24 = null;
-        IToken DEDENT26 = null;
-        YamlParser.map_pair_return map_pair22 = default(YamlParser.map_pair_return);
-
+        IToken NEWLINE26 = null;
+        IToken DENT27 = null;
+        IToken DEDENT29 = null;
         YamlParser.map_pair_return map_pair25 = default(YamlParser.map_pair_return);
 
+        YamlParser.map_pair_return map_pair28 = default(YamlParser.map_pair_return);
 
-        object INDENT20_tree=null;
-        object DENT21_tree=null;
-        object NEWLINE23_tree=null;
+
+        object INDENT23_tree=null;
         object DENT24_tree=null;
-        object DEDENT26_tree=null;
+        object NEWLINE26_tree=null;
+        object DENT27_tree=null;
+        object DEDENT29_tree=null;
         RewriteRuleTokenStream stream_DEDENT = new RewriteRuleTokenStream(adaptor,"token DEDENT");
         RewriteRuleTokenStream stream_NEWLINE = new RewriteRuleTokenStream(adaptor,"token NEWLINE");
         RewriteRuleTokenStream stream_DENT = new RewriteRuleTokenStream(adaptor,"token DENT");
@@ -979,62 +1077,62 @@ public partial class YamlParser : Parser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:109:2: ( INDENT DENT map_pair ( NEWLINE DENT map_pair )* DEDENT -> ^( MAP ( map_pair )+ ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:109:4: INDENT DENT map_pair ( NEWLINE DENT map_pair )* DEDENT
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:118:2: ( INDENT DENT map_pair ( NEWLINE DENT map_pair )* DEDENT -> ^( MAP ( map_pair )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:118:4: INDENT DENT map_pair ( NEWLINE DENT map_pair )* DEDENT
             {
-            	INDENT20=(IToken)Match(input,INDENT,FOLLOW_INDENT_in_block_map457);  
-            	stream_INDENT.Add(INDENT20);
+            	INDENT23=(IToken)Match(input,INDENT,FOLLOW_INDENT_in_block_map560);  
+            	stream_INDENT.Add(INDENT23);
 
-            	DENT21=(IToken)Match(input,DENT,FOLLOW_DENT_in_block_map459);  
-            	stream_DENT.Add(DENT21);
+            	DENT24=(IToken)Match(input,DENT,FOLLOW_DENT_in_block_map562);  
+            	stream_DENT.Add(DENT24);
 
-            	PushFollow(FOLLOW_map_pair_in_block_map461);
-            	map_pair22 = map_pair();
+            	PushFollow(FOLLOW_map_pair_in_block_map564);
+            	map_pair25 = map_pair();
             	state.followingStackPointer--;
 
-            	stream_map_pair.Add(map_pair22.Tree);
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:109:25: ( NEWLINE DENT map_pair )*
+            	stream_map_pair.Add(map_pair25.Tree);
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:118:25: ( NEWLINE DENT map_pair )*
             	do 
             	{
-            	    int alt7 = 2;
-            	    int LA7_0 = input.LA(1);
+            	    int alt8 = 2;
+            	    int LA8_0 = input.LA(1);
 
-            	    if ( (LA7_0 == NEWLINE) )
+            	    if ( (LA8_0 == NEWLINE) )
             	    {
-            	        alt7 = 1;
+            	        alt8 = 1;
             	    }
 
 
-            	    switch (alt7) 
+            	    switch (alt8) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:109:26: NEWLINE DENT map_pair
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:118:26: NEWLINE DENT map_pair
             			    {
-            			    	NEWLINE23=(IToken)Match(input,NEWLINE,FOLLOW_NEWLINE_in_block_map464);  
-            			    	stream_NEWLINE.Add(NEWLINE23);
+            			    	NEWLINE26=(IToken)Match(input,NEWLINE,FOLLOW_NEWLINE_in_block_map567);  
+            			    	stream_NEWLINE.Add(NEWLINE26);
 
-            			    	DENT24=(IToken)Match(input,DENT,FOLLOW_DENT_in_block_map466);  
-            			    	stream_DENT.Add(DENT24);
+            			    	DENT27=(IToken)Match(input,DENT,FOLLOW_DENT_in_block_map569);  
+            			    	stream_DENT.Add(DENT27);
 
-            			    	PushFollow(FOLLOW_map_pair_in_block_map468);
-            			    	map_pair25 = map_pair();
+            			    	PushFollow(FOLLOW_map_pair_in_block_map571);
+            			    	map_pair28 = map_pair();
             			    	state.followingStackPointer--;
 
-            			    	stream_map_pair.Add(map_pair25.Tree);
+            			    	stream_map_pair.Add(map_pair28.Tree);
 
             			    }
             			    break;
 
             			default:
-            			    goto loop7;
+            			    goto loop8;
             	    }
             	} while (true);
 
-            	loop7:
-            		;	// Stops C# compiler whining that label 'loop7' has no statements
+            	loop8:
+            		;	// Stops C# compiler whining that label 'loop8' has no statements
 
-            	DEDENT26=(IToken)Match(input,DEDENT,FOLLOW_DEDENT_in_block_map472);  
-            	stream_DEDENT.Add(DEDENT26);
+            	DEDENT29=(IToken)Match(input,DEDENT,FOLLOW_DEDENT_in_block_map575);  
+            	stream_DEDENT.Add(DEDENT29);
 
 
 
@@ -1049,9 +1147,9 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 110:3: -> ^( MAP ( map_pair )+ )
+            	// 119:3: -> ^( MAP ( map_pair )+ )
             	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:110:6: ^( MAP ( map_pair )+ )
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:119:6: ^( MAP ( map_pair )+ )
             	    {
             	    object root_1 = (object)adaptor.GetNilNode();
             	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(MAP, "MAP"), root_1);
@@ -1108,7 +1206,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "map"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:116:1: map : ({...}? => block_map | flow_map );
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:125:1: map : ({...}? => block_map | flow_map );
     public YamlParser.map_return map() // throws RecognitionException [1]
     {   
         YamlParser.map_return retval = new YamlParser.map_return();
@@ -1116,37 +1214,37 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        YamlParser.block_map_return block_map27 = default(YamlParser.block_map_return);
+        YamlParser.block_map_return block_map30 = default(YamlParser.block_map_return);
 
-        YamlParser.flow_map_return flow_map28 = default(YamlParser.flow_map_return);
+        YamlParser.flow_map_return flow_map31 = default(YamlParser.flow_map_return);
 
 
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:117:2: ({...}? => block_map | flow_map )
-            int alt8 = 2;
-            int LA8_0 = input.LA(1);
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:126:2: ({...}? => block_map | flow_map )
+            int alt9 = 2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA8_0 == INDENT) && ((!IsInFlow)) )
+            if ( (LA9_0 == INDENT) && ((!IsInFlow)) )
             {
-                alt8 = 1;
+                alt9 = 1;
             }
-            else if ( (LA8_0 == 30) )
+            else if ( (LA9_0 == 32) )
             {
-                alt8 = 2;
+                alt9 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d8s0 =
-                    new NoViableAltException("", 8, 0, input);
+                NoViableAltException nvae_d9s0 =
+                    new NoViableAltException("", 9, 0, input);
 
-                throw nvae_d8s0;
+                throw nvae_d9s0;
             }
-            switch (alt8) 
+            switch (alt9) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:117:4: {...}? => block_map
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:126:4: {...}? => block_map
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
@@ -1154,24 +1252,24 @@ public partial class YamlParser : Parser
                     	{
                     	    throw new FailedPredicateException(input, "map", "!IsInFlow");
                     	}
-                    	PushFollow(FOLLOW_block_map_in_map503);
-                    	block_map27 = block_map();
+                    	PushFollow(FOLLOW_block_map_in_map606);
+                    	block_map30 = block_map();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, block_map27.Tree);
+                    	adaptor.AddChild(root_0, block_map30.Tree);
 
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:118:4: flow_map
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:127:4: flow_map
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_flow_map_in_map508);
-                    	flow_map28 = flow_map();
+                    	PushFollow(FOLLOW_flow_map_in_map611);
+                    	flow_map31 = flow_map();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, flow_map28.Tree);
+                    	adaptor.AddChild(root_0, flow_map31.Tree);
 
                     }
                     break;
@@ -1208,7 +1306,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "map_pair"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:121:1: map_pair : string_expr ( fskip )* ':' ( fskip )* value -> ^( ':' string_expr value ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:130:1: map_pair : string_expr ( fskip )* ':' ( fskip )* value -> ^( ':' string_expr value ) ;
     public YamlParser.map_pair_return map_pair() // throws RecognitionException [1]
     {   
         YamlParser.map_pair_return retval = new YamlParser.map_pair_return();
@@ -1216,83 +1314,53 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken char_literal31 = null;
-        YamlParser.string_expr_return string_expr29 = default(YamlParser.string_expr_return);
+        IToken char_literal34 = null;
+        YamlParser.string_expr_return string_expr32 = default(YamlParser.string_expr_return);
 
-        YamlParser.fskip_return fskip30 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip33 = default(YamlParser.fskip_return);
 
-        YamlParser.fskip_return fskip32 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip35 = default(YamlParser.fskip_return);
 
-        YamlParser.value_return value33 = default(YamlParser.value_return);
+        YamlParser.value_return value36 = default(YamlParser.value_return);
 
 
-        object char_literal31_tree=null;
-        RewriteRuleTokenStream stream_33 = new RewriteRuleTokenStream(adaptor,"token 33");
+        object char_literal34_tree=null;
+        RewriteRuleTokenStream stream_35 = new RewriteRuleTokenStream(adaptor,"token 35");
         RewriteRuleSubtreeStream stream_value = new RewriteRuleSubtreeStream(adaptor,"rule value");
         RewriteRuleSubtreeStream stream_string_expr = new RewriteRuleSubtreeStream(adaptor,"rule string_expr");
         RewriteRuleSubtreeStream stream_fskip = new RewriteRuleSubtreeStream(adaptor,"rule fskip");
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:122:2: ( string_expr ( fskip )* ':' ( fskip )* value -> ^( ':' string_expr value ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:122:4: string_expr ( fskip )* ':' ( fskip )* value
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:131:2: ( string_expr ( fskip )* ':' ( fskip )* value -> ^( ':' string_expr value ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:131:4: string_expr ( fskip )* ':' ( fskip )* value
             {
-            	PushFollow(FOLLOW_string_expr_in_map_pair520);
-            	string_expr29 = string_expr();
+            	PushFollow(FOLLOW_string_expr_in_map_pair623);
+            	string_expr32 = string_expr();
             	state.followingStackPointer--;
 
-            	stream_string_expr.Add(string_expr29.Tree);
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:122:16: ( fskip )*
-            	do 
-            	{
-            	    int alt9 = 2;
-            	    int LA9_0 = input.LA(1);
-
-            	    if ( ((LA9_0 >= INDENT && LA9_0 <= DEDENT) || LA9_0 == INDENTATION || LA9_0 == NEWLINE) )
-            	    {
-            	        alt9 = 1;
-            	    }
-
-
-            	    switch (alt9) 
-            		{
-            			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:122:16: fskip
-            			    {
-            			    	PushFollow(FOLLOW_fskip_in_map_pair522);
-            			    	fskip30 = fskip();
-            			    	state.followingStackPointer--;
-
-            			    	stream_fskip.Add(fskip30.Tree);
-
-            			    }
-            			    break;
-
-            			default:
-            			    goto loop9;
-            	    }
-            	} while (true);
-
-            	loop9:
-            		;	// Stops C# compiler whining that label 'loop9' has no statements
-
-            	char_literal31=(IToken)Match(input,33,FOLLOW_33_in_map_pair525);  
-            	stream_33.Add(char_literal31);
-
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:122:27: ( fskip )*
+            	stream_string_expr.Add(string_expr32.Tree);
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:131:16: ( fskip )*
             	do 
             	{
             	    int alt10 = 2;
-            	    alt10 = dfa10.Predict(input);
+            	    int LA10_0 = input.LA(1);
+
+            	    if ( ((LA10_0 >= INDENT && LA10_0 <= DEDENT) || LA10_0 == INDENTATION || LA10_0 == NEWLINE) )
+            	    {
+            	        alt10 = 1;
+            	    }
+
+
             	    switch (alt10) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:122:27: fskip
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:131:16: fskip
             			    {
-            			    	PushFollow(FOLLOW_fskip_in_map_pair527);
-            			    	fskip32 = fskip();
+            			    	PushFollow(FOLLOW_fskip_in_map_pair625);
+            			    	fskip33 = fskip();
             			    	state.followingStackPointer--;
 
-            			    	stream_fskip.Add(fskip32.Tree);
+            			    	stream_fskip.Add(fskip33.Tree);
 
             			    }
             			    break;
@@ -1305,15 +1373,45 @@ public partial class YamlParser : Parser
             	loop10:
             		;	// Stops C# compiler whining that label 'loop10' has no statements
 
-            	PushFollow(FOLLOW_value_in_map_pair530);
-            	value33 = value();
+            	char_literal34=(IToken)Match(input,35,FOLLOW_35_in_map_pair628);  
+            	stream_35.Add(char_literal34);
+
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:131:27: ( fskip )*
+            	do 
+            	{
+            	    int alt11 = 2;
+            	    alt11 = dfa11.Predict(input);
+            	    switch (alt11) 
+            		{
+            			case 1 :
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:131:27: fskip
+            			    {
+            			    	PushFollow(FOLLOW_fskip_in_map_pair630);
+            			    	fskip35 = fskip();
+            			    	state.followingStackPointer--;
+
+            			    	stream_fskip.Add(fskip35.Tree);
+
+            			    }
+            			    break;
+
+            			default:
+            			    goto loop11;
+            	    }
+            	} while (true);
+
+            	loop11:
+            		;	// Stops C# compiler whining that label 'loop11' has no statements
+
+            	PushFollow(FOLLOW_value_in_map_pair633);
+            	value36 = value();
             	state.followingStackPointer--;
 
-            	stream_value.Add(value33.Tree);
+            	stream_value.Add(value36.Tree);
 
 
             	// AST REWRITE
-            	// elements:          string_expr, value, 33
+            	// elements:          value, 35, string_expr
             	// token labels:      
             	// rule labels:       retval
             	// token list labels: 
@@ -1323,12 +1421,12 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 123:3: -> ^( ':' string_expr value )
+            	// 132:3: -> ^( ':' string_expr value )
             	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:123:6: ^( ':' string_expr value )
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:132:6: ^( ':' string_expr value )
             	    {
             	    object root_1 = (object)adaptor.GetNilNode();
-            	    root_1 = (object)adaptor.BecomeRoot(stream_33.NextNode(), root_1);
+            	    root_1 = (object)adaptor.BecomeRoot(stream_35.NextNode(), root_1);
 
             	    adaptor.AddChild(root_1, stream_string_expr.NextTree());
             	    adaptor.AddChild(root_1, stream_value.NextTree());
@@ -1372,7 +1470,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "list"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:126:1: list : ({...}? => block_list | flow_list );
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:135:1: list : ({...}? => block_list | flow_list );
     public YamlParser.list_return list() // throws RecognitionException [1]
     {   
         YamlParser.list_return retval = new YamlParser.list_return();
@@ -1380,37 +1478,37 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        YamlParser.block_list_return block_list34 = default(YamlParser.block_list_return);
+        YamlParser.block_list_return block_list37 = default(YamlParser.block_list_return);
 
-        YamlParser.flow_list_return flow_list35 = default(YamlParser.flow_list_return);
+        YamlParser.flow_list_return flow_list38 = default(YamlParser.flow_list_return);
 
 
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:127:2: ({...}? => block_list | flow_list )
-            int alt11 = 2;
-            int LA11_0 = input.LA(1);
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:136:2: ({...}? => block_list | flow_list )
+            int alt12 = 2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA11_0 == INDENTATION || LA11_0 == LI) && ((!IsInFlow)) )
+            if ( (LA12_0 == INDENTATION || LA12_0 == LI) && ((!IsInFlow)) )
             {
-                alt11 = 1;
+                alt12 = 1;
             }
-            else if ( (LA11_0 == 34) )
+            else if ( (LA12_0 == 36) )
             {
-                alt11 = 2;
+                alt12 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d11s0 =
-                    new NoViableAltException("", 11, 0, input);
+                NoViableAltException nvae_d12s0 =
+                    new NoViableAltException("", 12, 0, input);
 
-                throw nvae_d11s0;
+                throw nvae_d12s0;
             }
-            switch (alt11) 
+            switch (alt12) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:127:4: {...}? => block_list
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:136:4: {...}? => block_list
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
@@ -1418,24 +1516,24 @@ public partial class YamlParser : Parser
                     	{
                     	    throw new FailedPredicateException(input, "list", "!IsInFlow");
                     	}
-                    	PushFollow(FOLLOW_block_list_in_list558);
-                    	block_list34 = block_list();
+                    	PushFollow(FOLLOW_block_list_in_list661);
+                    	block_list37 = block_list();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, block_list34.Tree);
+                    	adaptor.AddChild(root_0, block_list37.Tree);
 
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:128:4: flow_list
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:137:4: flow_list
                     {
                     	root_0 = (object)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_flow_list_in_list563);
-                    	flow_list35 = flow_list();
+                    	PushFollow(FOLLOW_flow_list_in_list666);
+                    	flow_list38 = flow_list();
                     	state.followingStackPointer--;
 
-                    	adaptor.AddChild(root_0, flow_list35.Tree);
+                    	adaptor.AddChild(root_0, flow_list38.Tree);
 
                     }
                     break;
@@ -1472,7 +1570,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "fskip"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:132:1: fskip : ( NEWLINE | INDENTATION | INDENT | DEDENT );
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:1: fskip : ( NEWLINE | INDENTATION | INDENT | DEDENT );
     public YamlParser.fskip_return fskip() // throws RecognitionException [1]
     {   
         YamlParser.fskip_return retval = new YamlParser.fskip_return();
@@ -1480,22 +1578,22 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken set36 = null;
+        IToken set39 = null;
 
-        object set36_tree=null;
+        object set39_tree=null;
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:133:2: ( NEWLINE | INDENTATION | INDENT | DEDENT )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:142:2: ( NEWLINE | INDENTATION | INDENT | DEDENT )
             // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:
             {
             	root_0 = (object)adaptor.GetNilNode();
 
-            	set36 = (IToken)input.LT(1);
+            	set39 = (IToken)input.LT(1);
             	if ( (input.LA(1) >= INDENT && input.LA(1) <= DEDENT) || input.LA(1) == INDENTATION || input.LA(1) == NEWLINE ) 
             	{
             	    input.Consume();
-            	    adaptor.AddChild(root_0, (object)adaptor.Create(set36));
+            	    adaptor.AddChild(root_0, (object)adaptor.Create(set39));
             	    state.errorRecovery = false;
             	}
             	else 
@@ -1538,7 +1636,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "flow_list"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:136:1: flow_list : '[' ( fskip )* value ( fskip )* ( ',' ( fskip )* value ( fskip )* )* ']' -> ^( LIST ( value )+ ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:145:1: flow_list : '[' ( fskip )* value ( fskip )* ( ',' ( fskip )* value ( fskip )* )* ']' -> ^( LIST ( value )+ ) ;
     public YamlParser.flow_list_return flow_list() // throws RecognitionException [1]
     {   
         YamlParser.flow_list_return retval = new YamlParser.flow_list_return();
@@ -1546,28 +1644,28 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken char_literal37 = null;
-        IToken char_literal41 = null;
-        IToken char_literal45 = null;
-        YamlParser.fskip_return fskip38 = default(YamlParser.fskip_return);
+        IToken char_literal40 = null;
+        IToken char_literal44 = null;
+        IToken char_literal48 = null;
+        YamlParser.fskip_return fskip41 = default(YamlParser.fskip_return);
 
-        YamlParser.value_return value39 = default(YamlParser.value_return);
+        YamlParser.value_return value42 = default(YamlParser.value_return);
 
-        YamlParser.fskip_return fskip40 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip43 = default(YamlParser.fskip_return);
 
-        YamlParser.fskip_return fskip42 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip45 = default(YamlParser.fskip_return);
 
-        YamlParser.value_return value43 = default(YamlParser.value_return);
+        YamlParser.value_return value46 = default(YamlParser.value_return);
 
-        YamlParser.fskip_return fskip44 = default(YamlParser.fskip_return);
+        YamlParser.fskip_return fskip47 = default(YamlParser.fskip_return);
 
 
-        object char_literal37_tree=null;
-        object char_literal41_tree=null;
-        object char_literal45_tree=null;
-        RewriteRuleTokenStream stream_31 = new RewriteRuleTokenStream(adaptor,"token 31");
-        RewriteRuleTokenStream stream_35 = new RewriteRuleTokenStream(adaptor,"token 35");
-        RewriteRuleTokenStream stream_34 = new RewriteRuleTokenStream(adaptor,"token 34");
+        object char_literal40_tree=null;
+        object char_literal44_tree=null;
+        object char_literal48_tree=null;
+        RewriteRuleTokenStream stream_36 = new RewriteRuleTokenStream(adaptor,"token 36");
+        RewriteRuleTokenStream stream_33 = new RewriteRuleTokenStream(adaptor,"token 33");
+        RewriteRuleTokenStream stream_37 = new RewriteRuleTokenStream(adaptor,"token 37");
         RewriteRuleSubtreeStream stream_value = new RewriteRuleSubtreeStream(adaptor,"rule value");
         RewriteRuleSubtreeStream stream_fskip = new RewriteRuleSubtreeStream(adaptor,"rule fskip");
 
@@ -1576,66 +1674,27 @@ public partial class YamlParser : Parser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:2: ( '[' ( fskip )* value ( fskip )* ( ',' ( fskip )* value ( fskip )* )* ']' -> ^( LIST ( value )+ ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:4: '[' ( fskip )* value ( fskip )* ( ',' ( fskip )* value ( fskip )* )* ']'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:2: ( '[' ( fskip )* value ( fskip )* ( ',' ( fskip )* value ( fskip )* )* ']' -> ^( LIST ( value )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:4: '[' ( fskip )* value ( fskip )* ( ',' ( fskip )* value ( fskip )* )* ']'
             {
-            	char_literal37=(IToken)Match(input,34,FOLLOW_34_in_flow_list606);  
-            	stream_34.Add(char_literal37);
+            	char_literal40=(IToken)Match(input,36,FOLLOW_36_in_flow_list709);  
+            	stream_36.Add(char_literal40);
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:8: ( fskip )*
-            	do 
-            	{
-            	    int alt12 = 2;
-            	    alt12 = dfa12.Predict(input);
-            	    switch (alt12) 
-            		{
-            			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:8: fskip
-            			    {
-            			    	PushFollow(FOLLOW_fskip_in_flow_list608);
-            			    	fskip38 = fskip();
-            			    	state.followingStackPointer--;
-
-            			    	stream_fskip.Add(fskip38.Tree);
-
-            			    }
-            			    break;
-
-            			default:
-            			    goto loop12;
-            	    }
-            	} while (true);
-
-            	loop12:
-            		;	// Stops C# compiler whining that label 'loop12' has no statements
-
-            	PushFollow(FOLLOW_value_in_flow_list611);
-            	value39 = value();
-            	state.followingStackPointer--;
-
-            	stream_value.Add(value39.Tree);
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:21: ( fskip )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:8: ( fskip )*
             	do 
             	{
             	    int alt13 = 2;
-            	    int LA13_0 = input.LA(1);
-
-            	    if ( ((LA13_0 >= INDENT && LA13_0 <= DEDENT) || LA13_0 == INDENTATION || LA13_0 == NEWLINE) )
-            	    {
-            	        alt13 = 1;
-            	    }
-
-
+            	    alt13 = dfa13.Predict(input);
             	    switch (alt13) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:21: fskip
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:8: fskip
             			    {
-            			    	PushFollow(FOLLOW_fskip_in_flow_list613);
-            			    	fskip40 = fskip();
+            			    	PushFollow(FOLLOW_fskip_in_flow_list711);
+            			    	fskip41 = fskip();
             			    	state.followingStackPointer--;
 
-            			    	stream_fskip.Add(fskip40.Tree);
+            			    	stream_fskip.Add(fskip41.Tree);
 
             			    }
             			    break;
@@ -1648,80 +1707,80 @@ public partial class YamlParser : Parser
             	loop13:
             		;	// Stops C# compiler whining that label 'loop13' has no statements
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:28: ( ',' ( fskip )* value ( fskip )* )*
+            	PushFollow(FOLLOW_value_in_flow_list714);
+            	value42 = value();
+            	state.followingStackPointer--;
+
+            	stream_value.Add(value42.Tree);
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:21: ( fskip )*
             	do 
             	{
-            	    int alt16 = 2;
-            	    int LA16_0 = input.LA(1);
+            	    int alt14 = 2;
+            	    int LA14_0 = input.LA(1);
 
-            	    if ( (LA16_0 == 31) )
+            	    if ( ((LA14_0 >= INDENT && LA14_0 <= DEDENT) || LA14_0 == INDENTATION || LA14_0 == NEWLINE) )
             	    {
-            	        alt16 = 1;
+            	        alt14 = 1;
             	    }
 
 
-            	    switch (alt16) 
+            	    switch (alt14) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:29: ',' ( fskip )* value ( fskip )*
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:21: fskip
             			    {
-            			    	char_literal41=(IToken)Match(input,31,FOLLOW_31_in_flow_list617);  
-            			    	stream_31.Add(char_literal41);
-
-            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:33: ( fskip )*
-            			    	do 
-            			    	{
-            			    	    int alt14 = 2;
-            			    	    alt14 = dfa14.Predict(input);
-            			    	    switch (alt14) 
-            			    		{
-            			    			case 1 :
-            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:33: fskip
-            			    			    {
-            			    			    	PushFollow(FOLLOW_fskip_in_flow_list619);
-            			    			    	fskip42 = fskip();
-            			    			    	state.followingStackPointer--;
-
-            			    			    	stream_fskip.Add(fskip42.Tree);
-
-            			    			    }
-            			    			    break;
-
-            			    			default:
-            			    			    goto loop14;
-            			    	    }
-            			    	} while (true);
-
-            			    	loop14:
-            			    		;	// Stops C# compiler whining that label 'loop14' has no statements
-
-            			    	PushFollow(FOLLOW_value_in_flow_list622);
-            			    	value43 = value();
+            			    	PushFollow(FOLLOW_fskip_in_flow_list716);
+            			    	fskip43 = fskip();
             			    	state.followingStackPointer--;
 
-            			    	stream_value.Add(value43.Tree);
-            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:46: ( fskip )*
+            			    	stream_fskip.Add(fskip43.Tree);
+
+            			    }
+            			    break;
+
+            			default:
+            			    goto loop14;
+            	    }
+            	} while (true);
+
+            	loop14:
+            		;	// Stops C# compiler whining that label 'loop14' has no statements
+
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:28: ( ',' ( fskip )* value ( fskip )* )*
+            	do 
+            	{
+            	    int alt17 = 2;
+            	    int LA17_0 = input.LA(1);
+
+            	    if ( (LA17_0 == 33) )
+            	    {
+            	        alt17 = 1;
+            	    }
+
+
+            	    switch (alt17) 
+            		{
+            			case 1 :
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:29: ',' ( fskip )* value ( fskip )*
+            			    {
+            			    	char_literal44=(IToken)Match(input,33,FOLLOW_33_in_flow_list720);  
+            			    	stream_33.Add(char_literal44);
+
+            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:33: ( fskip )*
             			    	do 
             			    	{
             			    	    int alt15 = 2;
-            			    	    int LA15_0 = input.LA(1);
-
-            			    	    if ( ((LA15_0 >= INDENT && LA15_0 <= DEDENT) || LA15_0 == INDENTATION || LA15_0 == NEWLINE) )
-            			    	    {
-            			    	        alt15 = 1;
-            			    	    }
-
-
+            			    	    alt15 = dfa15.Predict(input);
             			    	    switch (alt15) 
             			    		{
             			    			case 1 :
-            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:141:46: fskip
+            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:33: fskip
             			    			    {
-            			    			    	PushFollow(FOLLOW_fskip_in_flow_list624);
-            			    			    	fskip44 = fskip();
+            			    			    	PushFollow(FOLLOW_fskip_in_flow_list722);
+            			    			    	fskip45 = fskip();
             			    			    	state.followingStackPointer--;
 
-            			    			    	stream_fskip.Add(fskip44.Tree);
+            			    			    	stream_fskip.Add(fskip45.Tree);
 
             			    			    }
             			    			    break;
@@ -1734,20 +1793,59 @@ public partial class YamlParser : Parser
             			    	loop15:
             			    		;	// Stops C# compiler whining that label 'loop15' has no statements
 
+            			    	PushFollow(FOLLOW_value_in_flow_list725);
+            			    	value46 = value();
+            			    	state.followingStackPointer--;
+
+            			    	stream_value.Add(value46.Tree);
+            			    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:46: ( fskip )*
+            			    	do 
+            			    	{
+            			    	    int alt16 = 2;
+            			    	    int LA16_0 = input.LA(1);
+
+            			    	    if ( ((LA16_0 >= INDENT && LA16_0 <= DEDENT) || LA16_0 == INDENTATION || LA16_0 == NEWLINE) )
+            			    	    {
+            			    	        alt16 = 1;
+            			    	    }
+
+
+            			    	    switch (alt16) 
+            			    		{
+            			    			case 1 :
+            			    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:150:46: fskip
+            			    			    {
+            			    			    	PushFollow(FOLLOW_fskip_in_flow_list727);
+            			    			    	fskip47 = fskip();
+            			    			    	state.followingStackPointer--;
+
+            			    			    	stream_fskip.Add(fskip47.Tree);
+
+            			    			    }
+            			    			    break;
+
+            			    			default:
+            			    			    goto loop16;
+            			    	    }
+            			    	} while (true);
+
+            			    	loop16:
+            			    		;	// Stops C# compiler whining that label 'loop16' has no statements
+
 
             			    }
             			    break;
 
             			default:
-            			    goto loop16;
+            			    goto loop17;
             	    }
             	} while (true);
 
-            	loop16:
-            		;	// Stops C# compiler whining that label 'loop16' has no statements
+            	loop17:
+            		;	// Stops C# compiler whining that label 'loop17' has no statements
 
-            	char_literal45=(IToken)Match(input,35,FOLLOW_35_in_flow_list629);  
-            	stream_35.Add(char_literal45);
+            	char_literal48=(IToken)Match(input,37,FOLLOW_37_in_flow_list732);  
+            	stream_37.Add(char_literal48);
 
 
 
@@ -1762,9 +1860,9 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 142:3: -> ^( LIST ( value )+ )
+            	// 151:3: -> ^( LIST ( value )+ )
             	{
-            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:142:6: ^( LIST ( value )+ )
+            	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:151:6: ^( LIST ( value )+ )
             	    {
             	    object root_1 = (object)adaptor.GetNilNode();
             	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(LIST, "LIST"), root_1);
@@ -1822,7 +1920,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "block_list"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:149:1: block_list : ( INDENTATION INDENT ( block_list_item )+ INDENTATION DEDENT -> ^( LIST ( block_list_item )+ ) | {...}? ( block_list_item )+ -> ^( LIST ( block_list_item )+ ) );
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:158:1: block_list : ( INDENTATION INDENT ( block_list_item )+ INDENTATION DEDENT -> ^( LIST ( block_list_item )+ ) | {...}? ( block_list_item )+ -> ^( LIST ( block_list_item )+ ) );
     public YamlParser.block_list_return block_list() // throws RecognitionException [1]
     {   
         YamlParser.block_list_return retval = new YamlParser.block_list_return();
@@ -1830,19 +1928,19 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken INDENTATION46 = null;
-        IToken INDENT47 = null;
         IToken INDENTATION49 = null;
-        IToken DEDENT50 = null;
-        YamlParser.block_list_item_return block_list_item48 = default(YamlParser.block_list_item_return);
-
+        IToken INDENT50 = null;
+        IToken INDENTATION52 = null;
+        IToken DEDENT53 = null;
         YamlParser.block_list_item_return block_list_item51 = default(YamlParser.block_list_item_return);
 
+        YamlParser.block_list_item_return block_list_item54 = default(YamlParser.block_list_item_return);
 
-        object INDENTATION46_tree=null;
-        object INDENT47_tree=null;
+
         object INDENTATION49_tree=null;
-        object DEDENT50_tree=null;
+        object INDENT50_tree=null;
+        object INDENTATION52_tree=null;
+        object DEDENT53_tree=null;
         RewriteRuleTokenStream stream_DEDENT = new RewriteRuleTokenStream(adaptor,"token DEDENT");
         RewriteRuleTokenStream stream_INDENT = new RewriteRuleTokenStream(adaptor,"token INDENT");
         RewriteRuleTokenStream stream_INDENTATION = new RewriteRuleTokenStream(adaptor,"token INDENTATION");
@@ -1852,80 +1950,80 @@ public partial class YamlParser : Parser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:153:2: ( INDENTATION INDENT ( block_list_item )+ INDENTATION DEDENT -> ^( LIST ( block_list_item )+ ) | {...}? ( block_list_item )+ -> ^( LIST ( block_list_item )+ ) )
-            int alt19 = 2;
-            int LA19_0 = input.LA(1);
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:162:2: ( INDENTATION INDENT ( block_list_item )+ INDENTATION DEDENT -> ^( LIST ( block_list_item )+ ) | {...}? ( block_list_item )+ -> ^( LIST ( block_list_item )+ ) )
+            int alt20 = 2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA19_0 == INDENTATION) )
+            if ( (LA20_0 == INDENTATION) )
             {
-                alt19 = 1;
+                alt20 = 1;
             }
-            else if ( (LA19_0 == LI) )
+            else if ( (LA20_0 == LI) )
             {
-                alt19 = 2;
+                alt20 = 2;
             }
             else 
             {
-                NoViableAltException nvae_d19s0 =
-                    new NoViableAltException("", 19, 0, input);
+                NoViableAltException nvae_d20s0 =
+                    new NoViableAltException("", 20, 0, input);
 
-                throw nvae_d19s0;
+                throw nvae_d20s0;
             }
-            switch (alt19) 
+            switch (alt20) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:153:4: INDENTATION INDENT ( block_list_item )+ INDENTATION DEDENT
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:162:4: INDENTATION INDENT ( block_list_item )+ INDENTATION DEDENT
                     {
-                    	INDENTATION46=(IToken)Match(input,INDENTATION,FOLLOW_INDENTATION_in_block_list662);  
-                    	stream_INDENTATION.Add(INDENTATION46);
+                    	INDENTATION49=(IToken)Match(input,INDENTATION,FOLLOW_INDENTATION_in_block_list765);  
+                    	stream_INDENTATION.Add(INDENTATION49);
 
-                    	INDENT47=(IToken)Match(input,INDENT,FOLLOW_INDENT_in_block_list664);  
-                    	stream_INDENT.Add(INDENT47);
+                    	INDENT50=(IToken)Match(input,INDENT,FOLLOW_INDENT_in_block_list767);  
+                    	stream_INDENT.Add(INDENT50);
 
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:153:23: ( block_list_item )+
-                    	int cnt17 = 0;
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:162:23: ( block_list_item )+
+                    	int cnt18 = 0;
                     	do 
                     	{
-                    	    int alt17 = 2;
-                    	    int LA17_0 = input.LA(1);
+                    	    int alt18 = 2;
+                    	    int LA18_0 = input.LA(1);
 
-                    	    if ( (LA17_0 == LI) )
+                    	    if ( (LA18_0 == LI) )
                     	    {
-                    	        alt17 = 1;
+                    	        alt18 = 1;
                     	    }
 
 
-                    	    switch (alt17) 
+                    	    switch (alt18) 
                     		{
                     			case 1 :
-                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:153:23: block_list_item
+                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:162:23: block_list_item
                     			    {
-                    			    	PushFollow(FOLLOW_block_list_item_in_block_list666);
-                    			    	block_list_item48 = block_list_item();
+                    			    	PushFollow(FOLLOW_block_list_item_in_block_list769);
+                    			    	block_list_item51 = block_list_item();
                     			    	state.followingStackPointer--;
 
-                    			    	stream_block_list_item.Add(block_list_item48.Tree);
+                    			    	stream_block_list_item.Add(block_list_item51.Tree);
 
                     			    }
                     			    break;
 
                     			default:
-                    			    if ( cnt17 >= 1 ) goto loop17;
-                    		            EarlyExitException eee17 =
-                    		                new EarlyExitException(17, input);
-                    		            throw eee17;
+                    			    if ( cnt18 >= 1 ) goto loop18;
+                    		            EarlyExitException eee18 =
+                    		                new EarlyExitException(18, input);
+                    		            throw eee18;
                     	    }
-                    	    cnt17++;
+                    	    cnt18++;
                     	} while (true);
 
-                    	loop17:
-                    		;	// Stops C# compiler whining that label 'loop17' has no statements
+                    	loop18:
+                    		;	// Stops C# compiler whining that label 'loop18' has no statements
 
-                    	INDENTATION49=(IToken)Match(input,INDENTATION,FOLLOW_INDENTATION_in_block_list669);  
-                    	stream_INDENTATION.Add(INDENTATION49);
+                    	INDENTATION52=(IToken)Match(input,INDENTATION,FOLLOW_INDENTATION_in_block_list772);  
+                    	stream_INDENTATION.Add(INDENTATION52);
 
-                    	DEDENT50=(IToken)Match(input,DEDENT,FOLLOW_DEDENT_in_block_list671);  
-                    	stream_DEDENT.Add(DEDENT50);
+                    	DEDENT53=(IToken)Match(input,DEDENT,FOLLOW_DEDENT_in_block_list774);  
+                    	stream_DEDENT.Add(DEDENT53);
 
 
 
@@ -1940,9 +2038,9 @@ public partial class YamlParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (object)adaptor.GetNilNode();
-                    	// 154:3: -> ^( LIST ( block_list_item )+ )
+                    	// 163:3: -> ^( LIST ( block_list_item )+ )
                     	{
-                    	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:154:6: ^( LIST ( block_list_item )+ )
+                    	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:163:6: ^( LIST ( block_list_item )+ )
                     	    {
                     	    object root_1 = (object)adaptor.GetNilNode();
                     	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(LIST, "LIST"), root_1);
@@ -1966,50 +2064,50 @@ public partial class YamlParser : Parser
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:155:4: {...}? ( block_list_item )+
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:164:4: {...}? ( block_list_item )+
                     {
                     	if ( !((flowLvl == 0)) ) 
                     	{
                     	    throw new FailedPredicateException(input, "block_list", "flowLvl == 0");
                     	}
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:155:20: ( block_list_item )+
-                    	int cnt18 = 0;
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:164:20: ( block_list_item )+
+                    	int cnt19 = 0;
                     	do 
                     	{
-                    	    int alt18 = 2;
-                    	    int LA18_0 = input.LA(1);
+                    	    int alt19 = 2;
+                    	    int LA19_0 = input.LA(1);
 
-                    	    if ( (LA18_0 == LI) )
+                    	    if ( (LA19_0 == LI) )
                     	    {
-                    	        alt18 = 1;
+                    	        alt19 = 1;
                     	    }
 
 
-                    	    switch (alt18) 
+                    	    switch (alt19) 
                     		{
                     			case 1 :
-                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:155:20: block_list_item
+                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:164:20: block_list_item
                     			    {
-                    			    	PushFollow(FOLLOW_block_list_item_in_block_list689);
-                    			    	block_list_item51 = block_list_item();
+                    			    	PushFollow(FOLLOW_block_list_item_in_block_list792);
+                    			    	block_list_item54 = block_list_item();
                     			    	state.followingStackPointer--;
 
-                    			    	stream_block_list_item.Add(block_list_item51.Tree);
+                    			    	stream_block_list_item.Add(block_list_item54.Tree);
 
                     			    }
                     			    break;
 
                     			default:
-                    			    if ( cnt18 >= 1 ) goto loop18;
-                    		            EarlyExitException eee18 =
-                    		                new EarlyExitException(18, input);
-                    		            throw eee18;
+                    			    if ( cnt19 >= 1 ) goto loop19;
+                    		            EarlyExitException eee19 =
+                    		                new EarlyExitException(19, input);
+                    		            throw eee19;
                     	    }
-                    	    cnt18++;
+                    	    cnt19++;
                     	} while (true);
 
-                    	loop18:
-                    		;	// Stops C# compiler whining that label 'loop18' has no statements
+                    	loop19:
+                    		;	// Stops C# compiler whining that label 'loop19' has no statements
 
 
 
@@ -2024,9 +2122,9 @@ public partial class YamlParser : Parser
                     	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
                     	root_0 = (object)adaptor.GetNilNode();
-                    	// 156:3: -> ^( LIST ( block_list_item )+ )
+                    	// 165:3: -> ^( LIST ( block_list_item )+ )
                     	{
-                    	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:156:6: ^( LIST ( block_list_item )+ )
+                    	    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:165:6: ^( LIST ( block_list_item )+ )
                     	    {
                     	    object root_1 = (object)adaptor.GetNilNode();
                     	    root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(LIST, "LIST"), root_1);
@@ -2091,7 +2189,7 @@ public partial class YamlParser : Parser
     };
 
     // $ANTLR start "block_list_item"
-    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:162:1: block_list_item : {...}? LI value NEWLINE -> value ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:171:1: block_list_item : {...}? LI value NEWLINE -> value ;
     public YamlParser.block_list_item_return block_list_item() // throws RecognitionException [1]
     {   
         block_list_item_stack.Push(new block_list_item_scope());
@@ -2100,13 +2198,13 @@ public partial class YamlParser : Parser
 
         object root_0 = null;
 
-        IToken LI52 = null;
-        IToken NEWLINE54 = null;
-        YamlParser.value_return value53 = default(YamlParser.value_return);
+        IToken LI55 = null;
+        IToken NEWLINE57 = null;
+        YamlParser.value_return value56 = default(YamlParser.value_return);
 
 
-        object LI52_tree=null;
-        object NEWLINE54_tree=null;
+        object LI55_tree=null;
+        object NEWLINE57_tree=null;
         RewriteRuleTokenStream stream_NEWLINE = new RewriteRuleTokenStream(adaptor,"token NEWLINE");
         RewriteRuleTokenStream stream_LI = new RewriteRuleTokenStream(adaptor,"token LI");
         RewriteRuleSubtreeStream stream_value = new RewriteRuleSubtreeStream(adaptor,"rule value");
@@ -2115,23 +2213,23 @@ public partial class YamlParser : Parser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:169:2: ({...}? LI value NEWLINE -> value )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:169:4: {...}? LI value NEWLINE
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:178:2: ({...}? LI value NEWLINE -> value )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:178:4: {...}? LI value NEWLINE
             {
             	if ( !((((block_list_item_scope)block_list_item_stack.Peek()).lvl == BlockLevel)) ) 
             	{
             	    throw new FailedPredicateException(input, "block_list_item", "$block_list_item::lvl == BlockLevel");
             	}
-            	LI52=(IToken)Match(input,LI,FOLLOW_LI_in_block_list_item728);  
-            	stream_LI.Add(LI52);
+            	LI55=(IToken)Match(input,LI,FOLLOW_LI_in_block_list_item831);  
+            	stream_LI.Add(LI55);
 
-            	PushFollow(FOLLOW_value_in_block_list_item730);
-            	value53 = value();
+            	PushFollow(FOLLOW_value_in_block_list_item833);
+            	value56 = value();
             	state.followingStackPointer--;
 
-            	stream_value.Add(value53.Tree);
-            	NEWLINE54=(IToken)Match(input,NEWLINE,FOLLOW_NEWLINE_in_block_list_item732);  
-            	stream_NEWLINE.Add(NEWLINE54);
+            	stream_value.Add(value56.Tree);
+            	NEWLINE57=(IToken)Match(input,NEWLINE,FOLLOW_NEWLINE_in_block_list_item835);  
+            	stream_NEWLINE.Add(NEWLINE57);
 
 
 
@@ -2146,7 +2244,7 @@ public partial class YamlParser : Parser
             	RewriteRuleSubtreeStream stream_retval = new RewriteRuleSubtreeStream(adaptor, "rule retval", retval!=null ? retval.Tree : null);
 
             	root_0 = (object)adaptor.GetNilNode();
-            	// 170:3: -> value
+            	// 179:3: -> value
             	{
             	    adaptor.AddChild(root_0, stream_value.NextTree());
 
@@ -2179,35 +2277,141 @@ public partial class YamlParser : Parser
     // Delegated rules
 
 
-   	protected DFA10 dfa10;
-   	protected DFA12 dfa12;
-   	protected DFA14 dfa14;
+   	protected DFA1 dfa1;
+   	protected DFA11 dfa11;
+   	protected DFA13 dfa13;
+   	protected DFA15 dfa15;
 	private void InitializeCyclicDFAs()
 	{
-    	this.dfa10 = new DFA10(this);
-    	this.dfa12 = new DFA12(this);
-    	this.dfa14 = new DFA14(this);
-	    this.dfa10.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA10_SpecialStateTransition);
-	    this.dfa12.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA12_SpecialStateTransition);
-	    this.dfa14.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA14_SpecialStateTransition);
+    	this.dfa1 = new DFA1(this);
+    	this.dfa11 = new DFA11(this);
+    	this.dfa13 = new DFA13(this);
+    	this.dfa15 = new DFA15(this);
+	    this.dfa1.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA1_SpecialStateTransition);
+	    this.dfa11.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA11_SpecialStateTransition);
+	    this.dfa13.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA13_SpecialStateTransition);
+	    this.dfa15.specialStateTransitionHandler = new DFA.SpecialStateTransitionHandler(DFA15_SpecialStateTransition);
 	}
 
-    const string DFA10_eotS =
-        "\x0b\uffff";
-    const string DFA10_eofS =
-        "\x0b\uffff";
-    const string DFA10_minS =
-        "\x01\x0d\x04\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
-    const string DFA10_maxS =
-        "\x01\x22\x04\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
-    const string DFA10_acceptS =
-        "\x01\uffff\x01\x02\x06\uffff\x02\x02\x01\x01";
-    const string DFA10_specialS =
-        "\x01\x00\x04\uffff\x01\x01\x01\uffff\x01\x02\x03\uffff}>";
-    static readonly string[] DFA10_transitionS = {
-            "\x01\x05\x01\x0a\x01\uffff\x01\x07\x01\x01\x02\uffff\x01\x08"+
-            "\x01\x01\x01\uffff\x01\x01\x01\uffff\x01\x01\x01\x0a\x03\uffff"+
-            "\x01\x01\x03\uffff\x01\x09",
+    const string DFA1_eotS =
+        "\x0a\uffff";
+    const string DFA1_eofS =
+        "\x0a\uffff";
+    const string DFA1_minS =
+        "\x01\x0d\x09\uffff";
+    const string DFA1_maxS =
+        "\x01\x24\x09\uffff";
+    const string DFA1_acceptS =
+        "\x01\uffff\x01\x01\x01\x02\x01\x03\x01\x04\x01\x05\x02\x06\x02"+
+        "\x07";
+    const string DFA1_specialS =
+        "\x01\x00\x09\uffff}>";
+    static readonly string[] DFA1_transitionS = {
+            "\x01\x06\x02\uffff\x01\x08\x01\x02\x01\x01\x01\x03\x02\uffff"+
+            "\x01\x08\x01\x04\x01\uffff\x02\x05\x05\uffff\x01\x07\x03\uffff"+
+            "\x01\x09",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+    };
+
+    static readonly short[] DFA1_eot = DFA.UnpackEncodedString(DFA1_eotS);
+    static readonly short[] DFA1_eof = DFA.UnpackEncodedString(DFA1_eofS);
+    static readonly char[] DFA1_min = DFA.UnpackEncodedStringToUnsignedChars(DFA1_minS);
+    static readonly char[] DFA1_max = DFA.UnpackEncodedStringToUnsignedChars(DFA1_maxS);
+    static readonly short[] DFA1_accept = DFA.UnpackEncodedString(DFA1_acceptS);
+    static readonly short[] DFA1_special = DFA.UnpackEncodedString(DFA1_specialS);
+    static readonly short[][] DFA1_transition = DFA.UnpackEncodedStringArray(DFA1_transitionS);
+
+    protected class DFA1 : DFA
+    {
+        public DFA1(BaseRecognizer recognizer)
+        {
+            this.recognizer = recognizer;
+            this.decisionNumber = 1;
+            this.eot = DFA1_eot;
+            this.eof = DFA1_eof;
+            this.min = DFA1_min;
+            this.max = DFA1_max;
+            this.accept = DFA1_accept;
+            this.special = DFA1_special;
+            this.transition = DFA1_transition;
+
+        }
+
+        override public string Description
+        {
+            get { return "37:1: value : ( null_expr | boolean | integer | float_expr | string_expr | map | list );"; }
+        }
+
+    }
+
+
+    protected internal int DFA1_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
+    {
+            ITokenStream input = (ITokenStream)_input;
+    	int _s = s;
+        switch ( s )
+        {
+               	case 0 : 
+                   	int LA1_0 = input.LA(1);
+
+                   	 
+                   	int index1_0 = input.Index();
+                   	input.Rewind();
+                   	s = -1;
+                   	if ( (LA1_0 == NULL) ) { s = 1; }
+
+                   	else if ( (LA1_0 == Bool) ) { s = 2; }
+
+                   	else if ( (LA1_0 == Integer) ) { s = 3; }
+
+                   	else if ( (LA1_0 == Float) ) { s = 4; }
+
+                   	else if ( ((LA1_0 >= QuotedString && LA1_0 <= UnQuotedString)) ) { s = 5; }
+
+                   	else if ( (LA1_0 == INDENT) && ((!IsInFlow)) ) { s = 6; }
+
+                   	else if ( (LA1_0 == 32) ) { s = 7; }
+
+                   	else if ( (LA1_0 == INDENTATION || LA1_0 == LI) && ((!IsInFlow)) ) { s = 8; }
+
+                   	else if ( (LA1_0 == 36) ) { s = 9; }
+
+                   	 
+                   	input.Seek(index1_0);
+                   	if ( s >= 0 ) return s;
+                   	break;
+        }
+        NoViableAltException nvae1 =
+            new NoViableAltException(dfa.Description, 1, _s, input);
+        dfa.Error(nvae1);
+        throw nvae1;
+    }
+    const string DFA11_eotS =
+        "\x0d\uffff";
+    const string DFA11_eofS =
+        "\x0d\uffff";
+    const string DFA11_minS =
+        "\x01\x0d\x06\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
+    const string DFA11_maxS =
+        "\x01\x24\x06\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
+    const string DFA11_acceptS =
+        "\x01\uffff\x01\x02\x08\uffff\x02\x02\x01\x01";
+    const string DFA11_specialS =
+        "\x01\x00\x06\uffff\x01\x01\x01\uffff\x01\x02\x03\uffff}>";
+    static readonly string[] DFA11_transitionS = {
+            "\x01\x07\x01\x0c\x01\uffff\x01\x09\x03\x01\x02\uffff\x01\x0a"+
+            "\x01\x01\x01\uffff\x02\x01\x01\uffff\x01\x0c\x03\uffff\x01\x01"+
+            "\x03\uffff\x01\x0b",
+            "",
+            "",
             "",
             "",
             "",
@@ -2220,119 +2424,121 @@ public partial class YamlParser : Parser
             ""
     };
 
-    static readonly short[] DFA10_eot = DFA.UnpackEncodedString(DFA10_eotS);
-    static readonly short[] DFA10_eof = DFA.UnpackEncodedString(DFA10_eofS);
-    static readonly char[] DFA10_min = DFA.UnpackEncodedStringToUnsignedChars(DFA10_minS);
-    static readonly char[] DFA10_max = DFA.UnpackEncodedStringToUnsignedChars(DFA10_maxS);
-    static readonly short[] DFA10_accept = DFA.UnpackEncodedString(DFA10_acceptS);
-    static readonly short[] DFA10_special = DFA.UnpackEncodedString(DFA10_specialS);
-    static readonly short[][] DFA10_transition = DFA.UnpackEncodedStringArray(DFA10_transitionS);
+    static readonly short[] DFA11_eot = DFA.UnpackEncodedString(DFA11_eotS);
+    static readonly short[] DFA11_eof = DFA.UnpackEncodedString(DFA11_eofS);
+    static readonly char[] DFA11_min = DFA.UnpackEncodedStringToUnsignedChars(DFA11_minS);
+    static readonly char[] DFA11_max = DFA.UnpackEncodedStringToUnsignedChars(DFA11_maxS);
+    static readonly short[] DFA11_accept = DFA.UnpackEncodedString(DFA11_acceptS);
+    static readonly short[] DFA11_special = DFA.UnpackEncodedString(DFA11_specialS);
+    static readonly short[][] DFA11_transition = DFA.UnpackEncodedStringArray(DFA11_transitionS);
 
-    protected class DFA10 : DFA
+    protected class DFA11 : DFA
     {
-        public DFA10(BaseRecognizer recognizer)
+        public DFA11(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 10;
-            this.eot = DFA10_eot;
-            this.eof = DFA10_eof;
-            this.min = DFA10_min;
-            this.max = DFA10_max;
-            this.accept = DFA10_accept;
-            this.special = DFA10_special;
-            this.transition = DFA10_transition;
+            this.decisionNumber = 11;
+            this.eot = DFA11_eot;
+            this.eof = DFA11_eof;
+            this.min = DFA11_min;
+            this.max = DFA11_max;
+            this.accept = DFA11_accept;
+            this.special = DFA11_special;
+            this.transition = DFA11_transition;
 
         }
 
         override public string Description
         {
-            get { return "()* loopback of 122:27: ( fskip )*"; }
+            get { return "()* loopback of 131:27: ( fskip )*"; }
         }
 
     }
 
 
-    protected internal int DFA10_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
+    protected internal int DFA11_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
     {
             ITokenStream input = (ITokenStream)_input;
     	int _s = s;
         switch ( s )
         {
                	case 0 : 
-                   	int LA10_0 = input.LA(1);
+                   	int LA11_0 = input.LA(1);
 
                    	 
-                   	int index10_0 = input.Index();
+                   	int index11_0 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (LA10_0 == Integer || LA10_0 == Float || LA10_0 == QuotedString || LA10_0 == Bool || LA10_0 == 30) ) { s = 1; }
+                   	if ( ((LA11_0 >= Bool && LA11_0 <= Integer) || LA11_0 == Float || (LA11_0 >= QuotedString && LA11_0 <= UnQuotedString) || LA11_0 == 32) ) { s = 1; }
 
-                   	else if ( (LA10_0 == INDENT) ) { s = 5; }
+                   	else if ( (LA11_0 == INDENT) ) { s = 7; }
 
-                   	else if ( (LA10_0 == INDENTATION) ) { s = 7; }
+                   	else if ( (LA11_0 == INDENTATION) ) { s = 9; }
 
-                   	else if ( (LA10_0 == LI) && ((!IsInFlow)) ) { s = 8; }
+                   	else if ( (LA11_0 == LI) && ((!IsInFlow)) ) { s = 10; }
 
-                   	else if ( (LA10_0 == 34) ) { s = 9; }
+                   	else if ( (LA11_0 == 36) ) { s = 11; }
 
-                   	else if ( (LA10_0 == DEDENT || LA10_0 == NEWLINE) ) { s = 10; }
+                   	else if ( (LA11_0 == DEDENT || LA11_0 == NEWLINE) ) { s = 12; }
 
                    	 
-                   	input.Seek(index10_0);
+                   	input.Seek(index11_0);
                    	if ( s >= 0 ) return s;
                    	break;
                	case 1 : 
-                   	int LA10_5 = input.LA(1);
+                   	int LA11_7 = input.LA(1);
 
                    	 
-                   	int index10_5 = input.Index();
+                   	int index11_7 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (!(((!IsInFlow)))) ) { s = 10; }
+                   	if ( (!(((!IsInFlow)))) ) { s = 12; }
 
-                   	else if ( ((!IsInFlow)) ) { s = 9; }
+                   	else if ( ((!IsInFlow)) ) { s = 11; }
 
                    	 
-                   	input.Seek(index10_5);
+                   	input.Seek(index11_7);
                    	if ( s >= 0 ) return s;
                    	break;
                	case 2 : 
-                   	int LA10_7 = input.LA(1);
+                   	int LA11_9 = input.LA(1);
 
                    	 
-                   	int index10_7 = input.Index();
+                   	int index11_9 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (!(((!IsInFlow)))) ) { s = 10; }
+                   	if ( (!(((!IsInFlow)))) ) { s = 12; }
 
-                   	else if ( ((!IsInFlow)) ) { s = 9; }
+                   	else if ( ((!IsInFlow)) ) { s = 11; }
 
                    	 
-                   	input.Seek(index10_7);
+                   	input.Seek(index11_9);
                    	if ( s >= 0 ) return s;
                    	break;
         }
-        NoViableAltException nvae10 =
-            new NoViableAltException(dfa.Description, 10, _s, input);
-        dfa.Error(nvae10);
-        throw nvae10;
+        NoViableAltException nvae11 =
+            new NoViableAltException(dfa.Description, 11, _s, input);
+        dfa.Error(nvae11);
+        throw nvae11;
     }
-    const string DFA12_eotS =
-        "\x0b\uffff";
-    const string DFA12_eofS =
-        "\x0b\uffff";
-    const string DFA12_minS =
-        "\x01\x0d\x04\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
-    const string DFA12_maxS =
-        "\x01\x22\x04\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
-    const string DFA12_acceptS =
-        "\x01\uffff\x01\x02\x06\uffff\x02\x02\x01\x01";
-    const string DFA12_specialS =
-        "\x01\x00\x04\uffff\x01\x01\x01\uffff\x01\x02\x03\uffff}>";
-    static readonly string[] DFA12_transitionS = {
-            "\x01\x05\x01\x0a\x01\uffff\x01\x07\x01\x01\x02\uffff\x01\x08"+
-            "\x01\x01\x01\uffff\x01\x01\x01\uffff\x01\x01\x01\x0a\x03\uffff"+
-            "\x01\x01\x03\uffff\x01\x09",
+    const string DFA13_eotS =
+        "\x0d\uffff";
+    const string DFA13_eofS =
+        "\x0d\uffff";
+    const string DFA13_minS =
+        "\x01\x0d\x06\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
+    const string DFA13_maxS =
+        "\x01\x24\x06\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
+    const string DFA13_acceptS =
+        "\x01\uffff\x01\x02\x08\uffff\x02\x02\x01\x01";
+    const string DFA13_specialS =
+        "\x01\x00\x06\uffff\x01\x01\x01\uffff\x01\x02\x03\uffff}>";
+    static readonly string[] DFA13_transitionS = {
+            "\x01\x07\x01\x0c\x01\uffff\x01\x09\x03\x01\x02\uffff\x01\x0a"+
+            "\x01\x01\x01\uffff\x02\x01\x01\uffff\x01\x0c\x03\uffff\x01\x01"+
+            "\x03\uffff\x01\x0b",
+            "",
+            "",
             "",
             "",
             "",
@@ -2345,119 +2551,121 @@ public partial class YamlParser : Parser
             ""
     };
 
-    static readonly short[] DFA12_eot = DFA.UnpackEncodedString(DFA12_eotS);
-    static readonly short[] DFA12_eof = DFA.UnpackEncodedString(DFA12_eofS);
-    static readonly char[] DFA12_min = DFA.UnpackEncodedStringToUnsignedChars(DFA12_minS);
-    static readonly char[] DFA12_max = DFA.UnpackEncodedStringToUnsignedChars(DFA12_maxS);
-    static readonly short[] DFA12_accept = DFA.UnpackEncodedString(DFA12_acceptS);
-    static readonly short[] DFA12_special = DFA.UnpackEncodedString(DFA12_specialS);
-    static readonly short[][] DFA12_transition = DFA.UnpackEncodedStringArray(DFA12_transitionS);
+    static readonly short[] DFA13_eot = DFA.UnpackEncodedString(DFA13_eotS);
+    static readonly short[] DFA13_eof = DFA.UnpackEncodedString(DFA13_eofS);
+    static readonly char[] DFA13_min = DFA.UnpackEncodedStringToUnsignedChars(DFA13_minS);
+    static readonly char[] DFA13_max = DFA.UnpackEncodedStringToUnsignedChars(DFA13_maxS);
+    static readonly short[] DFA13_accept = DFA.UnpackEncodedString(DFA13_acceptS);
+    static readonly short[] DFA13_special = DFA.UnpackEncodedString(DFA13_specialS);
+    static readonly short[][] DFA13_transition = DFA.UnpackEncodedStringArray(DFA13_transitionS);
 
-    protected class DFA12 : DFA
+    protected class DFA13 : DFA
     {
-        public DFA12(BaseRecognizer recognizer)
+        public DFA13(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 12;
-            this.eot = DFA12_eot;
-            this.eof = DFA12_eof;
-            this.min = DFA12_min;
-            this.max = DFA12_max;
-            this.accept = DFA12_accept;
-            this.special = DFA12_special;
-            this.transition = DFA12_transition;
+            this.decisionNumber = 13;
+            this.eot = DFA13_eot;
+            this.eof = DFA13_eof;
+            this.min = DFA13_min;
+            this.max = DFA13_max;
+            this.accept = DFA13_accept;
+            this.special = DFA13_special;
+            this.transition = DFA13_transition;
 
         }
 
         override public string Description
         {
-            get { return "()* loopback of 141:8: ( fskip )*"; }
+            get { return "()* loopback of 150:8: ( fskip )*"; }
         }
 
     }
 
 
-    protected internal int DFA12_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
+    protected internal int DFA13_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
     {
             ITokenStream input = (ITokenStream)_input;
     	int _s = s;
         switch ( s )
         {
                	case 0 : 
-                   	int LA12_0 = input.LA(1);
+                   	int LA13_0 = input.LA(1);
 
                    	 
-                   	int index12_0 = input.Index();
+                   	int index13_0 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (LA12_0 == Integer || LA12_0 == Float || LA12_0 == QuotedString || LA12_0 == Bool || LA12_0 == 30) ) { s = 1; }
+                   	if ( ((LA13_0 >= Bool && LA13_0 <= Integer) || LA13_0 == Float || (LA13_0 >= QuotedString && LA13_0 <= UnQuotedString) || LA13_0 == 32) ) { s = 1; }
 
-                   	else if ( (LA12_0 == INDENT) ) { s = 5; }
+                   	else if ( (LA13_0 == INDENT) ) { s = 7; }
 
-                   	else if ( (LA12_0 == INDENTATION) ) { s = 7; }
+                   	else if ( (LA13_0 == INDENTATION) ) { s = 9; }
 
-                   	else if ( (LA12_0 == LI) && ((!IsInFlow)) ) { s = 8; }
+                   	else if ( (LA13_0 == LI) && ((!IsInFlow)) ) { s = 10; }
 
-                   	else if ( (LA12_0 == 34) ) { s = 9; }
+                   	else if ( (LA13_0 == 36) ) { s = 11; }
 
-                   	else if ( (LA12_0 == DEDENT || LA12_0 == NEWLINE) ) { s = 10; }
+                   	else if ( (LA13_0 == DEDENT || LA13_0 == NEWLINE) ) { s = 12; }
 
                    	 
-                   	input.Seek(index12_0);
+                   	input.Seek(index13_0);
                    	if ( s >= 0 ) return s;
                    	break;
                	case 1 : 
-                   	int LA12_5 = input.LA(1);
+                   	int LA13_7 = input.LA(1);
 
                    	 
-                   	int index12_5 = input.Index();
+                   	int index13_7 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (!(((!IsInFlow)))) ) { s = 10; }
+                   	if ( (!(((!IsInFlow)))) ) { s = 12; }
 
-                   	else if ( ((!IsInFlow)) ) { s = 9; }
+                   	else if ( ((!IsInFlow)) ) { s = 11; }
 
                    	 
-                   	input.Seek(index12_5);
+                   	input.Seek(index13_7);
                    	if ( s >= 0 ) return s;
                    	break;
                	case 2 : 
-                   	int LA12_7 = input.LA(1);
+                   	int LA13_9 = input.LA(1);
 
                    	 
-                   	int index12_7 = input.Index();
+                   	int index13_9 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (!(((!IsInFlow)))) ) { s = 10; }
+                   	if ( (!(((!IsInFlow)))) ) { s = 12; }
 
-                   	else if ( ((!IsInFlow)) ) { s = 9; }
+                   	else if ( ((!IsInFlow)) ) { s = 11; }
 
                    	 
-                   	input.Seek(index12_7);
+                   	input.Seek(index13_9);
                    	if ( s >= 0 ) return s;
                    	break;
         }
-        NoViableAltException nvae12 =
-            new NoViableAltException(dfa.Description, 12, _s, input);
-        dfa.Error(nvae12);
-        throw nvae12;
+        NoViableAltException nvae13 =
+            new NoViableAltException(dfa.Description, 13, _s, input);
+        dfa.Error(nvae13);
+        throw nvae13;
     }
-    const string DFA14_eotS =
-        "\x0b\uffff";
-    const string DFA14_eofS =
-        "\x0b\uffff";
-    const string DFA14_minS =
-        "\x01\x0d\x04\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
-    const string DFA14_maxS =
-        "\x01\x22\x04\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
-    const string DFA14_acceptS =
-        "\x01\uffff\x01\x02\x06\uffff\x02\x02\x01\x01";
-    const string DFA14_specialS =
-        "\x01\x00\x04\uffff\x01\x01\x01\uffff\x01\x02\x03\uffff}>";
-    static readonly string[] DFA14_transitionS = {
-            "\x01\x05\x01\x0a\x01\uffff\x01\x07\x01\x01\x02\uffff\x01\x08"+
-            "\x01\x01\x01\uffff\x01\x01\x01\uffff\x01\x01\x01\x0a\x03\uffff"+
-            "\x01\x01\x03\uffff\x01\x09",
+    const string DFA15_eotS =
+        "\x0d\uffff";
+    const string DFA15_eofS =
+        "\x0d\uffff";
+    const string DFA15_minS =
+        "\x01\x0d\x06\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
+    const string DFA15_maxS =
+        "\x01\x24\x06\uffff\x01\x00\x01\uffff\x01\x00\x03\uffff";
+    const string DFA15_acceptS =
+        "\x01\uffff\x01\x02\x08\uffff\x02\x02\x01\x01";
+    const string DFA15_specialS =
+        "\x01\x00\x06\uffff\x01\x01\x01\uffff\x01\x02\x03\uffff}>";
+    static readonly string[] DFA15_transitionS = {
+            "\x01\x07\x01\x0c\x01\uffff\x01\x09\x03\x01\x02\uffff\x01\x0a"+
+            "\x01\x01\x01\uffff\x02\x01\x01\uffff\x01\x0c\x03\uffff\x01\x01"+
+            "\x03\uffff\x01\x0b",
+            "",
+            "",
             "",
             "",
             "",
@@ -2470,159 +2678,162 @@ public partial class YamlParser : Parser
             ""
     };
 
-    static readonly short[] DFA14_eot = DFA.UnpackEncodedString(DFA14_eotS);
-    static readonly short[] DFA14_eof = DFA.UnpackEncodedString(DFA14_eofS);
-    static readonly char[] DFA14_min = DFA.UnpackEncodedStringToUnsignedChars(DFA14_minS);
-    static readonly char[] DFA14_max = DFA.UnpackEncodedStringToUnsignedChars(DFA14_maxS);
-    static readonly short[] DFA14_accept = DFA.UnpackEncodedString(DFA14_acceptS);
-    static readonly short[] DFA14_special = DFA.UnpackEncodedString(DFA14_specialS);
-    static readonly short[][] DFA14_transition = DFA.UnpackEncodedStringArray(DFA14_transitionS);
+    static readonly short[] DFA15_eot = DFA.UnpackEncodedString(DFA15_eotS);
+    static readonly short[] DFA15_eof = DFA.UnpackEncodedString(DFA15_eofS);
+    static readonly char[] DFA15_min = DFA.UnpackEncodedStringToUnsignedChars(DFA15_minS);
+    static readonly char[] DFA15_max = DFA.UnpackEncodedStringToUnsignedChars(DFA15_maxS);
+    static readonly short[] DFA15_accept = DFA.UnpackEncodedString(DFA15_acceptS);
+    static readonly short[] DFA15_special = DFA.UnpackEncodedString(DFA15_specialS);
+    static readonly short[][] DFA15_transition = DFA.UnpackEncodedStringArray(DFA15_transitionS);
 
-    protected class DFA14 : DFA
+    protected class DFA15 : DFA
     {
-        public DFA14(BaseRecognizer recognizer)
+        public DFA15(BaseRecognizer recognizer)
         {
             this.recognizer = recognizer;
-            this.decisionNumber = 14;
-            this.eot = DFA14_eot;
-            this.eof = DFA14_eof;
-            this.min = DFA14_min;
-            this.max = DFA14_max;
-            this.accept = DFA14_accept;
-            this.special = DFA14_special;
-            this.transition = DFA14_transition;
+            this.decisionNumber = 15;
+            this.eot = DFA15_eot;
+            this.eof = DFA15_eof;
+            this.min = DFA15_min;
+            this.max = DFA15_max;
+            this.accept = DFA15_accept;
+            this.special = DFA15_special;
+            this.transition = DFA15_transition;
 
         }
 
         override public string Description
         {
-            get { return "()* loopback of 141:33: ( fskip )*"; }
+            get { return "()* loopback of 150:33: ( fskip )*"; }
         }
 
     }
 
 
-    protected internal int DFA14_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
+    protected internal int DFA15_SpecialStateTransition(DFA dfa, int s, IIntStream _input) //throws NoViableAltException
     {
             ITokenStream input = (ITokenStream)_input;
     	int _s = s;
         switch ( s )
         {
                	case 0 : 
-                   	int LA14_0 = input.LA(1);
+                   	int LA15_0 = input.LA(1);
 
                    	 
-                   	int index14_0 = input.Index();
+                   	int index15_0 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (LA14_0 == Integer || LA14_0 == Float || LA14_0 == QuotedString || LA14_0 == Bool || LA14_0 == 30) ) { s = 1; }
+                   	if ( ((LA15_0 >= Bool && LA15_0 <= Integer) || LA15_0 == Float || (LA15_0 >= QuotedString && LA15_0 <= UnQuotedString) || LA15_0 == 32) ) { s = 1; }
 
-                   	else if ( (LA14_0 == INDENT) ) { s = 5; }
+                   	else if ( (LA15_0 == INDENT) ) { s = 7; }
 
-                   	else if ( (LA14_0 == INDENTATION) ) { s = 7; }
+                   	else if ( (LA15_0 == INDENTATION) ) { s = 9; }
 
-                   	else if ( (LA14_0 == LI) && ((!IsInFlow)) ) { s = 8; }
+                   	else if ( (LA15_0 == LI) && ((!IsInFlow)) ) { s = 10; }
 
-                   	else if ( (LA14_0 == 34) ) { s = 9; }
+                   	else if ( (LA15_0 == 36) ) { s = 11; }
 
-                   	else if ( (LA14_0 == DEDENT || LA14_0 == NEWLINE) ) { s = 10; }
+                   	else if ( (LA15_0 == DEDENT || LA15_0 == NEWLINE) ) { s = 12; }
 
                    	 
-                   	input.Seek(index14_0);
+                   	input.Seek(index15_0);
                    	if ( s >= 0 ) return s;
                    	break;
                	case 1 : 
-                   	int LA14_5 = input.LA(1);
+                   	int LA15_7 = input.LA(1);
 
                    	 
-                   	int index14_5 = input.Index();
+                   	int index15_7 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (!(((!IsInFlow)))) ) { s = 10; }
+                   	if ( (!(((!IsInFlow)))) ) { s = 12; }
 
-                   	else if ( ((!IsInFlow)) ) { s = 9; }
+                   	else if ( ((!IsInFlow)) ) { s = 11; }
 
                    	 
-                   	input.Seek(index14_5);
+                   	input.Seek(index15_7);
                    	if ( s >= 0 ) return s;
                    	break;
                	case 2 : 
-                   	int LA14_7 = input.LA(1);
+                   	int LA15_9 = input.LA(1);
 
                    	 
-                   	int index14_7 = input.Index();
+                   	int index15_9 = input.Index();
                    	input.Rewind();
                    	s = -1;
-                   	if ( (!(((!IsInFlow)))) ) { s = 10; }
+                   	if ( (!(((!IsInFlow)))) ) { s = 12; }
 
-                   	else if ( ((!IsInFlow)) ) { s = 9; }
+                   	else if ( ((!IsInFlow)) ) { s = 11; }
 
                    	 
-                   	input.Seek(index14_7);
+                   	input.Seek(index15_9);
                    	if ( s >= 0 ) return s;
                    	break;
         }
-        NoViableAltException nvae14 =
-            new NoViableAltException(dfa.Description, 14, _s, input);
-        dfa.Error(nvae14);
-        throw nvae14;
+        NoViableAltException nvae15 =
+            new NoViableAltException(dfa.Description, 15, _s, input);
+        dfa.Error(nvae15);
+        throw nvae15;
     }
  
 
-    public static readonly BitSet FOLLOW_boolean_in_value142 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_integer_in_value147 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_float_expr_in_value153 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_string_expr_in_value158 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_map_in_value163 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_list_in_value168 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_Integer_in_integer179 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_Float_in_float_expr239 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_QuotedString_in_string_expr315 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_Bool_in_boolean358 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_30_in_flow_map401 = new BitSet(new ulong[]{0x0000000004816000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_map403 = new BitSet(new ulong[]{0x0000000004816000UL});
-    public static readonly BitSet FOLLOW_map_pair_in_flow_map406 = new BitSet(new ulong[]{0x0000000184016000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_map408 = new BitSet(new ulong[]{0x0000000184016000UL});
-    public static readonly BitSet FOLLOW_31_in_flow_map412 = new BitSet(new ulong[]{0x0000000004816000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_map414 = new BitSet(new ulong[]{0x0000000004816000UL});
-    public static readonly BitSet FOLLOW_map_pair_in_flow_map417 = new BitSet(new ulong[]{0x0000000184016000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_map419 = new BitSet(new ulong[]{0x0000000184016000UL});
-    public static readonly BitSet FOLLOW_32_in_flow_map425 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INDENT_in_block_map457 = new BitSet(new ulong[]{0x0000000000008000UL});
-    public static readonly BitSet FOLLOW_DENT_in_block_map459 = new BitSet(new ulong[]{0x0000000004816000UL});
-    public static readonly BitSet FOLLOW_map_pair_in_block_map461 = new BitSet(new ulong[]{0x0000000004004000UL});
-    public static readonly BitSet FOLLOW_NEWLINE_in_block_map464 = new BitSet(new ulong[]{0x0000000000008000UL});
-    public static readonly BitSet FOLLOW_DENT_in_block_map466 = new BitSet(new ulong[]{0x0000000004816000UL});
-    public static readonly BitSet FOLLOW_map_pair_in_block_map468 = new BitSet(new ulong[]{0x0000000004004000UL});
-    public static readonly BitSet FOLLOW_DEDENT_in_block_map472 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_block_map_in_map503 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_flow_map_in_map508 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_string_expr_in_map_pair520 = new BitSet(new ulong[]{0x0000000204016000UL});
-    public static readonly BitSet FOLLOW_fskip_in_map_pair522 = new BitSet(new ulong[]{0x0000000204016000UL});
-    public static readonly BitSet FOLLOW_33_in_map_pair525 = new BitSet(new ulong[]{0x0000000446B36000UL});
-    public static readonly BitSet FOLLOW_fskip_in_map_pair527 = new BitSet(new ulong[]{0x0000000446B36000UL});
-    public static readonly BitSet FOLLOW_value_in_map_pair530 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_block_list_in_list558 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_flow_list_in_list563 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_null_expr_in_value142 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_boolean_in_value147 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_integer_in_value152 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_float_expr_in_value158 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_string_expr_in_value163 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_map_in_value168 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_list_in_value173 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_Bool_in_boolean186 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_NULL_in_null_expr222 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_Integer_in_integer242 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_Float_in_float_expr302 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_QuotedString_in_string_expr378 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_UnQuotedString_in_string_expr392 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_32_in_flow_map504 = new BitSet(new ulong[]{0x0000000016016000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_map506 = new BitSet(new ulong[]{0x0000000016016000UL});
+    public static readonly BitSet FOLLOW_map_pair_in_flow_map509 = new BitSet(new ulong[]{0x0000000610016000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_map511 = new BitSet(new ulong[]{0x0000000610016000UL});
+    public static readonly BitSet FOLLOW_33_in_flow_map515 = new BitSet(new ulong[]{0x0000000016016000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_map517 = new BitSet(new ulong[]{0x0000000016016000UL});
+    public static readonly BitSet FOLLOW_map_pair_in_flow_map520 = new BitSet(new ulong[]{0x0000000610016000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_map522 = new BitSet(new ulong[]{0x0000000610016000UL});
+    public static readonly BitSet FOLLOW_34_in_flow_map528 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INDENT_in_block_map560 = new BitSet(new ulong[]{0x0000000000008000UL});
+    public static readonly BitSet FOLLOW_DENT_in_block_map562 = new BitSet(new ulong[]{0x0000000016016000UL});
+    public static readonly BitSet FOLLOW_map_pair_in_block_map564 = new BitSet(new ulong[]{0x0000000010004000UL});
+    public static readonly BitSet FOLLOW_NEWLINE_in_block_map567 = new BitSet(new ulong[]{0x0000000000008000UL});
+    public static readonly BitSet FOLLOW_DENT_in_block_map569 = new BitSet(new ulong[]{0x0000000016016000UL});
+    public static readonly BitSet FOLLOW_map_pair_in_block_map571 = new BitSet(new ulong[]{0x0000000010004000UL});
+    public static readonly BitSet FOLLOW_DEDENT_in_block_map575 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_block_map_in_map606 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_flow_map_in_map611 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_string_expr_in_map_pair623 = new BitSet(new ulong[]{0x0000000810016000UL});
+    public static readonly BitSet FOLLOW_fskip_in_map_pair625 = new BitSet(new ulong[]{0x0000000810016000UL});
+    public static readonly BitSet FOLLOW_35_in_map_pair628 = new BitSet(new ulong[]{0x0000001116CF6000UL});
+    public static readonly BitSet FOLLOW_fskip_in_map_pair630 = new BitSet(new ulong[]{0x0000001116CF6000UL});
+    public static readonly BitSet FOLLOW_value_in_map_pair633 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_block_list_in_list661 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_flow_list_in_list666 = new BitSet(new ulong[]{0x0000000000000002UL});
     public static readonly BitSet FOLLOW_set_in_fskip0 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_34_in_flow_list606 = new BitSet(new ulong[]{0x0000000446B36000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_list608 = new BitSet(new ulong[]{0x0000000446B36000UL});
-    public static readonly BitSet FOLLOW_value_in_flow_list611 = new BitSet(new ulong[]{0x0000000884016000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_list613 = new BitSet(new ulong[]{0x0000000884016000UL});
-    public static readonly BitSet FOLLOW_31_in_flow_list617 = new BitSet(new ulong[]{0x0000000446B36000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_list619 = new BitSet(new ulong[]{0x0000000446B36000UL});
-    public static readonly BitSet FOLLOW_value_in_flow_list622 = new BitSet(new ulong[]{0x0000000884016000UL});
-    public static readonly BitSet FOLLOW_fskip_in_flow_list624 = new BitSet(new ulong[]{0x0000000884016000UL});
-    public static readonly BitSet FOLLOW_35_in_flow_list629 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_INDENTATION_in_block_list662 = new BitSet(new ulong[]{0x0000000000002000UL});
-    public static readonly BitSet FOLLOW_INDENT_in_block_list664 = new BitSet(new ulong[]{0x0000000000110000UL});
-    public static readonly BitSet FOLLOW_block_list_item_in_block_list666 = new BitSet(new ulong[]{0x0000000000110000UL});
-    public static readonly BitSet FOLLOW_INDENTATION_in_block_list669 = new BitSet(new ulong[]{0x0000000000004000UL});
-    public static readonly BitSet FOLLOW_DEDENT_in_block_list671 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_block_list_item_in_block_list689 = new BitSet(new ulong[]{0x0000000000110002UL});
-    public static readonly BitSet FOLLOW_LI_in_block_list_item728 = new BitSet(new ulong[]{0x0000000446B36000UL});
-    public static readonly BitSet FOLLOW_value_in_block_list_item730 = new BitSet(new ulong[]{0x0000000004000000UL});
-    public static readonly BitSet FOLLOW_NEWLINE_in_block_list_item732 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_36_in_flow_list709 = new BitSet(new ulong[]{0x0000001116CF6000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_list711 = new BitSet(new ulong[]{0x0000001116CF6000UL});
+    public static readonly BitSet FOLLOW_value_in_flow_list714 = new BitSet(new ulong[]{0x0000002210016000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_list716 = new BitSet(new ulong[]{0x0000002210016000UL});
+    public static readonly BitSet FOLLOW_33_in_flow_list720 = new BitSet(new ulong[]{0x0000001116CF6000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_list722 = new BitSet(new ulong[]{0x0000001116CF6000UL});
+    public static readonly BitSet FOLLOW_value_in_flow_list725 = new BitSet(new ulong[]{0x0000002210016000UL});
+    public static readonly BitSet FOLLOW_fskip_in_flow_list727 = new BitSet(new ulong[]{0x0000002210016000UL});
+    public static readonly BitSet FOLLOW_37_in_flow_list732 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_INDENTATION_in_block_list765 = new BitSet(new ulong[]{0x0000000000002000UL});
+    public static readonly BitSet FOLLOW_INDENT_in_block_list767 = new BitSet(new ulong[]{0x0000000000410000UL});
+    public static readonly BitSet FOLLOW_block_list_item_in_block_list769 = new BitSet(new ulong[]{0x0000000000410000UL});
+    public static readonly BitSet FOLLOW_INDENTATION_in_block_list772 = new BitSet(new ulong[]{0x0000000000004000UL});
+    public static readonly BitSet FOLLOW_DEDENT_in_block_list774 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_block_list_item_in_block_list792 = new BitSet(new ulong[]{0x0000000000410002UL});
+    public static readonly BitSet FOLLOW_LI_in_block_list_item831 = new BitSet(new ulong[]{0x0000001116CF6000UL});
+    public static readonly BitSet FOLLOW_value_in_block_list_item833 = new BitSet(new ulong[]{0x0000000010000000UL});
+    public static readonly BitSet FOLLOW_NEWLINE_in_block_list_item835 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

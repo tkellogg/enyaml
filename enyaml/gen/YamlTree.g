@@ -13,12 +13,17 @@ using System.Collections.Generic;
 @namespace { enyaml.parser }
 
 value returns [object result]
-	: b=boolean { $result = $b.result; }
+	: n=null_expr { $result = null; }
+	| b=boolean { $result = $b.result; }
 	| i=integer { $result = $i.result; }
 	| f=float_expr { $result = $f.result; }
 	| s=string_expr { $result = $s.result; }
 	| m=map { $result = $m.result; }
 	| l=list { $result = $l.result; }
+	;
+	
+null_expr 
+	: NULL
 	;
 	
 boolean returns [bool result]
@@ -39,8 +44,8 @@ float_expr returns [double result]
 string_expr returns [string result] 
 	: ^(QUOTED_STRING QuotedString)
 		{ $result = ExtractString($QuotedString); }
-//	| ^(UNQUOTED_STRING UnQuotedString)
-//		{ $result = ExtractString($UnQuotedString); }
+	| ^(UNQUOTED_STRING UnQuotedString)
+		{ $result = ExtractString($UnQuotedString); }
 	;
 	
 map returns [SortedDictionary<string, object> result]

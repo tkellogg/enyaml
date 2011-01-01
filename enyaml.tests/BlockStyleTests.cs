@@ -17,5 +17,13 @@ namespace enyaml.tests
             var list = (List<object>)result;
             Assert.That(list, Is.EquivalentTo(new[] { "line 1", "line 2" }));
         }
+        [Test]
+        public void ListOfUnQuotedStrings()
+        {
+            var txt = "- line 1\n-line 2\n";
+            var result = Yaml.Parse(txt);
+            var list = (List<object>)result;
+            Assert.That(list, Is.EquivalentTo(new[] { "line 1", "line 2" }));
+        }
     }
 }

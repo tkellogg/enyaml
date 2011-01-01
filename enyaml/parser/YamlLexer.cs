@@ -47,5 +47,10 @@ namespace enyaml.parser
                 Skip();
             }
         }
+
+        private bool StringIsNotReserved(string first, string last)
+        {
+            return false;
+        }
     }
 }

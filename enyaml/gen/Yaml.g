@@ -35,13 +35,28 @@ INDENTATION
 	
 
 value
-	: boolean
+	: null_expr
+	| boolean
 	| integer 
 	| float_expr
 	| string_expr
 	| map
 	| list
 	;
+	
+boolean 
+	: Bool -> ^(BOOL Bool)
+	;
+	
+Bool
+	: 'true' | 'false'
+	;
+	
+null_expr
+	: NULL
+	;
+	
+NULL : 'null';
 
 integer
 	: Integer -> ^(INTEGER Integer)
@@ -70,23 +85,17 @@ fragment Exponent
 
 string_expr	
 	: QuotedString -> ^(QUOTED_STRING QuotedString) 
-//	| UnQuotedString -> ^(UNQUOTED_STRING UnQuotedString)
+	| UnQuotedString -> ^(UNQUOTED_STRING UnQuotedString)
 	;
 
 QuotedString
 	: '"' UnQuotedStringChars* '"'
 	;
-	
-//UnQuotedString
-//	: UnQuotedStringChars*
-//	;
-
-boolean 
-	: Bool -> ^(BOOL Bool)
-	;
-
-Bool
-	: 'true' | 'false'
+		
+UnQuotedString
+	: ~(DecDigit | ':' | '[' | '{' | '}' | ']' | LI | NEWLINE | ' ' | '\t' | ',') 
+			UnQuotedStringChars* 
+	 { $text != "null" && $text != "false" && $text != "true" }?
 	;
 				
 flow_map
@@ -174,8 +183,8 @@ NEWLINE
 	: '\r\n' | '\n' | '\r'
 	;
 	
-fragment UnQuotedStringChars
-	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' ) )
+fragment UnQuotedStringChars 
+	: (EscapeSequence | ~('\u0000'..'\u001f' | '\\' | '\"' | ':' | NEWLINE ) )
 	;
 	
 fragment NonColonChars

@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g 2010-12-30 18:08:37
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g 2010-12-31 16:12:09
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -39,6 +39,8 @@ public partial class YamlTree : TreeParser
 		"DEDENT", 
 		"DENT", 
 		"INDENTATION", 
+		"Bool", 
+		"NULL", 
 		"Integer", 
 		"DecDigit", 
 		"HexDigit", 
@@ -46,8 +48,8 @@ public partial class YamlTree : TreeParser
 		"Float", 
 		"Exponent", 
 		"QuotedString", 
+		"UnQuotedString", 
 		"UnQuotedStringChars", 
-		"Bool", 
 		"NEWLINE", 
 		"EscapeSequence", 
 		"NonColonChars", 
@@ -61,37 +63,39 @@ public partial class YamlTree : TreeParser
     };
 
     public const int INTEGER = 6;
-    public const int Bool = 25;
+    public const int Bool = 17;
     public const int DOUBLE_QUOTE = 9;
+    public const int NULL = 18;
     public const int BOOL = 8;
-    public const int Exponent = 22;
+    public const int Exponent = 24;
+    public const int UnQuotedString = 26;
     public const int DEDENT = 14;
     public const int FLOAT = 7;
     public const int EOF = -1;
-    public const int QuotedString = 23;
+    public const int QuotedString = 25;
     public const int LIST = 12;
-    public const int HexDigit = 19;
-    public const int DecDigit = 18;
+    public const int HexDigit = 21;
+    public const int DecDigit = 20;
     public const int INDENT = 13;
-    public const int Float = 21;
-    public const int T__30 = 30;
-    public const int T__31 = 31;
+    public const int Float = 23;
     public const int SINGLE_QUOTE = 10;
     public const int T__32 = 32;
-    public const int NonColonChars = 28;
+    public const int NonColonChars = 30;
     public const int T__33 = 33;
     public const int T__34 = 34;
     public const int T__35 = 35;
-    public const int NEWLINE = 26;
+    public const int NEWLINE = 28;
+    public const int T__36 = 36;
+    public const int T__37 = 37;
     public const int DENT = 15;
-    public const int UnicodeEscape = 29;
+    public const int UnicodeEscape = 31;
     public const int MAP = 11;
     public const int QUOTED_STRING = 4;
-    public const int UnQuotedStringChars = 24;
+    public const int UnQuotedStringChars = 27;
     public const int UNQUOTED_STRING = 5;
-    public const int LI = 20;
-    public const int EscapeSequence = 27;
-    public const int Integer = 17;
+    public const int LI = 22;
+    public const int EscapeSequence = 29;
+    public const int Integer = 19;
     public const int INDENTATION = 16;
 
     // delegates
@@ -122,7 +126,7 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "value"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:15:1: value returns [object result] : (b= boolean | i= integer | f= float_expr | s= string_expr | m= map | l= list );
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:15:1: value returns [object result] : (n= null_expr | b= boolean | i= integer | f= float_expr | s= string_expr | m= map | l= list );
     public object value() // throws RecognitionException [1]
     {   
         object result = default(object);
@@ -142,38 +146,44 @@ public partial class YamlTree : TreeParser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:16:2: (b= boolean | i= integer | f= float_expr | s= string_expr | m= map | l= list )
-            int alt1 = 6;
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:16:2: (n= null_expr | b= boolean | i= integer | f= float_expr | s= string_expr | m= map | l= list )
+            int alt1 = 7;
             switch ( input.LA(1) ) 
             {
-            case BOOL:
+            case NULL:
             	{
                 alt1 = 1;
                 }
                 break;
-            case INTEGER:
+            case BOOL:
             	{
                 alt1 = 2;
                 }
                 break;
-            case FLOAT:
+            case INTEGER:
             	{
                 alt1 = 3;
                 }
                 break;
-            case QUOTED_STRING:
+            case FLOAT:
             	{
                 alt1 = 4;
                 }
                 break;
-            case MAP:
+            case QUOTED_STRING:
+            case UNQUOTED_STRING:
             	{
                 alt1 = 5;
                 }
                 break;
-            case LIST:
+            case MAP:
             	{
                 alt1 = 6;
+                }
+                break;
+            case LIST:
+            	{
+                alt1 = 7;
                 }
                 break;
             	default:
@@ -186,9 +196,20 @@ public partial class YamlTree : TreeParser
             switch (alt1) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:16:4: b= boolean
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:16:4: n= null_expr
                     {
-                    	PushFollow(FOLLOW_boolean_in_value56);
+                    	PushFollow(FOLLOW_null_expr_in_value56);
+                    	null_expr();
+                    	state.followingStackPointer--;
+
+                    	 result =  null; 
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:17:4: b= boolean
+                    {
+                    	PushFollow(FOLLOW_boolean_in_value65);
                     	b = boolean();
                     	state.followingStackPointer--;
 
@@ -196,10 +217,10 @@ public partial class YamlTree : TreeParser
 
                     }
                     break;
-                case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:17:4: i= integer
+                case 3 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:18:4: i= integer
                     {
-                    	PushFollow(FOLLOW_integer_in_value65);
+                    	PushFollow(FOLLOW_integer_in_value74);
                     	i = integer();
                     	state.followingStackPointer--;
 
@@ -207,10 +228,10 @@ public partial class YamlTree : TreeParser
 
                     }
                     break;
-                case 3 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:18:4: f= float_expr
+                case 4 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:19:4: f= float_expr
                     {
-                    	PushFollow(FOLLOW_float_expr_in_value74);
+                    	PushFollow(FOLLOW_float_expr_in_value83);
                     	f = float_expr();
                     	state.followingStackPointer--;
 
@@ -218,10 +239,10 @@ public partial class YamlTree : TreeParser
 
                     }
                     break;
-                case 4 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:19:4: s= string_expr
+                case 5 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:20:4: s= string_expr
                     {
-                    	PushFollow(FOLLOW_string_expr_in_value83);
+                    	PushFollow(FOLLOW_string_expr_in_value92);
                     	s = string_expr();
                     	state.followingStackPointer--;
 
@@ -229,10 +250,10 @@ public partial class YamlTree : TreeParser
 
                     }
                     break;
-                case 5 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:20:4: m= map
+                case 6 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:21:4: m= map
                     {
-                    	PushFollow(FOLLOW_map_in_value92);
+                    	PushFollow(FOLLOW_map_in_value101);
                     	m = map();
                     	state.followingStackPointer--;
 
@@ -240,10 +261,10 @@ public partial class YamlTree : TreeParser
 
                     }
                     break;
-                case 6 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:21:4: l= list
+                case 7 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:22:4: l= list
                     {
-                    	PushFollow(FOLLOW_list_in_value101);
+                    	PushFollow(FOLLOW_list_in_value110);
                     	l = list();
                     	state.followingStackPointer--;
 
@@ -267,8 +288,35 @@ public partial class YamlTree : TreeParser
     // $ANTLR end "value"
 
 
+    // $ANTLR start "null_expr"
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:25:1: null_expr : NULL ;
+    public void null_expr() // throws RecognitionException [1]
+    {   
+        try 
+    	{
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:26:2: ( NULL )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:26:4: NULL
+            {
+            	Match(input,NULL,FOLLOW_NULL_in_null_expr125); 
+
+            }
+
+        }
+        catch (RecognitionException re) 
+    	{
+            ReportError(re);
+            Recover(input,re);
+        }
+        finally 
+    	{
+        }
+        return ;
+    }
+    // $ANTLR end "null_expr"
+
+
     // $ANTLR start "boolean"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:24:1: boolean returns [bool result] : ^( BOOL Bool ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:29:1: boolean returns [bool result] : ^( BOOL Bool ) ;
     public bool boolean() // throws RecognitionException [1]
     {   
         bool result = default(bool);
@@ -277,13 +325,13 @@ public partial class YamlTree : TreeParser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:25:2: ( ^( BOOL Bool ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:25:4: ^( BOOL Bool )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:30:2: ( ^( BOOL Bool ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:30:4: ^( BOOL Bool )
             {
-            	Match(input,BOOL,FOLLOW_BOOL_in_boolean120); 
+            	Match(input,BOOL,FOLLOW_BOOL_in_boolean142); 
 
             	Match(input, Token.DOWN, null); 
-            	Bool1=(CommonTree)Match(input,Bool,FOLLOW_Bool_in_boolean122); 
+            	Bool1=(CommonTree)Match(input,Bool,FOLLOW_Bool_in_boolean144); 
 
             	Match(input, Token.UP, null); 
             	 result =  bool.Parse(Bool1.Text); 
@@ -305,7 +353,7 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "integer"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:29:1: integer returns [int result] : ^( INTEGER Integer ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:34:1: integer returns [int result] : ^( INTEGER Integer ) ;
     public int integer() // throws RecognitionException [1]
     {   
         int result = default(int);
@@ -314,13 +362,13 @@ public partial class YamlTree : TreeParser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:30:2: ( ^( INTEGER Integer ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:30:4: ^( INTEGER Integer )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:35:2: ( ^( INTEGER Integer ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:35:4: ^( INTEGER Integer )
             {
-            	Match(input,INTEGER,FOLLOW_INTEGER_in_integer144); 
+            	Match(input,INTEGER,FOLLOW_INTEGER_in_integer166); 
 
             	Match(input, Token.DOWN, null); 
-            	Integer2=(CommonTree)Match(input,Integer,FOLLOW_Integer_in_integer146); 
+            	Integer2=(CommonTree)Match(input,Integer,FOLLOW_Integer_in_integer168); 
 
             	Match(input, Token.UP, null); 
             	 result =  int.Parse(Integer2.Text); 
@@ -342,7 +390,7 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "float_expr"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:34:1: float_expr returns [double result] : ^( FLOAT Float ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:39:1: float_expr returns [double result] : ^( FLOAT Float ) ;
     public double float_expr() // throws RecognitionException [1]
     {   
         double result = default(double);
@@ -351,13 +399,13 @@ public partial class YamlTree : TreeParser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:35:2: ( ^( FLOAT Float ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:35:4: ^( FLOAT Float )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:40:2: ( ^( FLOAT Float ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:40:4: ^( FLOAT Float )
             {
-            	Match(input,FLOAT,FOLLOW_FLOAT_in_float_expr168); 
+            	Match(input,FLOAT,FOLLOW_FLOAT_in_float_expr190); 
 
             	Match(input, Token.DOWN, null); 
-            	Float3=(CommonTree)Match(input,Float,FOLLOW_Float_in_float_expr170); 
+            	Float3=(CommonTree)Match(input,Float,FOLLOW_Float_in_float_expr192); 
 
             	Match(input, Token.UP, null); 
             	 result =  double.Parse(Float3.Text); 
@@ -379,28 +427,65 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "string_expr"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:39:1: string_expr returns [string result] : ^( QUOTED_STRING QuotedString ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:44:1: string_expr returns [string result] : ( ^( QUOTED_STRING QuotedString ) | ^( UNQUOTED_STRING UnQuotedString ) );
     public string string_expr() // throws RecognitionException [1]
     {   
         string result = default(string);
 
         CommonTree QuotedString4 = null;
+        CommonTree UnQuotedString5 = null;
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:40:2: ( ^( QUOTED_STRING QuotedString ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:40:4: ^( QUOTED_STRING QuotedString )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:2: ( ^( QUOTED_STRING QuotedString ) | ^( UNQUOTED_STRING UnQuotedString ) )
+            int alt2 = 2;
+            int LA2_0 = input.LA(1);
+
+            if ( (LA2_0 == QUOTED_STRING) )
             {
-            	Match(input,QUOTED_STRING,FOLLOW_QUOTED_STRING_in_string_expr193); 
+                alt2 = 1;
+            }
+            else if ( (LA2_0 == UNQUOTED_STRING) )
+            {
+                alt2 = 2;
+            }
+            else 
+            {
+                NoViableAltException nvae_d2s0 =
+                    new NoViableAltException("", 2, 0, input);
 
-            	Match(input, Token.DOWN, null); 
-            	QuotedString4=(CommonTree)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr195); 
+                throw nvae_d2s0;
+            }
+            switch (alt2) 
+            {
+                case 1 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:45:4: ^( QUOTED_STRING QuotedString )
+                    {
+                    	Match(input,QUOTED_STRING,FOLLOW_QUOTED_STRING_in_string_expr215); 
 
-            	Match(input, Token.UP, null); 
-            	 result =  ExtractString(QuotedString4); 
+                    	Match(input, Token.DOWN, null); 
+                    	QuotedString4=(CommonTree)Match(input,QuotedString,FOLLOW_QuotedString_in_string_expr217); 
+
+                    	Match(input, Token.UP, null); 
+                    	 result =  ExtractString(QuotedString4); 
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:47:4: ^( UNQUOTED_STRING UnQuotedString )
+                    {
+                    	Match(input,UNQUOTED_STRING,FOLLOW_UNQUOTED_STRING_in_string_expr228); 
+
+                    	Match(input, Token.DOWN, null); 
+                    	UnQuotedString5=(CommonTree)Match(input,UnQuotedString,FOLLOW_UnQuotedString_in_string_expr230); 
+
+                    	Match(input, Token.UP, null); 
+                    	 result =  ExtractString(UnQuotedString5); 
+
+                    }
+                    break;
 
             }
-
         }
         catch (RecognitionException re) 
     	{
@@ -422,7 +507,7 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "map"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:46:1: map returns [SortedDictionary<string, object> result] : ^( MAP ( map_pair )+ ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:51:1: map returns [SortedDictionary<string, object> result] : ^( MAP ( map_pair )+ ) ;
     public SortedDictionary<string, object> map() // throws RecognitionException [1]
     {   
         map_stack.Push(new map_scope());
@@ -433,31 +518,31 @@ public partial class YamlTree : TreeParser
         	
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:56:2: ( ^( MAP ( map_pair )+ ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:56:4: ^( MAP ( map_pair )+ )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:2: ( ^( MAP ( map_pair )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:4: ^( MAP ( map_pair )+ )
             {
-            	Match(input,MAP,FOLLOW_MAP_in_map236); 
+            	Match(input,MAP,FOLLOW_MAP_in_map269); 
 
             	Match(input, Token.DOWN, null); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:56:10: ( map_pair )+
-            	int cnt2 = 0;
+            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:10: ( map_pair )+
+            	int cnt3 = 0;
             	do 
             	{
-            	    int alt2 = 2;
-            	    int LA2_0 = input.LA(1);
+            	    int alt3 = 2;
+            	    int LA3_0 = input.LA(1);
 
-            	    if ( (LA2_0 == 33) )
+            	    if ( (LA3_0 == 35) )
             	    {
-            	        alt2 = 1;
+            	        alt3 = 1;
             	    }
 
 
-            	    switch (alt2) 
+            	    switch (alt3) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:56:10: map_pair
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:61:10: map_pair
             			    {
-            			    	PushFollow(FOLLOW_map_pair_in_map238);
+            			    	PushFollow(FOLLOW_map_pair_in_map271);
             			    	map_pair();
             			    	state.followingStackPointer--;
 
@@ -466,16 +551,16 @@ public partial class YamlTree : TreeParser
             			    break;
 
             			default:
-            			    if ( cnt2 >= 1 ) goto loop2;
-            		            EarlyExitException eee2 =
-            		                new EarlyExitException(2, input);
-            		            throw eee2;
+            			    if ( cnt3 >= 1 ) goto loop3;
+            		            EarlyExitException eee3 =
+            		                new EarlyExitException(3, input);
+            		            throw eee3;
             	    }
-            	    cnt2++;
+            	    cnt3++;
             	} while (true);
 
-            	loop2:
-            		;	// Stops C# compiler whining that label 'loop2' has no statements
+            	loop3:
+            		;	// Stops C# compiler whining that label 'loop3' has no statements
 
 
             	Match(input, Token.UP, null); 
@@ -501,7 +586,7 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "map_pair"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:59:1: map_pair : ^( ':' key= string_expr val= value ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:64:1: map_pair : ^( ':' key= string_expr val= value ) ;
     public void map_pair() // throws RecognitionException [1]
     {   
         string key = default(string);
@@ -511,17 +596,17 @@ public partial class YamlTree : TreeParser
 
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:60:2: ( ^( ':' key= string_expr val= value ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:60:4: ^( ':' key= string_expr val= value )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:2: ( ^( ':' key= string_expr val= value ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:65:4: ^( ':' key= string_expr val= value )
             {
-            	Match(input,33,FOLLOW_33_in_map_pair255); 
+            	Match(input,35,FOLLOW_35_in_map_pair288); 
 
             	Match(input, Token.DOWN, null); 
-            	PushFollow(FOLLOW_string_expr_in_map_pair259);
+            	PushFollow(FOLLOW_string_expr_in_map_pair292);
             	key = string_expr();
             	state.followingStackPointer--;
 
-            	PushFollow(FOLLOW_value_in_map_pair263);
+            	PushFollow(FOLLOW_value_in_map_pair296);
             	val = value();
             	state.followingStackPointer--;
 
@@ -546,12 +631,12 @@ public partial class YamlTree : TreeParser
 
 
     // $ANTLR start "list"
-    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:64:1: list returns [List<object> result] : ^( LIST ( value )+ ) ;
+    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:69:1: list returns [List<object> result] : ^( LIST ( value )+ ) ;
     public List<object> list() // throws RecognitionException [1]
     {   
         List<object> result = default(List<object>);
 
-        object value5 = default(object);
+        object value6 = default(object);
 
 
 
@@ -559,50 +644,50 @@ public partial class YamlTree : TreeParser
         	
         try 
     	{
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:68:2: ( ^( LIST ( value )+ ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:68:4: ^( LIST ( value )+ )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:2: ( ^( LIST ( value )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:4: ^( LIST ( value )+ )
             {
-            	Match(input,LIST,FOLLOW_LIST_in_list291); 
+            	Match(input,LIST,FOLLOW_LIST_in_list324); 
 
             	Match(input, Token.DOWN, null); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:68:11: ( value )+
-            	int cnt3 = 0;
+            	// C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:11: ( value )+
+            	int cnt4 = 0;
             	do 
             	{
-            	    int alt3 = 2;
-            	    int LA3_0 = input.LA(1);
+            	    int alt4 = 2;
+            	    int LA4_0 = input.LA(1);
 
-            	    if ( (LA3_0 == QUOTED_STRING || (LA3_0 >= INTEGER && LA3_0 <= BOOL) || (LA3_0 >= MAP && LA3_0 <= LIST)) )
+            	    if ( ((LA4_0 >= QUOTED_STRING && LA4_0 <= BOOL) || (LA4_0 >= MAP && LA4_0 <= LIST) || LA4_0 == NULL) )
             	    {
-            	        alt3 = 1;
+            	        alt4 = 1;
             	    }
 
 
-            	    switch (alt3) 
+            	    switch (alt4) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:68:12: value
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\YamlTree.g:73:12: value
             			    {
-            			    	PushFollow(FOLLOW_value_in_list294);
-            			    	value5 = value();
+            			    	PushFollow(FOLLOW_value_in_list327);
+            			    	value6 = value();
             			    	state.followingStackPointer--;
 
-            			    	 result.Add(value5); 
+            			    	 result.Add(value6); 
 
             			    }
             			    break;
 
             			default:
-            			    if ( cnt3 >= 1 ) goto loop3;
-            		            EarlyExitException eee3 =
-            		                new EarlyExitException(3, input);
-            		            throw eee3;
+            			    if ( cnt4 >= 1 ) goto loop4;
+            		            EarlyExitException eee4 =
+            		                new EarlyExitException(4, input);
+            		            throw eee4;
             	    }
-            	    cnt3++;
+            	    cnt4++;
             	} while (true);
 
-            	loop3:
-            		;	// Stops C# compiler whining that label 'loop3' has no statements
+            	loop4:
+            		;	// Stops C# compiler whining that label 'loop4' has no statements
 
 
             	Match(input, Token.UP, null); 
@@ -631,27 +716,31 @@ public partial class YamlTree : TreeParser
 
  
 
-    public static readonly BitSet FOLLOW_boolean_in_value56 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_integer_in_value65 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_float_expr_in_value74 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_string_expr_in_value83 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_map_in_value92 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_list_in_value101 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_BOOL_in_boolean120 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_Bool_in_boolean122 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_INTEGER_in_integer144 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_Integer_in_integer146 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_FLOAT_in_float_expr168 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_Float_in_float_expr170 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_QUOTED_STRING_in_string_expr193 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_QuotedString_in_string_expr195 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MAP_in_map236 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_map_pair_in_map238 = new BitSet(new ulong[]{0x0000000200000008UL});
-    public static readonly BitSet FOLLOW_33_in_map_pair255 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_string_expr_in_map_pair259 = new BitSet(new ulong[]{0x00000000000019D0UL});
-    public static readonly BitSet FOLLOW_value_in_map_pair263 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_LIST_in_list291 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_value_in_list294 = new BitSet(new ulong[]{0x00000000000019D8UL});
+    public static readonly BitSet FOLLOW_null_expr_in_value56 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_boolean_in_value65 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_integer_in_value74 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_float_expr_in_value83 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_string_expr_in_value92 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_map_in_value101 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_list_in_value110 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_NULL_in_null_expr125 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_BOOL_in_boolean142 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_Bool_in_boolean144 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_INTEGER_in_integer166 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_Integer_in_integer168 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_FLOAT_in_float_expr190 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_Float_in_float_expr192 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_QUOTED_STRING_in_string_expr215 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_QuotedString_in_string_expr217 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_UNQUOTED_STRING_in_string_expr228 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_UnQuotedString_in_string_expr230 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MAP_in_map269 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_map_pair_in_map271 = new BitSet(new ulong[]{0x0000000800000008UL});
+    public static readonly BitSet FOLLOW_35_in_map_pair288 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_string_expr_in_map_pair292 = new BitSet(new ulong[]{0x00000000000419F0UL});
+    public static readonly BitSet FOLLOW_value_in_map_pair296 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_LIST_in_list324 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_value_in_list327 = new BitSet(new ulong[]{0x00000000000419F8UL});
 
 }
 }
