@@ -1,4 +1,4 @@
-// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2011-01-01 13:56:39
+// $ANTLR 3.2 Sep 23, 2009 12:02:23 C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g 2011-01-02 20:27:46
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -213,7 +213,7 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = Bool;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:6: ( 'true' | 'false' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:2: ( 'true' | 'false' )
             int alt2 = 2;
             int LA2_0 = input.LA(1);
 
@@ -235,7 +235,7 @@ public partial class YamlLexer : Lexer {
             switch (alt2) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:8: 'true'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:4: 'true'
                     {
                     	Match("true"); 
 
@@ -243,7 +243,7 @@ public partial class YamlLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:41:17: 'false'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:42:13: 'false'
                     {
                     	Match("false"); 
 
@@ -268,7 +268,7 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = NEWLINE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:2: ( '\\r\\n' | '\\n' | '\\r' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:45:2: ( '\\r\\n' | '\\n' | '\\r' )
             int alt3 = 3;
             int LA3_0 = input.LA(1);
 
@@ -298,7 +298,7 @@ public partial class YamlLexer : Lexer {
             switch (alt3) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:4: '\\r\\n'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:45:4: '\\r\\n'
                     {
                     	Match("\r\n"); 
 
@@ -306,14 +306,14 @@ public partial class YamlLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:13: '\\n'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:45:13: '\\n'
                     {
                     	Match('\n'); 
 
                     }
                     break;
                 case 3 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:43:20: '\\r'
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:45:20: '\\r'
                     {
                     	Match('\r'); 
 
@@ -337,7 +337,7 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = WS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:46:2: ( ' ' | '\\t' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:48:2: ( ' ' | '\\t' )
             // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:
             {
             	if ( input.LA(1) == '\t' || input.LA(1) == ' ' ) 
@@ -370,8 +370,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = COMMA;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:49:2: ( ',' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:49:4: ','
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:2: ( ',' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:4: ','
             {
             	Match(','); 
 
@@ -393,8 +393,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = QUOT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:2: ( '\"' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:51:4: '\"'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:53:2: ( '\"' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:53:4: '\"'
             {
             	Match('\"'); 
 
@@ -416,8 +416,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = LBRACKET;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:53:2: ( '[' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:53:4: '['
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:55:2: ( '[' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:55:4: '['
             {
             	Match('['); 
 
@@ -439,8 +439,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = RBRACKET;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:55:2: ( ']' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:55:4: ']'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:57:2: ( ']' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:57:4: ']'
             {
             	Match(']'); 
 
@@ -462,8 +462,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = LBRACE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:57:2: ( '{' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:57:4: '{'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:59:2: ( '{' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:59:4: '{'
             {
             	Match('{'); 
 
@@ -485,8 +485,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = RBRACE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:59:2: ( '}' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:59:4: '}'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:2: ( '}' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:4: '}'
             {
             	Match('}'); 
 
@@ -508,7 +508,7 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = Integer;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:2: ( ( '-' )? ( DecDigit )+ | ( '0' 'x' ( HexDigit )+ ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:63:2: ( ( '-' )? ( DecDigit )+ | ( '0' 'x' ( HexDigit )+ ) )
             int alt7 = 2;
             int LA7_0 = input.LA(1);
 
@@ -538,9 +538,9 @@ public partial class YamlLexer : Lexer {
             switch (alt7) 
             {
                 case 1 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:4: ( '-' )? ( DecDigit )+
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:63:4: ( '-' )? ( DecDigit )+
                     {
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:4: ( '-' )?
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:63:4: ( '-' )?
                     	int alt4 = 2;
                     	int LA4_0 = input.LA(1);
 
@@ -551,7 +551,7 @@ public partial class YamlLexer : Lexer {
                     	switch (alt4) 
                     	{
                     	    case 1 :
-                    	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:4: '-'
+                    	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:63:4: '-'
                     	        {
                     	        	Match('-'); 
 
@@ -560,7 +560,7 @@ public partial class YamlLexer : Lexer {
 
                     	}
 
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:9: ( DecDigit )+
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:63:9: ( DecDigit )+
                     	int cnt5 = 0;
                     	do 
                     	{
@@ -576,7 +576,7 @@ public partial class YamlLexer : Lexer {
                     	    switch (alt5) 
                     		{
                     			case 1 :
-                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:61:9: DecDigit
+                    			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:63:9: DecDigit
                     			    {
                     			    	mDecDigit(); 
 
@@ -599,14 +599,14 @@ public partial class YamlLexer : Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:4: ( '0' 'x' ( HexDigit )+ )
+                    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:4: ( '0' 'x' ( HexDigit )+ )
                     {
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:4: ( '0' 'x' ( HexDigit )+ )
-                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:5: '0' 'x' ( HexDigit )+
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:4: ( '0' 'x' ( HexDigit )+ )
+                    	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:5: '0' 'x' ( HexDigit )+
                     	{
                     		Match('0'); 
                     		Match('x'); 
-                    		// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:13: ( HexDigit )+
+                    		// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:13: ( HexDigit )+
                     		int cnt6 = 0;
                     		do 
                     		{
@@ -622,7 +622,7 @@ public partial class YamlLexer : Lexer {
                     		    switch (alt6) 
                     			{
                     				case 1 :
-                    				    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:62:13: HexDigit
+                    				    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:64:13: HexDigit
                     				    {
                     				    	mHexDigit(); 
 
@@ -665,10 +665,10 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = Float;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:2: ( ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )? )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:4: ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )?
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:2: ( ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )? )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:4: ( '-' )? ( DecDigit )+ '.' ( DecDigit )* ( Exponent )?
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:4: ( '-' )?
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:4: ( '-' )?
             	int alt8 = 2;
             	int LA8_0 = input.LA(1);
 
@@ -679,7 +679,7 @@ public partial class YamlLexer : Lexer {
             	switch (alt8) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:4: '-'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:4: '-'
             	        {
             	        	Match('-'); 
 
@@ -688,7 +688,7 @@ public partial class YamlLexer : Lexer {
 
             	}
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:9: ( DecDigit )+
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:9: ( DecDigit )+
             	int cnt9 = 0;
             	do 
             	{
@@ -704,7 +704,7 @@ public partial class YamlLexer : Lexer {
             	    switch (alt9) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:9: DecDigit
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:9: DecDigit
             			    {
             			    	mDecDigit(); 
 
@@ -724,7 +724,7 @@ public partial class YamlLexer : Lexer {
             		;	// Stops C# compiler whining that label 'loop9' has no statements
 
             	Match('.'); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:23: ( DecDigit )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:23: ( DecDigit )*
             	do 
             	{
             	    int alt10 = 2;
@@ -739,7 +739,7 @@ public partial class YamlLexer : Lexer {
             	    switch (alt10) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:23: DecDigit
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:23: DecDigit
             			    {
             			    	mDecDigit(); 
 
@@ -754,7 +754,7 @@ public partial class YamlLexer : Lexer {
             	loop10:
             		;	// Stops C# compiler whining that label 'loop10' has no statements
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:33: ( Exponent )?
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:33: ( Exponent )?
             	int alt11 = 2;
             	int LA11_0 = input.LA(1);
 
@@ -765,7 +765,7 @@ public partial class YamlLexer : Lexer {
             	switch (alt11) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:66:33: Exponent
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:68:33: Exponent
             	        {
             	        	mExponent(); 
 
@@ -793,8 +793,8 @@ public partial class YamlLexer : Lexer {
     		{
             int _type = UnQuotedString;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:70:2: (~ ( DecDigit | MI | LBRACKET | LBRACE | RBRACE | RBRACKET | LI | NEWLINE | WS | COMMA | QUOT ) FreeChars )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:70:4: ~ ( DecDigit | MI | LBRACKET | LBRACE | RBRACE | RBRACKET | LI | NEWLINE | WS | COMMA | QUOT ) FreeChars
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:2: (~ ( DecDigit | MI | LBRACKET | LBRACE | RBRACE | RBRACKET | LI | NEWLINE | WS | COMMA | QUOT ) FreeChars )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:72:4: ~ ( DecDigit | MI | LBRACKET | LBRACE | RBRACE | RBRACKET | LI | NEWLINE | WS | COMMA | QUOT ) FreeChars
             {
             	if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\b') || (input.LA(1) >= '\u000B' && input.LA(1) <= '\f') || (input.LA(1) >= '\u000E' && input.LA(1) <= '\u001F') || input.LA(1) == '!' || (input.LA(1) >= '#' && input.LA(1) <= '+') || (input.LA(1) >= '.' && input.LA(1) <= '/') || (input.LA(1) >= ';' && input.LA(1) <= 'Z') || input.LA(1) == '\\' || (input.LA(1) >= '^' && input.LA(1) <= 'z') || input.LA(1) == '|' || (input.LA(1) >= '~' && input.LA(1) <= '\uFFFF') ) 
             	{
@@ -825,8 +825,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:2: ( ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+ )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:4: ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:206:2: ( ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+ )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:206:4: ( 'e' | 'E' ) ( '-' | '+' )? ( DecDigit )+
             {
             	if ( input.LA(1) == 'E' || input.LA(1) == 'e' ) 
             	{
@@ -839,7 +839,7 @@ public partial class YamlLexer : Lexer {
             	    Recover(mse);
             	    throw mse;}
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:16: ( '-' | '+' )?
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:206:16: ( '-' | '+' )?
             	int alt12 = 2;
             	int LA12_0 = input.LA(1);
 
@@ -869,7 +869,7 @@ public partial class YamlLexer : Lexer {
 
             	}
 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:29: ( DecDigit )+
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:206:29: ( DecDigit )+
             	int cnt13 = 0;
             	do 
             	{
@@ -885,7 +885,7 @@ public partial class YamlLexer : Lexer {
             	    switch (alt13) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:193:29: DecDigit
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:206:29: DecDigit
             			    {
             			    	mDecDigit(); 
 
@@ -919,10 +919,10 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:210:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:210:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:210:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' ) )
             	int alt14 = 2;
             	int LA14_0 = input.LA(1);
 
@@ -944,14 +944,14 @@ public partial class YamlLexer : Lexer {
             	switch (alt14) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:5: EscapeSequence
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:210:5: EscapeSequence
             	        {
             	        	mEscapeSequence(); 
 
             	        }
             	        break;
             	    case 2 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:197:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' )
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:210:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | '\\\"' )
             	        {
             	        	if ( (input.LA(1) >= ' ' && input.LA(1) <= '!') || (input.LA(1) >= '#' && input.LA(1) <= '[') || (input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) 
             	        	{
@@ -985,10 +985,10 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:201:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE ) )* )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:201:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE ) )*
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:214:2: ( ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE ) )* )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:214:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE ) )*
             {
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:201:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE ) )*
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:214:4: ( EscapeSequence | ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE ) )*
             	do 
             	{
             	    int alt15 = 3;
@@ -1007,14 +1007,14 @@ public partial class YamlLexer : Lexer {
             	    switch (alt15) 
             		{
             			case 1 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:201:5: EscapeSequence
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:214:5: EscapeSequence
             			    {
             			    	mEscapeSequence(); 
 
             			    }
             			    break;
             			case 2 :
-            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:201:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE )
+            			    // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:214:22: ~ ( '\\u0000' .. '\\u001f' | '\\\\' | QUOT | NEWLINE | LI | MI | COMMA | LBRACE | LBRACKET | RBRACKET | RBRACE )
             			    {
             			    	if ( (input.LA(1) >= ' ' && input.LA(1) <= '!') || (input.LA(1) >= '#' && input.LA(1) <= '+') || (input.LA(1) >= '.' && input.LA(1) <= '9') || (input.LA(1) >= ';' && input.LA(1) <= 'Z') || (input.LA(1) >= '^' && input.LA(1) <= 'z') || input.LA(1) == '|' || (input.LA(1) >= '~' && input.LA(1) <= '\uFFFF') ) 
             			    	{
@@ -1054,11 +1054,11 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:2: ( '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:4: '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:2: ( '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:4: '\\\\' ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             {
             	Match('\\'); 
-            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:9: ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+            	// C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:9: ( UnicodeEscape | 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
             	int alt16 = 9;
             	switch ( input.LA(1) ) 
             	{
@@ -1117,63 +1117,63 @@ public partial class YamlLexer : Lexer {
             	switch (alt16) 
             	{
             	    case 1 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:10: UnicodeEscape
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:10: UnicodeEscape
             	        {
             	        	mUnicodeEscape(); 
 
             	        }
             	        break;
             	    case 2 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:26: 'b'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:26: 'b'
             	        {
             	        	Match('b'); 
 
             	        }
             	        break;
             	    case 3 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:30: 't'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:30: 't'
             	        {
             	        	Match('t'); 
 
             	        }
             	        break;
             	    case 4 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:34: 'n'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:34: 'n'
             	        {
             	        	Match('n'); 
 
             	        }
             	        break;
             	    case 5 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:38: 'f'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:38: 'f'
             	        {
             	        	Match('f'); 
 
             	        }
             	        break;
             	    case 6 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:42: 'r'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:42: 'r'
             	        {
             	        	Match('r'); 
 
             	        }
             	        break;
             	    case 7 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:46: '\\\"'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:46: '\\\"'
             	        {
             	        	Match('\"'); 
 
             	        }
             	        break;
             	    case 8 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:51: '\\''
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:51: '\\''
             	        {
             	        	Match('\''); 
 
             	        }
             	        break;
             	    case 9 :
-            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:205:56: '\\\\'
+            	        // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:218:56: '\\\\'
             	        {
             	        	Match('\\'); 
 
@@ -1197,8 +1197,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:209:2: ( 'u' HexDigit HexDigit HexDigit HexDigit )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:209:4: 'u' HexDigit HexDigit HexDigit HexDigit
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:222:2: ( 'u' HexDigit HexDigit HexDigit HexDigit )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:222:4: 'u' HexDigit HexDigit HexDigit HexDigit
             {
             	Match('u'); 
             	mHexDigit(); 
@@ -1220,8 +1220,8 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:213:2: ( '0' .. '9' )
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:213:4: '0' .. '9'
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:226:2: ( '0' .. '9' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:226:4: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -1239,7 +1239,7 @@ public partial class YamlLexer : Lexer {
     {
     		try
     		{
-            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:217:2: ( DecDigit | 'A' .. 'F' | 'a' .. 'f' )
+            // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:230:2: ( DecDigit | 'A' .. 'F' | 'a' .. 'f' )
             // C:\\dev\\enyaml\\enyaml\\gen\\Yaml.g:
             {
             	if ( (input.LA(1) >= '0' && input.LA(1) <= '9') || (input.LA(1) >= 'A' && input.LA(1) <= 'F') || (input.LA(1) >= 'a' && input.LA(1) <= 'f') ) 

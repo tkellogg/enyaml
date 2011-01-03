@@ -29,6 +29,8 @@ null_expr
 boolean returns [bool result]
 	: ^(BOOL Bool)
 		{ $result = bool.Parse($Bool.Text); }
+	| ^(BOOL UnQuotedString)
+		{ $result = bool.Parse($UnQuotedString.Text); }
 	;
 	
 integer returns [int result]

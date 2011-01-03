@@ -38,7 +38,9 @@ LI : '-' ;
 // map item
 MI : ':' ;
 NULL : 'null';
-Bool : 'true' | 'false'	;
+Bool 
+	: 'true' | 'false'
+	;
 NEWLINE
 	: '\r\n' | '\n' | '\r'
 	;
@@ -99,7 +101,18 @@ float_expr
 	;
 
 string_expr	
-	: QUOT QuotedStringChar* QUOT
+	: (UnQuotedString)=> 
+	(
+		(
+			{ input.LT(1).Text=="true" || input.LT(1).Text=="false" }?
+			b=UnQuotedString {$b.Type = Bool;} -> ^(BOOL $b)
+		)
+		| (
+			{ input.LT(1).Text == "null" }?
+			n=UnQuotedString { $n.Type = NULL; } -> $n
+		)
+	)
+	| QUOT QuotedStringChar* QUOT
 		-> ^(QUOTED_STRING QuotedStringChar*) 
 	| QUOT UnQuotedString QUOT
 		-> ^(QUOTED_STRING UnQuotedString) 
